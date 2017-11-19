@@ -5,6 +5,7 @@ import HomePageContainer from './HomePageContainer';
 import ReadyPageContainer from './ReadyPageContainer';
 
 import { LOGIN, GET_TOKEN } from '../constants/';
+import { Route, Redirect } from 'react-router';
 
 class App extends Component { 
   constructor(props) {
@@ -29,17 +30,15 @@ class App extends Component {
   render() {
     const { token } = this.props;
     return (
-      <div className="App">
-        {
-          token
-          ? (
-            <ReadyPageContainer />
-          )
-          : (
+      <Route
+        render={props => (
+          token ? (
+            <Redirect to="/ready" />
+          ) : (
             <HomePageContainer />
           )
-        }
-      </div>
+        )}
+      />
     );
   }
 }
