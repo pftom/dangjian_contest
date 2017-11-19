@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects';
 
 import { 
-  watchLogin, watchGetToken,
+  watchLogin, watchGetToken, watchLogout,
 
 } from './user';
 
@@ -17,6 +17,7 @@ const rootSaga = function* () {
   yield all([
     watchLogin(),
     watchGetToken(),
+    watchLogout(),
 
     watchGetQuestion(),
     watchGetOut(),

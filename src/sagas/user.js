@@ -8,6 +8,7 @@ import {
   GET_TOKEN,
   GET_TOKEN_SUCCESS,
   GET_TOKEN_ERROR,
+  LOGOUT,
 } from '../constants/'; 
 
 function* login(action) {
@@ -44,7 +45,15 @@ function* watchGetToken() {
   }
 }
 
+function* watchLogout() {
+  while (true) {
+    yield take(LOGOUT);
+    yield localStorage.removeItem('token');
+  }
+}
+
 export {
   watchLogin,
   watchGetToken,
+  watchLogout,
 }

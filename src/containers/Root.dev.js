@@ -14,6 +14,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
 import { history } from '../store/configureStore';
+import { LOGOUT } from '../constants/index';
 
 const Root = ({ store }) => {
   const { token } = store.getState().user;
@@ -22,6 +23,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <div>
+          <button onClick={() => { store.dispatch({ type: LOGOUT })} }>Logout</button>
           <Route exact path="/" component={App} />
           <Route path="/ready" component={ReadyPage} />
           <Route path="/login" component={Login} />
