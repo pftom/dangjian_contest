@@ -26,10 +26,11 @@ class ReadyPageContainer extends Component {
 
     dispatch({ type: GET_STORAGE_OUT });
 
-    this.socket.on('push notification', (msg) => {
+    this.socket.on('push notification', ({ option, id }) => {
       console.log('isReady', isReady);
       if (isReady) {
-        dispatch({ type: GET_QUESTION });
+        // option define whether single or multiply
+        dispatch({ type: GET_QUESTION, payload: { option, id } });
       }
     });
 
@@ -43,10 +44,10 @@ class ReadyPageContainer extends Component {
     console.log('isReady', isReady)
     
     console.log('socket', this.socket.on);
-    this.socket.on('push notification', (msg) => {
+    this.socket.on('push notification', ({ option, id }) => {
       console.log('isReady', isReady);
       if (isReady) {
-        dispatch({ type: GET_QUESTION });
+        dispatch({ type: GET_QUESTION, payload: { option, id } });
       }
     });
 
@@ -63,6 +64,7 @@ class ReadyPageContainer extends Component {
   handleSubmit = (value) => {
     const { question, dispatch, token } = this.props;
     if (value !== question.answer) {
+      // dispatch request for node, to get the remain value
       dispatch({ type: GET_OUT_OF_CONTEST, payload: { token } });
     }
   }
@@ -90,7 +92,7 @@ class ReadyPageContainer extends Component {
               handleReady={this.handleReady}
             />
           ) : (
-            <Redirect to="/404" />
+            <Redirect to="/" />
           )
         )}
 

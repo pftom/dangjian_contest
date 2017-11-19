@@ -3,19 +3,36 @@
  *  
  */ 
 
- const base = 'http://60.205.183.134:3000';
+ const base = 'http://60.205.183.134:8000';
 
- const questionSingleApi = (id) => ({
-   getSingleOptionQuestion: '/question/',
-   getMultiplyOptionQuestion: '/question/',
+ const questionApi = (id) => ({
+   getSingleOption: `/questions/single/${id}/`,
+   getMultiplyOption: `/questions/multiple/${id}/`,
  });
 
- const noticeApi = () => ({
-   getResult: '/result',
+ const userApi = {
+   login: '/users/login/',
+ };
+
+ const contestantsApi = (id) => ({
+   getContestants: `/users/contestants/`,
+   getSingleContestants: `/users/contestants/${id}/`,
  });
+
+ const getOutApi = {
+  'getOut': '/users/getOut',
+ };
+
+ const noticeApi = {
+    push_notification: '/push_notification',
+    next_contest: '/next_contest',
+ };
 
  export {
    base,
-   questionSingleApi,
+   questionApi,
    noticeApi,
+   contestantsApi,
+   userApi,
+   getOutApi,
  }

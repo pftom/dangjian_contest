@@ -11,9 +11,13 @@ import {
   LOGOUT,
 } from '../constants/'; 
 
+import { request, base, userApi } from '../config/';
+
 function* login(action) {
   try {
-    const token = '✌️';
+    const { body } = action.payload;
+    const res = yield call(request.post, base + userApi.login, body);
+    const { userId: token } = res;
     yield localStorage.setItem('token', token);
     yield put({ type: LOGIN_SUCCESS, payload: { token } });
   } catch (e) {

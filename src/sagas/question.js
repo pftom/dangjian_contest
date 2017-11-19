@@ -14,12 +14,23 @@ import {
   CLEAR_ALL_STATE,
 } from '../constants/'; 
 
+import {
+  request,
+  base,
+  questionApi,
+  getOutApi,
+} from '../config/';
+
 function* getQuestion(action) {
   try {
-    const question = {
-      question: '1.第十九届中共中央政治局常委会共有几位委员？',
-      answer: 'B',
-    };
+    const { option, id } = action.payload;
+    const { getSingleOption, getMultiplyOption } = questionApi(id);
+
+    const question = yield call(
+      request.get, 
+      base + (option === 'single' ? getSingleOption : getMultiplyOption)
+    );
+    
     yield put({ type: GET_QUESTION_SUCCESS, payload: { question } });
   } catch (e) {
     console.log('e', e);
@@ -38,7 +49,7 @@ function* getOut(action) {
   try {
     // dispatch http for notify server this person is out
     const { token } = action.payload;
-
+    yield call(request.post, base + getOutApi.getOut, { token });
     // save the out info to the localStorage, ban to do things.
     yield localStorage.setItem('out', true);
     yield put({ type: GET_OUT_OF_CONTEST_SUCCESS });

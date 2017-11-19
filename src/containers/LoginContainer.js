@@ -8,10 +8,10 @@ import { LOGIN } from '../constants/';
 
 class LoginContainer extends Component {
 
-  handleLogin = () => {
+  handleSubmit = (body) => {
     const { dispatch } = this.props;
-
-    dispatch({ type: LOGIN });
+    console.log('handleSubmit', body);
+    dispatch({ type: LOGIN, payload: { body } });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,7 +26,7 @@ class LoginContainer extends Component {
   render() {
     return(
       <Login 
-        handleLogin={this.handleLogin}
+        handleSubmit={this.handleSubmit}
       />
     );
   }

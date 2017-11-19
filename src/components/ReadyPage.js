@@ -95,7 +95,6 @@ export default class  extends Component {
           out && (
             <div>
               Sorry， 您在本轮答题中已经出局，
-              您的得分为 0分
             </div>
           )
         }
