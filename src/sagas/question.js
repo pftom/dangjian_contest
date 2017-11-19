@@ -5,6 +5,13 @@ import {
   GET_QUESTION_SUCCESS,
   GET_QUESTION_ERROR,
   GET_QUESTION,
+  GET_OUT_OF_CONTEST,
+  GET_OUT_OF_CONTEST_SUCCESS,
+  GET_OUT_OF_CONTEST_ERROR,
+  GET_STORAGE_OUT,
+  GET_STORAGE_OUT_SUCCESS,
+  GET_STORAGE_OUT_ERROR,
+  CLEAR_ALL_STATE,
 } from '../constants/'; 
 
 function* getQuestion(action) {
@@ -27,6 +34,67 @@ function* watchGetQuestion() {
   }
 }
 
+function* getOut(action) {
+  try {
+    // dispatch http for notify server this person is out
+    const { token } = action.payload;
+
+    // save the out info to the localStorage, ban to do things.
+    yield localStorage.setItem('out', true);
+    yield put({ type: GET_OUT_OF_CONTEST_SUCCESS });
+  } catch (e) {
+    console.log('e', e);
+    yield put({ type: GET_OUT_OF_CONTEST_ERROR });
+  }
+}
+
+function* watchGetOut() {
+  while (true) {
+    const action = yield take(GET_OUT_OF_CONTEST);
+    yield call(getOut, action);
+  }
+}
+
+function* getStorageOut(action) {
+  try {
+
+    // save the out info to the localStorage, ban to do things.
+    const out = yield localStorage.getItem('out');
+    yield put({ type: GET_STORAGE_OUT_SUCCESS, payload: { out } });
+  } catch (e) {
+    console.log('e', e);
+    yield put({ type: GET_STORAGE_OUT_ERROR });
+  }
+}
+
+function* watchGetStorageOut() {
+  while (true) {
+    const action = yield take(GET_STORAGE_OUT);
+    yield call(getStorageOut, action);
+  }
+}
+
+
+function* clearAllState(action) {
+  try {
+
+    // clear out state in localStorage
+    yield localStorage.removeItem('out');
+  } catch (e) {
+    console.log('e', e);
+  }
+}
+
+function* watchClearAllState() {
+  while (true) {
+    const action = yield take(CLEAR_ALL_STATE);
+    yield call(clearAllState, action);
+  }
+}
+
 export {
   watchGetQuestion,
+  watchGetOut,
+  watchGetStorageOut,
+  watchClearAllState,
 }

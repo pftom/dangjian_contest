@@ -1,4 +1,4 @@
-import { READY } from "../constants/index";
+import { READY, CLEAR_ALL_STATE } from "../constants/index";
 
 
 
@@ -18,6 +18,12 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         isReady: true,
       };
+
+    case CLEAR_ALL_STATE:
+      return {
+        ...state,
+        isReady: true,
+      }
     default: return state;
   }
 };

@@ -5,6 +5,9 @@ import {
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
+  GET_TOKEN,
+  GET_TOKEN_SUCCESS,
+  GET_TOKEN_ERROR,
 } from '../constants/'; 
 
 function* login(action) {
@@ -24,6 +27,24 @@ function* watchLogin() {
   }
 }
 
+
+function* getToken(action) {
+  try {
+    const token = yield localStorage.getItem('token');
+    yield put({ type: GET_TOKEN_SUCCESS, payload: { token } });
+  } catch (e) {
+    yield put({ type: GET_TOKEN_ERROR });
+  }
+}
+
+function* watchGetToken() {
+  while (true) {
+    const action = yield take(GET_TOKEN);
+    yield call(getToken, action);
+  }
+}
+
 export {
   watchLogin,
+  watchGetToken,
 }

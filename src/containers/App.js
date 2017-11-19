@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import HomePageContainer from './HomePageContainer';
 import ReadyPageContainer from './ReadyPageContainer';
 
-import { LOGIN } from '../constants/';
+import { LOGIN, GET_TOKEN } from '../constants/';
 
 class App extends Component { 
   constructor(props) {
@@ -17,6 +17,12 @@ class App extends Component {
     //   console.log('push notification', msg);
     // })
   }
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch({ type: GET_TOKEN });
+  }
+
   componentWillUnmount() {
     // this.socket.disconnect();
   }

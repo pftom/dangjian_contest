@@ -1,4 +1,4 @@
-import { GET_QUESTION, GET_QUESTION_SUCCESS, GET_QUESTION_ERROR } from '../constants/index';
+import { GET_QUESTION, GET_QUESTION_SUCCESS, GET_QUESTION_ERROR, GET_OUT_OF_CONTEST, GET_STORAGE_OUT_ERROR, GET_OUT_OF_CONTEST_SUCCESS, GET_STORAGE_OUT_SUCCESS, CLEAR_ALL_STATE } from '../constants/index';
 
 const INITIAL_STATE = {
   questionLists: {
@@ -16,6 +16,9 @@ const INITIAL_STATE = {
   getQuestionSuccess: false,
   getQuestionError: false,
   question: null,
+
+  out: false,
+  next: false,
 };
 
 /**
@@ -46,6 +49,32 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         isGettingQuestion: false,
         getQuestionError: true,
+      };
+
+    case GET_OUT_OF_CONTEST:
+      return {
+        ...state,
+        out: true,
+      };
+
+    case GET_STORAGE_OUT_SUCCESS:
+      return {
+        ...state,
+        out: action.payload.out,
+      };
+
+    case GET_STORAGE_OUT_ERROR:
+      return {
+        ...state,
+        out: false,
+      };
+
+    case CLEAR_ALL_STATE: 
+      return {
+        ...state,
+        out: false,
+        question: null,
+        next: true,
       };
 
     default: return state;

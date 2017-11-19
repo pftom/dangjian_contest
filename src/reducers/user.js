@@ -2,6 +2,7 @@ import {
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
+  GET_TOKEN_SUCCESS,
 } from '../constants/';
 
 
@@ -43,6 +44,12 @@ export default (state = INITIAL_STATE, action) => {
         isLogin: false,
         loginError: true,
       };
+
+    case GET_TOKEN_SUCCESS:
+      return {
+        ...state,
+        token: action.payload.token,
+      }
     
     default: return state;
   }
