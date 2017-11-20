@@ -17,10 +17,12 @@ function* login(action) {
   try {
     const { body } = action.payload;
     const res = yield call(request.post, base + userApi.login, body);
-    const { userId: token } = res;
+    console.log('res', res);
+    const { id: token } = res;
     yield localStorage.setItem('token', token);
     yield put({ type: LOGIN_SUCCESS, payload: { token } });
   } catch (e) {
+    console.log('e', e);
     yield put({ type: LOGIN_ERROR });
   }
 }

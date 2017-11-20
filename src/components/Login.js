@@ -8,7 +8,7 @@ export default class  extends Component {
     super(props);
 
     this.state = {
-      userName: '',
+      username: '',
       password: '',
     };
   }
@@ -28,18 +28,18 @@ export default class  extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { userName, password } = this.state;
+    const { username, password } = this.state;
 
     // verify input
-    if (!userName || !password) {
+    if (!username || !password) {
       this.error('账号和密码不能为空哦~');
-    } else if (isNaN(Number(userName)) || isNaN(Number(password))) {
+    } else if (isNaN(Number(username)) || isNaN(Number(password))) {
       this.error('账号密码错误喽~');
-    } else if (userName !== password) {
+    } else if (username !== password) {
       this.error('账号密码都为学号哦~');
     } else {
       const body = {
-        userName,
+        username,
         password,
       };
       this.props.handleSubmit(body);
@@ -52,8 +52,8 @@ export default class  extends Component {
         <form onSubmit={this.handleSubmit}>
           <input 
             type="username" 
-            name="userName"
-            value={this.state.userName}
+            name="username"
+            value={this.state.username}
             placeholder={'请输入用户名'}
             onChange={this.handleChange}
           /> <br />

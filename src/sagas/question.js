@@ -12,6 +12,8 @@ import {
   GET_STORAGE_OUT_SUCCESS,
   GET_STORAGE_OUT_ERROR,
   CLEAR_ALL_STATE,
+
+  
 } from '../constants/'; 
 
 import {
@@ -49,7 +51,7 @@ function* getOut(action) {
   try {
     // dispatch http for notify server this person is out
     const { token } = action.payload;
-    yield call(request.post, base + getOutApi.getOut, { token });
+    yield call(request.post, nodeBase + getOutApi.getOut, { token });
     // save the out info to the localStorage, ban to do things.
     yield localStorage.setItem('out', true);
     yield put({ type: GET_OUT_OF_CONTEST_SUCCESS });

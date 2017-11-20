@@ -70,6 +70,29 @@ request.get = ( url, params, token ) => {
   )
 };
 
+// add HTTP post for this request
+request.post = (url, body) => {
+  console.log('url', url);
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  };
+
+  console.log('options', options);
+
+  return fetch(url, options)
+  .then(res => {
+    if (res.status !== 200 || !res.ok) {
+      throw res.json();
+    }
+
+    return res.json();
+  });
+};
+
 
 // export the default request object
 export default request;

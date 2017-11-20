@@ -3,7 +3,8 @@
  *  
  */ 
 
- const base = 'http://60.205.183.134:8000';
+ const base = 'http://powerformer.com:8000';
+ const nodeBase = 'http://127.0.0.1:4000';
 
  const questionApi = (id) => ({
    getSingleOption: `/questions/single/${id}/`,
@@ -35,4 +36,5 @@
    contestantsApi,
    userApi,
    getOutApi,
+   nodeBase,
  }
