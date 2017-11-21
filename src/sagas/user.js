@@ -9,9 +9,13 @@ import {
   GET_TOKEN_SUCCESS,
   GET_TOKEN_ERROR,
   LOGOUT,
+
+  READY,
+  READY_SUCCESS,
+  READY_ERROR
 } from '../constants/'; 
 
-import { request, base, userApi } from '../config/';
+import { request, base, userApi, nodeBase } from '../config/';
 
 function* login(action) {
   try {
@@ -58,8 +62,28 @@ function* watchLogout() {
   }
 }
 
+
+function* ready(action) {
+  try {
+    const { token } = action.payload;
+    yield call(request.get, nodeBase + userApi.ready, { user: token });
+    yield put({ type: READY_SUCCESS });
+  } catch (e) {
+    console.log('e', e);
+    yield put({ type: READY_ERROR });
+  }
+}
+
+function* watchReady() {
+  while (true) {
+    const action = yield take(READY);
+    yield call(ready, action);
+  }
+}
+
 export {
   watchLogin,
   watchGetToken,
   watchLogout,
+  watchReady,
 }

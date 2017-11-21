@@ -37,6 +37,10 @@ class ReadyPageContainer extends Component {
     this.socket.on('next contest', (msg) => {
       dispatch({ type: CLEAR_ALL_STATE });
     });
+
+    this.socket.on('logged', (msg) => {
+      console.log('msg', msg);
+    });
   }
 
   componentDidUpdate() {
@@ -57,8 +61,8 @@ class ReadyPageContainer extends Component {
   }
 
   handleReady = () => {
-    const { dispatch } = this.props;
-    dispatch({ type: READY });
+    const { dispatch, token } = this.props;
+    dispatch({ type: READY, payload: { token } });
   }
 
   handleSubmit = (value) => {

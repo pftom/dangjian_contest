@@ -1,4 +1,4 @@
-import { READY, CLEAR_ALL_STATE } from "../constants/index";
+import { READY, CLEAR_ALL_STATE, READY_SUCCESS } from "../constants/index";
 
 
 
@@ -13,7 +13,7 @@ const INITIAL_STATE = {
 */
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case READY:
+    case READY_SUCCESS:
       return {
         ...state,
         isReady: true,

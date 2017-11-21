@@ -13,6 +13,7 @@
 
  const userApi = {
    login: '/users/login/',
+   ready: '/update_logged',
  };
 
  const contestantsApi = (id) => ({
@@ -21,7 +22,7 @@
  });
 
  const getOutApi = {
-  'getOut': '/users/getOut',
+  'getOut': '/update_out',
  };
 
  const noticeApi = {

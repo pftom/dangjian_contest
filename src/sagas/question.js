@@ -21,6 +21,7 @@ import {
   base,
   questionApi,
   getOutApi,
+  nodeBase,
 } from '../config/';
 
 function* getQuestion(action) {
@@ -51,7 +52,7 @@ function* getOut(action) {
   try {
     // dispatch http for notify server this person is out
     const { token } = action.payload;
-    yield call(request.post, nodeBase + getOutApi.getOut, { token });
+    yield call(request.get, nodeBase + getOutApi.getOut, { user: token });
     // save the out info to the localStorage, ban to do things.
     yield localStorage.setItem('out', true);
     yield put({ type: GET_OUT_OF_CONTEST_SUCCESS });
