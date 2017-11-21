@@ -7,3 +7,7 @@ export const GET_TOKEN_SUCCESS = 'GET_TOKEN_SUCCESS';
 export const GET_TOKEN_ERROR = 'GET_TOKEN_ERROR';
 
 export const LOGOUT = 'LOGOUT';
+
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const GET_ALL_USERS_SUCCESS = 'GET_ALL_USERS_SUCCESS';
+export const GET_ALL_USERS_ERROR = 'GET_ALL_USERS_ERROR';

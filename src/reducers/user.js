@@ -3,6 +3,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   GET_TOKEN_SUCCESS,
+  GET_ALL_USERS_SUCCESS,
 } from '../constants/';
 
 
@@ -11,6 +12,8 @@ const INITIAL_STATE = {
   isLogin: false,
   loginSuccess: false,
   loginError: false,
+
+  allUsers: [],
 };
 
 /**
@@ -50,6 +53,13 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         token: action.payload.token,
       }
+
+    case GET_ALL_USERS_SUCCESS:
+
+      return {
+        ...state,
+        allUsers: action.payload.allUsers,
+      };
     
     default: return state;
   }

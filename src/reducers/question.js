@@ -1,17 +1,6 @@
 import { GET_QUESTION, GET_QUESTION_SUCCESS, GET_QUESTION_ERROR, GET_OUT_OF_CONTEST, GET_STORAGE_OUT_ERROR, GET_OUT_OF_CONTEST_SUCCESS, GET_STORAGE_OUT_SUCCESS, CLEAR_ALL_STATE } from '../constants/index';
 
 const INITIAL_STATE = {
-  questionLists: {
-    singleOptionLists: {
-      data: [1, 2, 3, 4, 5],
-      index: 2,
-    },
-    multiplyOptionLists: {
-      data: [1, 2, 3, 4, 5],
-      index: 0,
-    }
-  },
-
   isGettingQuestion: false,
   getQuestionSuccess: false,
   getQuestionError: false,

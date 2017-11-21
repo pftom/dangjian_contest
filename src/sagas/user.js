@@ -12,7 +12,10 @@ import {
 
   READY,
   READY_SUCCESS,
-  READY_ERROR
+  READY_ERROR,
+  GET_ALL_USERS_SUCCESS,
+  GET_ALL_USERS_ERROR,
+  GET_ALL_USERS
 } from '../constants/'; 
 
 import { request, base, userApi, nodeBase } from '../config/';
@@ -81,9 +84,28 @@ function* watchReady() {
   }
 }
 
+
+function* getAllUsers(action) {
+  try {
+    const allUsers = yield call(request.get, nodeBase + userApi.allUsers);
+    yield put({ type: GET_ALL_USERS_SUCCESS, payload: { allUsers } });
+  } catch (e) {
+    console.log('e', e);
+    yield put({ type: GET_ALL_USERS_ERROR });
+  }
+}
+
+function* watchGetAllUsers() {
+  while (true) {
+    const action = yield take(GET_ALL_USERS);
+    yield call(getAllUsers, action);
+  }
+}
+
 export {
   watchLogin,
   watchGetToken,
   watchLogout,
   watchReady,
+  watchGetAllUsers,
 }

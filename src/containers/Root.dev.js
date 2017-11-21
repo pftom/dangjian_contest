@@ -6,6 +6,7 @@ import DevTools from './DevTools';
 import App from './App';
 import ReadyPage from './ReadyPageContainer';
 import Login from './LoginContainer';
+import MasterPage from './MasterPageContainer';
 import { NotFound } from '../components/';
 
 // import react router 
@@ -28,6 +29,7 @@ const Root = ({ store }) => {
           <Route path="/ready" component={ReadyPage} />
           <Route path="/login" component={Login} />
           <Route path="/404" component={NotFound} />
+          <Route path="/master" component={MasterPage} />
         </div>
       </ConnectedRouter>
     </Provider>
