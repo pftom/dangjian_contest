@@ -1,8 +1,10 @@
+import { START_GAME } from '../constants/userConstants';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { MasterPage } from '../components/';
 import { GET_ALL_USERS, CHANGE_QUESTION } from '../constants/index';
+import { push } from 'react-router-redux'
 
 class MasterPageContainer extends Component {
 
@@ -18,12 +20,20 @@ class MasterPageContainer extends Component {
     dispatch({ type: CHANGE_QUESTION, payload: { type }});
   }
 
+  handleStart = (players) => {
+    const { dispatch } = this.props;
+
+    dispatch({ type: START_GAME, payload: { players }});
+    dispatch(push('/contest'));
+  }
+
   render() {
     const { allUsers, next } = this.props;
     return(
       <MasterPage 
         allUsers={allUsers}
         next={next}
+        handleStart={this.handleStart}
         handleQuestion={this.handleQuestion}
       />
     );

@@ -1,9 +1,11 @@
+import { UPDATE_USERS } from '../constants/userConstants';
 import { 
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   GET_TOKEN_SUCCESS,
   GET_ALL_USERS_SUCCESS,
+  START_GAME,
 } from '../constants/';
 
 
@@ -14,6 +16,7 @@ const INITIAL_STATE = {
   loginError: false,
 
   allUsers: [],
+  players: [],
 };
 
 /**
@@ -59,6 +62,20 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         allUsers: action.payload.allUsers,
+      };
+
+    case UPDATE_USERS:
+    
+      return {
+        ...state,
+        allUsers: action.payload.allUsers,
+      };
+
+    case START_GAME:
+      
+      return {
+        ...state,
+        players: action.payload.players,
       };
     
     default: return state;

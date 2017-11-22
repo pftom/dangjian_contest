@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { message } from 'antd';
-import 'antd/lib/message/style/css';
 
 export default class  extends Component {
 

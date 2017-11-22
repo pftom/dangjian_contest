@@ -7,6 +7,7 @@ import App from './App';
 import ReadyPage from './ReadyPageContainer';
 import Login from './LoginContainer';
 import MasterPage from './MasterPageContainer';
+import Game from './GameContainer';
 import { NotFound } from '../components/';
 
 // import react router 
@@ -29,7 +30,8 @@ const Root = ({ store }) => {
           <Route path="/ready" component={ReadyPage} />
           <Route path="/login" component={Login} />
           <Route path="/404" component={NotFound} />
-          <Route path="/master" component={MasterPage} />
+          <Route path="/dash_board" component={MasterPage} />
+          <Route path="/contest" component={Game} />
         </div>
       </ConnectedRouter>
     </Provider>

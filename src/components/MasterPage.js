@@ -1,43 +1,46 @@
+import { } from 'antd/es/button';
 import React, { Component } from 'react';
+import { Transfer, Button } from 'antd';
 
-export default class  extends Component {
-  constructor(props) {
-    super(props);
+export default class extends React.Component {
+  state = {
+    targetKeys: [],
+  }
+  handleChange = (targetKeys) => {
+    this.setState({ targetKeys });
+  }
 
+  handleStart = () => {
     const { allUsers } = this.props;
-
-    this.state = {
-      allUsers,
-    };
+    const players = [];
+    
+    allUsers.map(item => {
+      if (this.state.targetKeys.includes(item.user)) {
+        players.push(item);
+      }
+    })
+    this.props.handleStart( players );
   }
 
   render() {
-    const { allUsers, next } = this.props;
+    const { allUsers } = this.props;
     return (
       <div>
-        党建答题比赛
-        <input type="text" onChange={this.handleChange} value={this.state.value}/>
-        {
-          allUsers.map((item, key) => (
-            <div key={key}>{item.name}</div>
-          ))
-        }
-        <button>
-          {
-            next 
-            ? '开始下一轮'
-            : '开始比赛'
-          }
-        </button>
+        <Transfer
+          dataSource={allUsers}
+          showSearch
+          listStyle={{
+            width: 250,
+            height: 300,
+          }}
+          rowKey={item => item.user}
+          operations={['确认选择', '取消选择']}
+          targetKeys={this.state.targetKeys}
+          onChange={this.handleChange}
+          render={item => `${item.name}`}
+        />
 
-        <button onClick={() => { this.props.handleQuestion('single') }}>
-          单选题
-        </button>
-
-        <button onClick={() => { this.props.handleQuestion('multiply') }}>
-          多选题
-        </button>
-
+        <button onClick={this.handleStart}>开始比赛</button>
       </div>
     );
   }

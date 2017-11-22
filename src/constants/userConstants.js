@@ -11,3 +11,6 @@ export const LOGOUT = 'LOGOUT';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_ALL_USERS_SUCCESS = 'GET_ALL_USERS_SUCCESS';
 export const GET_ALL_USERS_ERROR = 'GET_ALL_USERS_ERROR';
+
+export const START_GAME = 'START_GAME';
+export const UPDATE_USERS = 'UPDATE_USERS';

@@ -3,3 +3,4 @@ export { default as ReadyPage } from './ReadyPage';
 export { default as Login } from './Login';
 export { default as NotFound } from './NotFound';
 export { default as MasterPage } from './MasterPage';
+export { default as GamePage } from './GamePage';
