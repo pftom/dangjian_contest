@@ -2,6 +2,7 @@ import { } from 'antd/es/spin';
 import React, { Component } from 'react';
 import { Spin } from 'antd';
 import { fakeQuestion, mapNumberToString } from './ReadyPage';
+import run from './img/run.png';
 
 import './css/GamePage.css';
 
@@ -23,12 +24,25 @@ export default class  extends Component {
 
     return (
       <div>
-        <div>{question && question.question}</div>
+        {
+          question && (
+            <div>
+              <h2>{question.answer.length > 1 ? '多选题' : '单选题'}</h2>
+              {
+                question.question.map((item, key) => (
+                  <p key={key} className="paragraph">{item}</p>
+                ))
+              }
+            </div>
+          )
+        }
+        <div className="person_group">
         {
           players.map((item, key) => (
-            <div key={key}>
-             <p className={item.out ? 'isOut' : 'no'}>{item.name}</p>
-             <p>{ item.score || 0 }</p>
+            <div key={key} className="person">
+            <img src={run} className="icon"/>
+             <p className="name">{item.name}</p>
+             <p><span className="score">{ item.score || 0 }</span> 分</p>
              {
                item.out
                ? (
@@ -36,14 +50,15 @@ export default class  extends Component {
                )
                : (
                  <div>
-                 <button onClick={() => { this.props.handleRes('out', item.user, remainAudience) }}>出局</button>
-             <button onClick={() => { this.props.handleRes('go', item.user, remainAudience) } }>晋级</button>
+                  <button onClick={() => { this.props.handleRes('out', item.user, remainAudience) }}>出局</button>
+                  <button onClick={() => { this.props.handleRes('go', item.user, remainAudience) } }>晋级</button>
                  </div>
                )
              }
             </div>
           ))
         }
+        </div>
         {
           isLoading
           ? (

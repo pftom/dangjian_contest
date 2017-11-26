@@ -1,3 +1,24 @@
 .isOut {
   color: red;
 }
+.paragraph {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.score {
+  font-size: 30px;
+}
+.name {
+  font-size: 20px;
+}
+.icon {
+  width: 60px;
+  height: 60px;
+}
+.person_group {
+  display: flex;
+  justify-content: center;
+}
+.person {
+  margin: 0 50px;
+}

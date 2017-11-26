@@ -10,6 +10,14 @@ const INITIAL_STATE = {
   next: false,
 };
 
+
+const resolveReg = (rawString) => {
+  const handledString = rawString + "\n";
+  const regex = /(.+)\n/g;
+  const optionArray = handledString.match(regex);
+  return optionArray;
+};
+
 /**
 * @param {Object} state - Default application state
 * @param {Object} action - Action from action creator
@@ -26,11 +34,17 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case GET_QUESTION_SUCCESS:
+      const { question } = action.payload;
+      const newQuestion = {
+        ...question,
+        question: resolveReg(question.question),
+      };
+
       return {
         ...state,
         isGettingQuestion: false,
         getQuestionSuccess: true,
-        question: action.payload.question,
+        question: newQuestion,
       };
 
     case GET_QUESTION_ERROR:
