@@ -1,16 +1,20 @@
+import { nodeBase } from '../config';
 import { START_GAME } from '../constants/userConstants';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import io from 'socket.io-client';
 
 import { MasterPage } from '../components/';
-import { GET_ALL_USERS, CHANGE_QUESTION } from '../constants/index';
+import { GET_ALL_USERS, CHANGE_QUESTION, NEXT_CONTEST } from '../constants/index';
 import { push } from 'react-router-redux'
 
 class MasterPageContainer extends Component {
+  socket = io(nodeBase)
 
   componentDidMount() {
     const { dispatch } = this.props;
 
+    dispatch({ type: NEXT_CONTEST });
     dispatch({ type: GET_ALL_USERS });
   }
 

@@ -12,23 +12,25 @@ import {
   GET_STORAGE_OUT,
   CLEAR_ALL_STATE,
 } from '../constants/index';
+import { nodeBase } from '../config/index';
 
 class ReadyPageContainer extends Component {
 
   constructor(props) {
     super(props);
 
-    this.socket = io('http://127.0.0.1:4000');
+    this.socket = io(nodeBase);
   }
 
   componentDidMount() {
-    const { dispatch, isReady } = this.props;
+    const { dispatch, isReady, out } = this.props;
+    const that = this;
 
     dispatch({ type: GET_STORAGE_OUT });
 
     this.socket.on('push notification', ({ option, id }) => {
       console.log('isReady', isReady);
-      if (isReady) {
+      if (!that.props.out) {
         // option define whether single or multiply
         dispatch({ type: GET_QUESTION, payload: { option, id } });
       }
@@ -44,13 +46,15 @@ class ReadyPageContainer extends Component {
   }
 
   componentDidUpdate() {
-    const { dispatch, id, isReady } = this.props;
+    const { dispatch, id, isReady, out } = this.props;
+    const that = this;
     console.log('isReady', isReady)
     
     console.log('socket', this.socket.on);
     this.socket.on('push notification', ({ option, id }) => {
       console.log('isReady', isReady);
-      if (isReady) {
+      console.log('out', out);
+      if (!that.props.out) {
         dispatch({ type: GET_QUESTION, payload: { option, id } });
       }
     });
@@ -69,7 +73,7 @@ class ReadyPageContainer extends Component {
     const { question, dispatch, token } = this.props;
     if (value !== question.answer) {
       // dispatch request for node, to get the remain value
-      dispatch({ type: GET_OUT_OF_CONTEST, payload: { token } });
+      dispatch({ type: GET_OUT_OF_CONTEST, payload: { token, type: 'out' } });
     }
   }
 

@@ -54,7 +54,7 @@ request.get = ( url, params, token ) => {
   // compute all need options for fetch method
   const options = header( 'GET', token );
 
-  console.log('options', options);
+  console.log('options', options, url);
 
   // return GET Http request result
   return (

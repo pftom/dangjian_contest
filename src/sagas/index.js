@@ -10,6 +10,8 @@ import {
   watchGetOut,
   watchGetStorageOut,
   watchClearAllState,
+  watchPushNotification,
+  watchNextContest,
   
 } from './question';
 
@@ -27,6 +29,9 @@ const rootSaga = function* () {
 
     watchGetStorageOut(),
     watchClearAllState(),
+
+    watchPushNotification(),
+    watchNextContest(),
   ]);
 };
 

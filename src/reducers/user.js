@@ -65,10 +65,21 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case UPDATE_USERS:
-    
+      const { allUsers } = action.payload;
+      let { players } = state;
+      players = players.map((player) => {
+        allUsers.map((user) => {
+          if (user.user === player.user) {
+            player = user;
+          }
+        })
+        return player;
+      }) 
+
       return {
         ...state,
-        allUsers: action.payload.allUsers,
+        allUsers,
+        players,
       };
 
     case START_GAME:

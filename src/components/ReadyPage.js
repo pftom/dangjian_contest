@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const mapNumberToString = {
+export const mapNumberToString = {
   1: 'A',
   2: 'B',
   3: 'C',
@@ -10,6 +10,14 @@ const mapNumberToString = {
   7: 'G',
   8: 'H',
   9: 'I',
+};
+
+export const fakeQuestion = {
+  question: {
+    title: 'hhhhh',
+    option: ['A.assa', 'B.asassa', 'C.assaas', 'D....'],
+  },
+  answer: 'A',
 };
 
 export default class  extends Component {
@@ -36,13 +44,7 @@ export default class  extends Component {
   render() {
     const { isGettingQuestion, question, out, next } = this.props;
 
-    const fakeQuestion = {
-      question: {
-        title: 'hhhhh',
-        option: ['A.assa', 'B.asassa', 'C.assaas', 'D....'],
-      },
-      answer: 'A',
-    };
+    
 
     return (
       <div>
