@@ -1,0 +1,54 @@
+@import "base";
+
+.horizontal_center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.animation {
+  -webkit-transition-property: transform -webkit-transform box-shadow background-color;
+  -webkit-transition-duration: .3s;
+  transition-property: transform -webkit-transform box-shadow background-color;
+  transition-duration: .3s;
+  cursor: pointer;
+  outline: none;
+}
+
+.selectBox {
+  .horizontal_center
+}
+
+.gameBox {
+  .horizontal_center;
+  margin-top: 100px;
+}
+
+.btn {
+  min-width: 110px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 16px;
+  margin: 20px;
+  .animation;
+}
+
+.btn-red {
+  color: #FFF;
+  background-color: @FD5F7E;
+  border-color: @FD5F7E;
+  .animation;
+}
+
+.btn-red:hover {
+  -webkit-transform: translateY(-4px);
+  -ms-transform: translateY(-4px);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px @opacity_4_FD5F7E;
+}
+
+.btn-background-ghost.btn-red {
+  color: @FD5F7E;
+  border-color: @FD5F7E;
+  background-color: transparent;
+}
