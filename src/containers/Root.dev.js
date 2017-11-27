@@ -25,7 +25,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <div>
-          <button onClick={() => { store.dispatch({ type: LOGOUT })}}>Logout</button>
+          
           <Route exact path="/" component={App} />
           <Route path="/ready" component={ReadyPage} />
           <Route path="/login" component={Login} />

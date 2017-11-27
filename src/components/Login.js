@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { message } from 'antd';
+import './css/Login.css';
+import logo from './img/logo.png';
 
 export default class  extends Component {
 
@@ -47,23 +49,28 @@ export default class  extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="loginBox">
+        <img src={logo} className="logo"/>
+        <form onSubmit={this.handleSubmit} className="form">
+          <label className="label">用户名</label>
           <input 
             type="username" 
             name="username"
             value={this.state.username}
-            placeholder={'请输入用户名'}
+            className="input"
             onChange={this.handleChange}
           /> <br />
+          <label className="label">密码</label>
           <input 
             type="password" 
             name="password"
             value={this.state.password}
-            placeholder={'请输入密码'}
+            className="input"
             onChange={this.handleChange}
           /> <br />
-          <input type="submit" value="Submit"/>
+          <p className="hint">账号密码都为学号</p>
+          <input type="submit" value="登  录" className="btn btn-red btn-large"/>
+          <input type="button" value="回首页" className="btn btn-gray btn-large" onClick={this.props.handleReturn}/>
         </form>
       </div>
     );

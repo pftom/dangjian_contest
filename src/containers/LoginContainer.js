@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { Login } from '../components/';
 
 // import router for jump
@@ -23,10 +24,17 @@ class LoginContainer extends Component {
     }
   }
 
+  handleReturn = () => {
+    const { dispatch } = this.props;
+
+    dispatch(push('/'));
+  }
+
   render() {
     return(
       <Login 
         handleSubmit={this.handleSubmit}
+        handleReturn={this.handleReturn}
       />
     );
   }
