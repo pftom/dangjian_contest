@@ -14,7 +14,7 @@ export default class extends Component {
           <p>Powered by 计算机学院党支部</p>
         </header>
         <div>
-
+          <button onClick={this.props.handleJumpLogin()}>开始登陆</button>
         </div>
       </div>
     );
