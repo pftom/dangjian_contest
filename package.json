@@ -30,6 +30,7 @@
     "jest": "20.0.4",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
+    "moment": "^2.21.0",
     "object-assign": "4.1.1",
     "postcss": "^6.0.14",
     "postcss-flexbugs-fixes": "3.2.0",
