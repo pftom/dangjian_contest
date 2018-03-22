@@ -6,6 +6,7 @@ import {
   GET_TOKEN_SUCCESS,
   GET_ALL_USERS_SUCCESS,
   START_GAME,
+  UPDATE_LOGIN_LIST,
 } from '../constants/';
 
 
@@ -17,6 +18,9 @@ const INITIAL_STATE = {
 
   allUsers: [],
   players: [],
+
+  isInitialState: true,
+  endThisQuestion: false,
 };
 
 /**
@@ -82,11 +86,28 @@ export default (state = INITIAL_STATE, action) => {
         players,
       };
 
+    case UPDATE_LOGIN_LIST: {
+      let { allUsers } = state;
+      const { user } = action.payload;
+
+      return {
+        ...state,
+        allUsers: allUsers.map(userItem => {
+          if (userItem.username === user) {
+            return { ...userItem, logged: true };
+          }
+
+          return userItem;
+        }),
+      }
+    }
+
     case START_GAME:
       
       return {
         ...state,
         players: action.payload.players,
+        isInitialState: false,
       };
     
     default: return state;

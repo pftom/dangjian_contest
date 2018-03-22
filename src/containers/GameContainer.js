@@ -1,24 +1,30 @@
-import { PUSH_NOTIFICATION } from '../constants/browserConstants';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import { push } from 'react-router-redux';
 
+import { nodeBase } from '../config';
 import { GamePage } from '../components/';
-import { GET_ALL_USERS, UPDATE_USERS, GET_QUESTION, CLEAR_ALL_STATE, GET_OUT_OF_CONTEST, NEXT_CONTEST } from '../constants/index';
+import { 
+  GET_ALL_USERS, 
+  UPDATE_USERS, 
+  GET_QUESTION, 
+  CLEAR_ALL_STATE, 
+  GET_OUT_OF_CONTEST, 
+  NEXT_CONTEST,
+  PUSH_NOTIFICATION,
+} from '../constants/index';
 
 class GameContainer extends Component {
 
-  socket = io('http://127.0.0.1:4000')
+  socket = io(nodeBase);
   state = {
     isLoading: false,
-  }
+  };
 
   componentDidMount() {
     const that = this;
     const { dispatch } = this.props;
-
-    dispatch({ type: GET_ALL_USERS });
 
     this.socket.on('score', (allUsers) => {
       dispatch({ type: UPDATE_USERS, payload: { allUsers }});
@@ -49,7 +55,7 @@ class GameContainer extends Component {
 
   handleNextContest = () => {
     const { dispatch } = this.props;
-    dispatch(push('/dash_board'));
+    dispatch(push('/dashboard'));
   }
 
   render() {
@@ -58,8 +64,8 @@ class GameContainer extends Component {
       <GamePage
         players={players}
         allUsers={allUsers}
-        isLoading={this.state.isLoading}
         question={question}
+        isLoading={this.state.isLoading}
         handleSelect={this.handleSelect}
         handleRes={this.handleRes}
         handleNextContest={this.handleNextContest}

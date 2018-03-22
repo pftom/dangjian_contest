@@ -10,7 +10,6 @@ export default class  extends Component {
 
     this.state = {
       username: '',
-      password: '',
     };
   }
 
@@ -29,20 +28,19 @@ export default class  extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { username, password } = this.state;
+    const { username } = this.state;
 
     // verify input
-    if (!username || !password) {
-      this.error('账号和密码不能为空哦~');
-    } else if (isNaN(Number(username)) || isNaN(Number(password))) {
-      this.error('账号密码错误喽~');
-    } else if (username !== password) {
-      this.error('账号密码都为学号哦~');
+    if (!username) {
+      this.error('Sorry, 您的账号不能为空哦 ~ ');
+    } else if (isNaN(Number(username))) {
+      this.error('Sorry, 您不是此次比赛的成员哦 ~ ');
     } else {
       const body = {
         username,
-        password,
       };
+
+      console.log('body', body);
       this.props.handleSubmit(body);
     }
   }
@@ -60,17 +58,7 @@ export default class  extends Component {
             className="input"
             onChange={this.handleChange}
           /> <br />
-          <label className="label">密码</label>
-          <input 
-            type="password" 
-            name="password"
-            value={this.state.password}
-            className="input"
-            onChange={this.handleChange}
-          /> <br />
-          <p className="hint">账号密码都为学号</p>
           <input type="submit" value="登  录" className="btn btn-red btn-large"/>
-          <input type="button" value="回首页" className="btn btn-gray btn-large" onClick={this.props.handleReturn}/>
         </form>
       </div>
     );

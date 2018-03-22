@@ -5,26 +5,36 @@ import { connect } from 'react-redux';
 import io from 'socket.io-client';
 
 import { MasterPage } from '../components/';
-import { GET_ALL_USERS, CHANGE_QUESTION, NEXT_CONTEST } from '../constants/index';
+import { 
+  GET_ALL_USERS, 
+  CHANGE_QUESTION, 
+  NEXT_CONTEST,
+  UPDATE_LOGIN_LIST, 
+} from '../constants/index';
 import { push } from 'react-router-redux'
 
 class MasterPageContainer extends Component {
   socket = io(nodeBase)
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, isInitialState } = this.props;
 
-    dispatch({ type: NEXT_CONTEST });
-    dispatch({ type: GET_ALL_USERS });
-  }
-
-  handleQuestion = (type) => {
-    const { dispatch } = this.props;
-
-    dispatch({ type: CHANGE_QUESTION, payload: { type }});
+    if (isInitialState) {
+      // first step
+      // add isInitialState for getUsers only first time.
+      // in one whole contest, only once, only once! 
+      dispatch({ type: GET_ALL_USERS });
+    
+      this.socket.on('logged', ({ user }) => {
+        dispatch({ type: UPDATE_LOGIN_LIST, payload: { user }});
+      });
+    } else {
+      dispatch({ type: NEXT_CONTEST });
+    }
   }
 
   handleStart = (players) => {
+    // select need start players 
     const { dispatch } = this.props;
 
     dispatch({ type: START_GAME, payload: { players }});
@@ -32,13 +42,12 @@ class MasterPageContainer extends Component {
   }
 
   render() {
-    const { allUsers, next } = this.props;
+    const { allUsers } = this.props;
+    console.log('allUser', allUsers);
     return(
       <MasterPage 
         allUsers={allUsers}
-        next={next}
         handleStart={this.handleStart}
-        handleQuestion={this.handleQuestion}
       />
     );
   }
@@ -46,10 +55,11 @@ class MasterPageContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-  const { allUsers } = state.user;
+  const { allUsers, isInitialState } = state.user;
   
   return {
     allUsers,
+    isInitialState,
   };
 };
 

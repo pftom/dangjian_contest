@@ -18,6 +18,25 @@ import createHistory from 'history/createBrowserHistory';
 import { history } from '../store/configureStore';
 import { LOGOUT } from '../constants/index';
 
+// Route: /
+// judge whether user have permission
+
+// Route: /ready
+// user logged in and ready for contest
+
+// Route: /login
+// user login in page
+
+// Route: /contest
+// master contest page
+// master list page
+
+// Route: /dash_board
+// master init page
+
+// Route: /404
+// 404 not found
+
 const Root = ({ store }) => {
   const { token } = store.getState().user;
   console.log('token', token);
@@ -29,7 +48,7 @@ const Root = ({ store }) => {
           <Route path="/ready" component={ReadyPage} />
           <Route path="/login" component={Login} />
           <Route path="/404" component={NotFound} />
-          <Route path="/dash_board" component={MasterPage} />
+          <Route path="/dashboard" component={MasterPage} />
           <Route path="/contest" component={Game} />
         </div>
       </ConnectedRouter>
