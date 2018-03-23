@@ -60,8 +60,9 @@ request.get = ( url, params, token ) => {
   return (
     fetch( url, options )
     .then( response => {
+      console.log('response', response);
       // judge whether this reponse is good or bad.
-      if ( response.status !== 200 || !response.ok )  {
+      if ( response.status >= 400 || !response.ok )  {
         throw response.json();
       }
 

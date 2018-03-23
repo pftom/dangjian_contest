@@ -4,7 +4,7 @@
  */ 
 
  const base = 'http://powerformer.com:8000';
- const nodeBase = 'http://127.0.0.1:4000';
+ const nodeBase = 'http://localhost:4000';
 
  const questionApi = (id) => ({
    getSingleOption: `/questions/single/${id}/`,
@@ -12,7 +12,7 @@
  });
 
  const userApi = {
-   login: '/users/login/',
+   login: '/users/login',
    ready: '/update_logged',
    allUsers: '/users/',
  };

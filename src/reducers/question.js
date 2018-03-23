@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   question: null,
 
   out: false,
+  promote: false,
   next: false,
 };
 

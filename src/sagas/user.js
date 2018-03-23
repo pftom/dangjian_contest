@@ -18,16 +18,14 @@ import {
   GET_ALL_USERS
 } from '../constants/'; 
 
-import { request, base, userApi, nodeBase } from '../config/';
+import { request, userApi, nodeBase } from '../config/';
 
 function* login(action) {
   try {
     const { body } = action.payload;
-    const res = yield call(request.post, base + userApi.login, body);
-    console.log('res', res);
-    const { id: token } = res;
-    yield localStorage.setItem('token', token);
-    yield put({ type: LOGIN_SUCCESS, payload: { token } });
+    const res = yield call(request.get, nodeBase + userApi.login, body);
+    yield localStorage.setItem('token', res.username);
+    yield put({ type: LOGIN_SUCCESS, payload: { token: res.username } });
   } catch (e) {
     console.log('e', e);
     yield put({ type: LOGIN_ERROR });

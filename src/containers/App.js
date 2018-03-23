@@ -3,8 +3,8 @@ import io from 'socket.io-client';
 import { connect } from 'react-redux';
 import HomePageContainer from './HomePageContainer';
 import ReadyPageContainer from './ReadyPageContainer';
+import MasterPageContainer from './MasterPageContainer';
 
-import { LOGIN, GET_TOKEN } from '../constants/';
 import { Route, Redirect } from 'react-router';
 
 class App extends Component { 
@@ -18,26 +18,30 @@ class App extends Component {
     //   console.log('push notification', msg);
     // })
   }
-  componentDidMount() {
-    const { dispatch } = this.props;
-
-    dispatch({ type: GET_TOKEN });
-  }
 
   componentWillUnmount() {
     // this.socket.disconnect();
   }
+
   render() {
     const { token } = this.props;
+    const renderComponent = (props) => {
+      let returnComponent = null;
+
+      if (!token) {
+        returnComponent = <Redirect to="/login" />
+      } else if (token === 'dhucstmaster') {
+        returnComponent = <MasterPageContainer {...props} />;
+      } else {
+        returnComponent = <ReadyPageContainer {...props} />;
+      }
+
+      return returnComponent;
+    }
+
     return (
       <Route
-        render={props => (
-          token ? (
-            <Redirect to="/ready" />
-          ) : (
-            <HomePageContainer />
-          )
-        )}
+        render={renderComponent}
       />
     );
   }

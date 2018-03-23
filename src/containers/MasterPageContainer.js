@@ -24,13 +24,13 @@ class MasterPageContainer extends Component {
       // add isInitialState for getUsers only first time.
       // in one whole contest, only once, only once! 
       dispatch({ type: GET_ALL_USERS });
-    
-      this.socket.on('logged', ({ user }) => {
-        dispatch({ type: UPDATE_LOGIN_LIST, payload: { user }});
-      });
     } else {
       dispatch({ type: NEXT_CONTEST });
     }
+
+    this.socket.on('logged', ({ username }) => {
+      dispatch({ type: UPDATE_LOGIN_LIST, payload: { username }});
+    });
   }
 
   handleStart = (players) => {

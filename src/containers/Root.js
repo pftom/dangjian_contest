@@ -8,15 +8,16 @@ import ReadyPage from './ReadyPageContainer';
 import Login from './LoginContainer';
 import MasterPage from './MasterPageContainer';
 import Game from './GameContainer';
-import { NotFound } from '../components/';
+
+import {
+  NotFound,
+} from '../components/'
 
 // import react router 
 import { Route, Redirect } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
 
 import { history } from '../store/configureStore';
-import { LOGOUT } from '../constants/index';
 
 // Route: /
 // judge whether user have permission
@@ -38,8 +39,7 @@ import { LOGOUT } from '../constants/index';
 // 404 not found
 
 const Root = ({ store }) => {
-  const { token } = store.getState().user;
-  console.log('token', token);
+
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>

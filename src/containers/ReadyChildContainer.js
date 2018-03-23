@@ -20,7 +20,7 @@ import {
 } from '../components/'
 
 
-class ReadyPageContainer extends Component {
+class ReadyChildContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -86,40 +86,26 @@ class ReadyPageContainer extends Component {
   render() {
 
     const { isReady, question, isGettingQuestion, promote, out, next, token, endThisQuestion } = this.props;
+    console.log('props', question);
 
     // the final control flow function
-    let returnComponent = null;
+    let ReturnComponent = null;
 
-    const res = token && !(out || promote || next || endThisQuestion);
-    console.log('res', res);
-
-    if (!token) {
-      return <Redirect to="/login" />;
-    } else if (token && !question && !(out || promote || next || endThisQuestion)) {
+    if (token && !(out || promote || next || endThisQuestion)) {
       // correspond to the loginSuccess state
-      returnComponent = <LoginSuccessPage />;
+      ReturnComponent = <LoginSuccessPage />;
     } else if (token && question && !(out || promote || endThisQuestion)) {
       // correspond to the answer question state
-      returnComponent = (
-        <QuestionPage 
-          question={question} 
-          isGettingQuestion={isGettingQuestion} 
-          handleSubmit={this.handleSubmit}
-        />
-      );
+      ReturnComponent = <QuestionPage question={question} isGettingQuestion={isGettingQuestion} />;
     } else if (token && question && promote) {
       // correspond to the promote Page state
-      returnComponent = <PromotePage />
+      ReturnComponent = <PromotePage />
     } else {
       // correspond to the out Page state
-      returnComponent = <OutPage />
+      ReturnComponent = <OutPage />
     }
 
-    return (
-      <div>
-        {returnComponent}
-      </div>
-    )
+    return ReturnComponent; 
   }
 }
 
@@ -151,4 +137,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(ReadyPageContainer);
+export default connect(mapStateToProps, null)(ReadyChildContainer);

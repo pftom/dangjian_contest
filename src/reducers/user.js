@@ -47,7 +47,7 @@ export default (state = INITIAL_STATE, action) => {
         token: action.payload.token,
       };
     
-    case LOGIN_SUCCESS:
+    case LOGIN_ERROR:
       
       return {
         ...state,
@@ -88,12 +88,12 @@ export default (state = INITIAL_STATE, action) => {
 
     case UPDATE_LOGIN_LIST: {
       let { allUsers } = state;
-      const { user } = action.payload;
+      const { username } = action.payload;
 
       return {
         ...state,
         allUsers: allUsers.map(userItem => {
-          if (userItem.username === user) {
+          if (userItem.username === username) {
             return { ...userItem, logged: true };
           }
 
