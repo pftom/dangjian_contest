@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { message } from 'antd';
 import classnames from 'classnames';
 
 import './css/QuestionPage.css';
@@ -14,21 +15,29 @@ export const mapNumberToString = {
   8: 'H',
   9: 'I',
 };
+
 export default class QuestionPage extends Component {
   constructor(props) {
     super(props);
 
     const { question } = props;
     const optionLength = question.question.slice(1).length;
-    let initialState = {};
+
+    this.initialState = {};
 
     Object.values(mapNumberToString)
       .slice(0, optionLength)
-      .map(item => initialState[item] = false);
+      .map(item => this.initialState[item] = false);
 
     this.state = {
-      ...initialState,
+      ...this.initialState,
     };
+  }
+
+  error = (msg, duration, afterClose = () => {}) => {
+    message.error(msg, duration, () => {
+      afterClose();
+    });
   }
 
   handleChange = (event) => {
@@ -36,12 +45,45 @@ export default class QuestionPage extends Component {
     const value = target.checked;
     const id = target.id;
 
-    console.log('id', id);
-    console.log('value', value);
+    if (target.type === 'radio') {
+      this.setState({
+        ...this.initialState,
+        [id]: value,
+      })
+    } else {
+      this.setState({
+        [id]: value,
+      });
+    }
+  }
 
-    this.setState({
-      [id]: value,
+  handleSubmit = () => {
+    const { question } = this.props;
+    const isMultiSelect = question.answer.length > 1;
+    let isSelectedAnyThing = false;
+
+    // || to judge whether is unselect status
+    Object.values(this.state).map(item => {
+      isSelectedAnyThing = isSecureContext || item;
     });
+
+    if (!isSelectedAnyThing) {
+      this.error('Sorry, 您还没有选择哦 ~');
+    } else {
+      if (isMultiSelect) {
+        let concatAnswer = '';
+
+        Object.entries(this.state).map(value => {
+          if (value[1]) {
+            concatAnswer += value[0];
+          }
+        });
+
+        if ()
+      } else {
+  
+      }
+    }
   }
 
   render() {
@@ -49,44 +91,49 @@ export default class QuestionPage extends Component {
     const isMultiSelect = question.answer.length > 1;
     const options = question.question.slice(1);
 
-    // this.state.
-    console.log('state', this.state);
-
     return (
       <div>
         <h2>{question.question[0]}</h2>
         {
           isMultiSelect
           ? (
-            options.map((item, key) => (
-              <p key={key}>
-                <input 
-                  type="checkbox" 
-                  name={mapNumberToString[key]} 
-                  id={mapNumberToString[key]}
-                  checked={this.state[mapNumberToString[key]]}
-                  onChange={this.handleChange} 
-                />
-                <label htmlFor={mapNumberToString[key]} className={classnames({ active: this.state[mapNumberToString[key]] })}>{item}</label>
-              </p>
-            ))
+            options.map((item, keyIndex) => {
+              const key = keyIndex + 1;
+              
+              return (
+                <p key={key}>
+                  <input 
+                    type="checkbox" 
+                    name={mapNumberToString[key]} 
+                    id={mapNumberToString[key]}
+                    checked={this.state[mapNumberToString[key]]}
+                    onChange={this.handleChange} 
+                  />
+                  <label htmlFor={mapNumberToString[key]} className={classnames({ active: this.state[mapNumberToString[key]] })}>{item}</label>
+                </p>
+              );
+            })
           )
           : (
-            options.map((item, key) => (
-              <p key={key}>
-                <input 
-                  type="radio"
-                  name="option"
-                  id={mapNumberToString[key]}
-                  checked={this.state[mapNumberToString[key]]}
-                  onChange={this.handleChange} 
-                />
-                <label htmlFor={mapNumberToString[key]} className={classnames({ active: this.state[mapNumberToString[key]] })}>{item}</label>
-              </p>
-            ))
+            options.map((item, keyIndex) => {
+              const key = keyIndex + 1;
+
+              return (
+                <p key={key}>
+                  <input 
+                    type="radio"
+                    name="option"
+                    id={mapNumberToString[key]}
+                    checked={this.state[mapNumberToString[key]]}
+                    onChange={this.handleChange} 
+                  />
+                  <label htmlFor={mapNumberToString[key]} className={classnames({ active: this.state[mapNumberToString[key]] })}>{item}</label>
+                </p>
+              );
+            })
           )
         }
-        <button onClick={this.props.handleSubmit}>选择</button>
+        <button onClick={this.handleSubmit}>选择</button>
       </div>
     );
   }

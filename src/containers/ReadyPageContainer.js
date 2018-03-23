@@ -54,8 +54,6 @@ class ReadyPageContainer extends Component {
     
     console.log('socket', this.socket.on);
     this.socket.on('push notification', ({ option, id }) => {
-      console.log('isReady', isReady);
-      console.log('out', out);
       if (!that.props.out) {
         dispatch({ type: GET_QUESTION, payload: { option, id } });
       }
