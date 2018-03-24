@@ -83,7 +83,17 @@ class ReadyPageContainer extends Component {
 
   render() {
 
-    const { isReady, question, isGettingQuestion, promote, out, next, token, endThisQuestion } = this.props;
+    const { 
+      isReady, 
+      question, 
+      isGettingQuestion, 
+      promote, 
+      out, 
+      next, 
+      token, 
+      endThisQuestion,
+      dispatch 
+    } = this.props;
 
     // the final control flow function
     let returnComponent = null;
@@ -103,6 +113,8 @@ class ReadyPageContainer extends Component {
           question={question} 
           isGettingQuestion={isGettingQuestion} 
           handleSubmit={this.handleSubmit}
+          token={token}
+          dispatch={dispatch}
         />
       );
     } else if (token && question && promote) {

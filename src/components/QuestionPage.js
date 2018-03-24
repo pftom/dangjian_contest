@@ -3,6 +3,10 @@ import { message } from 'antd';
 import classnames from 'classnames';
 
 import './css/QuestionPage.css';
+import {
+  GET_OUT_OF_CONTEST,
+  PROMOTE_CONTEST,
+} from '../constants/';
 
 export const mapNumberToString = {
   1: 'A',
@@ -58,30 +62,55 @@ export default class QuestionPage extends Component {
   }
 
   handleSubmit = () => {
-    const { question } = this.props;
+    const { question, token, dispatch } = this.props;
     const isMultiSelect = question.answer.length > 1;
     let isSelectedAnyThing = false;
 
+    console.log('state', this.state);
+
     // || to judge whether is unselect status
     Object.values(this.state).map(item => {
-      isSelectedAnyThing = isSecureContext || item;
+      isSelectedAnyThing = isSelectedAnyThing || item;
     });
 
     if (!isSelectedAnyThing) {
       this.error('Sorry, 您还没有选择哦 ~');
     } else {
       if (isMultiSelect) {
+        // concat answer and compare two answer
         let concatAnswer = '';
+        let concatOriginalAnswer = '';
+        question.answer.map(item => {
+          concatOriginalAnswer += item;
+        });
 
+        // start concat the nowthat answer
         Object.entries(this.state).map(value => {
           if (value[1]) {
             concatAnswer += value[0];
           }
         });
 
-        if ()
+        if (concatOriginalAnswer !== concatAnswer) {
+          dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: token }});
+          // out
+        } else {
+          dispatch({ type: PROMOTE_CONTEST, payload: { username: token }});
+        }
       } else {
-  
+        // promote
+        let answer = '';
+        Object.entries(this.state).map(value => {
+          if (value[1]) {
+            answer = value[0];
+          }
+        });
+
+        if (question.answer[0] !== answer) {
+          dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: token }});
+        } else {
+          dispatch({ type: PROMOTE_CONTEST, payload: { username: token }});
+        }
       }
     }
   }

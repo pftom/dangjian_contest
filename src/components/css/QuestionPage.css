@@ -8,3 +8,10 @@ label.active {
 h2 {
   margin-bottom: 30px;
 }
+
+button {
+  margin-top: 30px;
+  background-color: black;
+  color: white;
+  padding: 20px;
+}

@@ -13,9 +13,8 @@ const INITIAL_STATE = {
 
 
 const resolveReg = (rawString) => {
-  const handledString = rawString + "\n";
-  const regex = /(.+)\n/g;
-  const optionArray = handledString.match(regex);
+  const regex = /(?=[ABCD])/g;
+  const optionArray = rawString.split(regex);
   return optionArray;
 };
 

@@ -6,9 +6,15 @@ import {
   GET_QUESTION_SUCCESS,
   GET_QUESTION_ERROR,
   GET_QUESTION,
+
   GET_OUT_OF_CONTEST,
   GET_OUT_OF_CONTEST_SUCCESS,
   GET_OUT_OF_CONTEST_ERROR,
+
+  PROMOTE_CONTEST,
+  PROMOTE_CONTEST_SUCCESS,
+  PROMOTE_CONTEST_ERROR,
+
   GET_STORAGE_OUT,
   GET_STORAGE_OUT_SUCCESS,
   GET_STORAGE_OUT_ERROR,
@@ -22,7 +28,7 @@ import {
   
 } from '../constants/'; 
 
-import { base, getOutApi, nodeBase, noticeApi, questionApi, request } from '../config/';
+import { getOutApi, nodeBase, noticeApi, questionApi, request } from '../config/';
 
 function* getQuestion(action) {
   try {
@@ -31,7 +37,7 @@ function* getQuestion(action) {
 
     const question = yield call(
       request.get, 
-      base + (option === 'single' ? getSingleOption : getMultiplyOption)
+      nodeBase + (option === 'single' ? getSingleOption : getMultiplyOption)
     );
     
     yield put({ type: GET_QUESTION_SUCCESS, payload: { question } });
@@ -51,8 +57,8 @@ function* watchGetQuestion() {
 function* getOut(action) {
   try {
     // dispatch http for notify server this person is out
-    const { token, type, remainAudience, playersLength } = action.payload;
-    yield call(request.get, nodeBase + getOutApi.getOut, { user: token, type, remainAudience, playersLength });
+    const { username } = action.payload;
+    yield call(request.get, nodeBase + getOutApi.getOut, { username });
     // save the out info to the localStorage, ban to do things.
     yield localStorage.setItem(type, true);
     yield put({ type: GET_OUT_OF_CONTEST_SUCCESS });

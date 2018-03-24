@@ -3,7 +3,6 @@
  *  
  */ 
 
- const base = 'http://powerformer.com:8000';
  const nodeBase = 'http://localhost:4000';
 
  const questionApi = (id) => ({
@@ -32,7 +31,6 @@
  };
 
  export {
-   base,
    questionApi,
    noticeApi,
    contestantsApi,
