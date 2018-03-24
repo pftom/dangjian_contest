@@ -64,19 +64,6 @@ class ReadyPageContainer extends Component {
     });
   }
 
-  handleReady = () => {
-    const { dispatch, token } = this.props;
-    dispatch({ type: READY, payload: { token } });
-  }
-
-  handleSubmit = (value) => {
-    const { question, dispatch, token } = this.props;
-    if (value !== question.answer) {
-      // dispatch request for node, to get the remain value
-      dispatch({ type: GET_OUT_OF_CONTEST, payload: { token, type: 'out' } });
-    }
-  }
-
   componentWillUnmount() {
     this.socket.disconnect();
   }
@@ -103,7 +90,7 @@ class ReadyPageContainer extends Component {
 
     if (!token) {
       return <Redirect to="/login" />;
-    } else if (token && !question && !(out || promote || next || endThisQuestion)) {
+    } else if (token && ((!question && !(out || promote || endThisQuestion)) || next)) {
       // correspond to the loginSuccess state
       returnComponent = <LoginSuccessPage />;
     } else if (token && question && !(out || promote || endThisQuestion)) {
@@ -112,7 +99,6 @@ class ReadyPageContainer extends Component {
         <QuestionPage 
           question={question} 
           isGettingQuestion={isGettingQuestion} 
-          handleSubmit={this.handleSubmit}
           token={token}
           dispatch={dispatch}
         />

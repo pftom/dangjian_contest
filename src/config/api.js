@@ -21,8 +21,9 @@
    getSingleContestants: `/users/contestants/${id}/`,
  });
 
- const getOutApi = {
-  'getOut': '/update_out',
+ const getStatusApi = {
+  getOut: '/update_out',
+  getPromote: '/update_promote',
  };
 
  const noticeApi = {
@@ -35,6 +36,6 @@
    noticeApi,
    contestantsApi,
    userApi,
-   getOutApi,
+   getStatusApi,
    nodeBase,
  }

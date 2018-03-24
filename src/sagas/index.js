@@ -12,7 +12,7 @@ import {
   watchClearAllState,
   watchPushNotification,
   watchNextContest,
-  
+  watchGetPromote,
 } from './question';
 
 const rootSaga = function* () {
@@ -26,6 +26,7 @@ const rootSaga = function* () {
 
     watchGetQuestion(),
     watchGetOut(),
+    watchGetPromote(),
 
     watchGetStorageOut(),
     watchClearAllState(),

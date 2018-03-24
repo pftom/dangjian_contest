@@ -28,7 +28,7 @@ import {
   
 } from '../constants/'; 
 
-import { getOutApi, nodeBase, noticeApi, questionApi, request } from '../config/';
+import { getStatusApi, nodeBase, noticeApi, questionApi, request } from '../config/';
 
 function* getQuestion(action) {
   try {
@@ -58,12 +58,11 @@ function* getOut(action) {
   try {
     // dispatch http for notify server this person is out
     const { username } = action.payload;
-    yield call(request.get, nodeBase + getOutApi.getOut, { username });
+    yield call(request.get, nodeBase + getStatusApi.getOut, { username });
     // save the out info to the localStorage, ban to do things.
-    yield localStorage.setItem(type, true);
+
     yield put({ type: GET_OUT_OF_CONTEST_SUCCESS });
   } catch (e) {
-    console.log('e', e);
     yield put({ type: GET_OUT_OF_CONTEST_ERROR });
   }
 }
@@ -72,6 +71,27 @@ function* watchGetOut() {
   while (true) {
     const action = yield take(GET_OUT_OF_CONTEST);
     yield call(getOut, action);
+  }
+}
+
+// promote saga
+function* getPromote(action) {
+  try {
+    // dispatch http for notify server this person is out
+    const { username } = action.payload;
+    yield call(request.get, nodeBase + getStatusApi.getPromote, { username });
+    // save the out info to the localStorage, ban to do things.
+
+    yield put({ type: PROMOTE_CONTEST_SUCCESS });
+  } catch (e) {
+    yield put({ type: PROMOTE_CONTEST_ERROR });
+  }
+}
+
+function* watchGetPromote() {
+  while (true) {
+    const action = yield take(PROMOTE_CONTEST);
+    yield call(getPromote, action);
   }
 }
 
@@ -158,4 +178,5 @@ export {
   watchClearAllState,
   watchPushNotification,
   watchNextContest,
+  watchGetPromote,
 }

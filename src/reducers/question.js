@@ -1,4 +1,16 @@
-import { GET_QUESTION, GET_QUESTION_SUCCESS, GET_QUESTION_ERROR, GET_OUT_OF_CONTEST, GET_STORAGE_OUT_ERROR, GET_OUT_OF_CONTEST_SUCCESS, GET_STORAGE_OUT_SUCCESS, CLEAR_ALL_STATE } from '../constants/index';
+import { 
+  GET_QUESTION, 
+  GET_QUESTION_SUCCESS, 
+  GET_QUESTION_ERROR, 
+  GET_OUT_OF_CONTEST, 
+  GET_STORAGE_OUT_ERROR, 
+  GET_OUT_OF_CONTEST_SUCCESS, 
+  GET_STORAGE_OUT_SUCCESS, 
+  CLEAR_ALL_STATE,
+
+  PROMOTE_CONTEST_SUCCESS,
+  PROMOTE_CONTEST_ERROR,
+} from '../constants/index';
 
 const INITIAL_STATE = {
   isGettingQuestion: false,
@@ -11,9 +23,10 @@ const INITIAL_STATE = {
   next: false,
 };
 
-
+// extract options from a whole question
 const resolveReg = (rawString) => {
-  const regex = /(?=[ABCD])/g;
+  // for better adaptation
+  const regex = /(?=[ABCDEFGHI])/g;
   const optionArray = rawString.split(regex);
   return optionArray;
 };
@@ -45,6 +58,8 @@ export default (state = INITIAL_STATE, action) => {
         isGettingQuestion: false,
         getQuestionSuccess: true,
         question: newQuestion,
+        promote: false,
+        next: false,
       };
 
     case GET_QUESTION_ERROR:
@@ -77,8 +92,23 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         out: false,
         question: null,
+        promote: false,
         next: true,
       };
+
+    case PROMOTE_CONTEST_SUCCESS: {
+      return {
+        ...state,
+        promote: true,
+      };
+    }
+    
+    case PROMOTE_CONTEST_ERROR: {
+      return {
+        ...state,
+        promote: false,
+      };
+    }
 
     default: return state;
   }
