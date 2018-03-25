@@ -3,6 +3,7 @@ import { START_GAME } from '../constants/userConstants';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
+import { Redirect } from 'react-router';
 
 import { MasterPage } from '../components/';
 import { 
@@ -23,8 +24,6 @@ class MasterPageContainer extends Component {
       // add isInitialState for getUsers only first time.
       // in one whole contest, only once, only once! 
       dispatch({ type: GET_ALL_USERS });
-    } else {
-      dispatch({ type: NEXT_CONTEST });
     }
 
     this.socket.on('logged', ({ username }) => {
@@ -35,8 +34,14 @@ class MasterPageContainer extends Component {
   
 
   render() {
-    const { allUsers, dispatch } = this.props;
-    console.log('allUser', allUsers);
+    const { allUsers, dispatch, token } = this.props;
+    
+    if (!token) {
+      return <Redirect to="/login" />;
+    }
+
+    console.log('allUsers', allUsers);
+
     return(
       <MasterPage 
         {...this.props}
@@ -56,9 +61,11 @@ const mapStateToProps = (state) => {
     isAddPlayers,
     addPlayersSuccess,
     addPlayersError,
+    token,
   } = state.user;
   
   return {
+    token,
     allUsers,
     isInitialState,
     isAddPlayers,

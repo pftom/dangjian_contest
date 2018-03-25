@@ -13,6 +13,7 @@ import {
   ADD_PLAYERS,
   ADD_PLAYERS_SUCCESS,
   ADD_PLAYERS_ERROR,
+  CLEAR_ADD_PLAYER_STATE,
 } from '../constants/';
 
 
@@ -90,6 +91,15 @@ export default (state = INITIAL_STATE, action) => {
       };
     }
 
+    case CLEAR_ADD_PLAYER_STATE: {
+      return {
+        ...state,
+        isAddPlayers: false,
+        addPlayersSuccess: false,
+        addPlayersError: false,
+      };
+    }
+
     case GET_TOKEN_SUCCESS:
       return {
         ...state,
@@ -103,23 +113,32 @@ export default (state = INITIAL_STATE, action) => {
         allUsers: action.payload.allUsers.slice(1),
       };
 
-    case UPDATE_USERS:
-      const { allUsers } = action.payload;
-      let { players } = state;
+    case UPDATE_USERS: {
+      // need update user
+      const { nowUser } = action.payload;
+      let { players, allUsers } = state;
       players = players.map((player) => {
-        allUsers.map((user) => {
-          if (user.user === player.user) {
-            player = user;
-          }
-        })
-        return player;
-      }) 
+        let nowPlayer = player;
+        if (nowUser.username === player.username) {
+          nowPlayer = nowUser;
+        }
+        return nowPlayer;
+      });
+
+      allUsers = allUsers.map(user => {
+        let newUser = user;
+        if (nowUser.username === user.username) {
+          newUser = nowUser;
+        }
+        return newUser;
+      })
 
       return {
         ...state,
         allUsers,
         players,
       };
+    }
 
     case UPDATE_LOGIN_LIST: {
       let { allUsers } = state;
@@ -146,9 +165,19 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case CLEAR_ALL_STATE: {
+      const { allUsers } = state;
       return {
         ...state,
-        token: '',
+        players: [],
+        allUsers: allUsers.map(user => (
+          { ...user, out: false }
+        )),
+        isAddPlayers: false,
+        addPlayersSuccess: false,
+        addPlayersError: false,
+        isLogin: false,
+        loginSuccess: false,
+        loginError: false,
       };
     }
     

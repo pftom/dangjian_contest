@@ -5,7 +5,10 @@ import classnames from 'classnames';
 import { push } from 'react-router-redux'
 
 import './css/MasterPage.css';
-import { ADD_PLAYERS } from '../constants/';
+import { 
+  ADD_PLAYERS,
+  CLEAR_ADD_PLAYER_STATE,
+} from '../constants/';
 
 export default class extends React.Component {
   constructor(props) {
@@ -49,10 +52,12 @@ export default class extends React.Component {
 
     if (addPlayersSuccess) {
       dispatch(push('/contest'));
+      dispatch({ type: CLEAR_ADD_PLAYER_STATE });
     }
 
     if (addPlayersError) {
       this.error('Sorry, 网络出现了错误哦 ~, 请重新尝试一下吧!');
+      dispatch({ type: CLEAR_ADD_PLAYER_STATE });
     }
   }
 
@@ -86,7 +91,7 @@ export default class extends React.Component {
     if (!isSelectedAnyThing) {
       this.error('Sorry, 您还没有选择哦 ~');
     } else if (selectedNumber < 3) {
-      this.error('Soory, 您至少要选择 3 个人哦 ~');
+      this.error('Sorry, 您至少要选择 3 个人哦 ~');
     } else {
       dispatch({ type: ADD_PLAYERS, payload: { players } });
     }

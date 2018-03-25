@@ -15,10 +15,10 @@ export default class  extends Component {
   render() {
     const { players, allUsers, isLoading, question } = this.props;
     const playerKeys = players.map(item => (
-      item.user
+      item.username
     ));
     const remainAudience = allUsers
-                            .filter(user => !playerKeys.includes(user.user))
+                            .filter(user => !playerKeys.includes(user.username))
                             .filter(user => !user.out)
                             .length;
 
@@ -50,8 +50,8 @@ export default class  extends Component {
                )
                : (
                  <div>
-                  <button onClick={() => { this.props.handleRes('out', item.user, remainAudience) }}>出局</button>
-                  <button onClick={() => { this.props.handleRes('go', item.user, remainAudience) } }>晋级</button>
+                  <button onClick={() => { this.props.handleRes('out', item.username) }}>出局</button>
+                  <button onClick={() => { this.props.handleRes('promote', item.username) } }>晋级</button>
                  </div>
                )
              }
