@@ -1,4 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 // the function for persistState in browser
 import { persistState } from 'redux-devtools';
 // import the saga middleware
@@ -40,8 +43,19 @@ function getDebugSessionKey() {
   return (matches && matches.length > 0)? matches[1] : null;
 }
 
+// redux-persist config
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+// persist reducer
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 export default function configureStore(initialState) {
-  const store = createStore(rootReducer, initialState, enhancer);
+  const store = createStore(persistedReducer, initialState, enhancer);
+
+  const persistor = persistStore(store);
 
   // run this saga middleware 
   sagaMiddleware.run(rootSaga);
@@ -53,5 +67,5 @@ export default function configureStore(initialState) {
     );
   }
 
-  return store;
+  return { store, persistor };
 }

@@ -21,11 +21,22 @@ const middlewares = [ sagaMiddleware, routerMiddleware(history) ];
 
 const enhancer = applyMiddleware(...middlewares);
 
+// redux-persist config
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+// persist reducer
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 export default function configureStore(initialState) {
-  const store = createStore(rootReducer, initialState, enhancer);
+  const store = createStore(persistedReducer, initialState, enhancer);
+
+  const persistor = persistStore(store);
 
   // run this saga middleware 
   sagaMiddleware.run(rootSaga);
 
-  return store;
+  return { store, persistor };
 }

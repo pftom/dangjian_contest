@@ -6,7 +6,10 @@ import Root from './containers/Root.js';
 import configureStore from './store/configureStore.js';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = configureStore();
+const { store, persistor } = configureStore();
+export {
+  persistor,
+}
 
 ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 registerServiceWorker();

@@ -15,9 +15,6 @@ import {
   PROMOTE_CONTEST_SUCCESS,
   PROMOTE_CONTEST_ERROR,
 
-  GET_STORAGE_OUT,
-  GET_STORAGE_OUT_SUCCESS,
-  GET_STORAGE_OUT_ERROR,
   CLEAR_ALL_STATE,
   PUSH_NOTIFICATION_SUCCESS,
   PUSH_NOTIFICATION,
@@ -95,25 +92,6 @@ function* watchGetPromote() {
   }
 }
 
-function* getStorageOut(action) {
-  try {
-
-    // save the out info to the localStorage, ban to do things.
-    const out = yield localStorage.getItem('out');
-    yield put({ type: GET_STORAGE_OUT_SUCCESS, payload: { out } });
-  } catch (e) {
-    console.log('e', e);
-    yield put({ type: GET_STORAGE_OUT_ERROR });
-  }
-}
-
-function* watchGetStorageOut() {
-  while (true) {
-    const action = yield take(GET_STORAGE_OUT);
-    yield call(getStorageOut, action);
-  }
-}
-
 
 function* clearAllState(action) {
   try {
@@ -174,7 +152,6 @@ function* watchNextContest() {
 export {
   watchGetQuestion,
   watchGetOut,
-  watchGetStorageOut,
   watchClearAllState,
   watchPushNotification,
   watchNextContest,

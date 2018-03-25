@@ -8,7 +8,6 @@ import {
 import {
   watchGetQuestion, 
   watchGetOut,
-  watchGetStorageOut,
   watchClearAllState,
   watchPushNotification,
   watchNextContest,
@@ -28,7 +27,6 @@ const rootSaga = function* () {
     watchGetOut(),
     watchGetPromote(),
 
-    watchGetStorageOut(),
     watchClearAllState(),
 
     watchPushNotification(),

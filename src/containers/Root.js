@@ -1,5 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
+// import redux persistor
+import { persistor } from '../index';
+
 // import redux-devtools
 import DevTools from './DevTools';
 // import App
@@ -42,16 +47,18 @@ const Root = ({ store }) => {
 
   return (
     <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <div>
-          <Route exact path="/" component={App} />
-          <Route path="/ready" component={ReadyPage} />
-          <Route path="/login" component={Login} />
-          <Route path="/404" component={NotFound} />
-          <Route path="/dashboard" component={MasterPage} />
-          <Route path="/contest" component={Game} />
-        </div>
-      </ConnectedRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <ConnectedRouter history={history}>
+          <div>
+            <Route exact path="/" component={App} />
+            <Route path="/ready" component={ReadyPage} />
+            <Route path="/login" component={Login} />
+            <Route path="/404" component={NotFound} />
+            <Route path="/dashboard" component={MasterPage} />
+            <Route path="/contest" component={Game} />
+          </div>
+        </ConnectedRouter>
+      </PersistGate>
     </Provider>
   )
 

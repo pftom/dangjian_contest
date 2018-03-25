@@ -7,7 +7,6 @@ import {
   READY,
   GET_QUESTION,
   GET_OUT_OF_CONTEST,
-  GET_STORAGE_OUT,
   CLEAR_ALL_STATE,
 } from '../constants/index';
 import { nodeBase } from '../config/index';
@@ -32,10 +31,7 @@ class ReadyPageContainer extends Component {
     const { dispatch, isReady, out } = this.props;
     const that = this;
 
-    // dispatch({ type: GET_STORAGE_OUT });
-
     this.socket.on('push notification', ({ option, id }) => {
-      console.log('isReady', isReady);
       if (!that.props.out) {
         // option define whether single or multiply
         dispatch({ type: GET_QUESTION, payload: { option, id } });
@@ -55,6 +51,7 @@ class ReadyPageContainer extends Component {
     console.log('socket', this.socket.on);
     this.socket.on('push notification', ({ option, id }) => {
       if (!that.props.out) {
+        // option define whether single or multiply
         dispatch({ type: GET_QUESTION, payload: { option, id } });
       }
     });
