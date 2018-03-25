@@ -3,21 +3,31 @@
 
 .horizontal_center {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .animation {
   -webkit-transition-property: transform -webkit-transform box-shadow background-color;
   -webkit-transition-duration: .3s;
+  -webkit-transition-property: -webkit-transform -webkit-transform box-shadow background-color;
+  transition-property: -webkit-transform -webkit-transform box-shadow background-color;
   transition-property: transform -webkit-transform box-shadow background-color;
+  transition-property: transform -webkit-transform box-shadow background-color, -webkit-transform -webkit-transform box-shadow background-color;
   transition-duration: .3s;
   cursor: pointer;
   outline: none;
 }
 
 .selectBox {
-  .horizontal_center
+  text-align: center;
+  .selectItem {
+    margin-top: 20px;
+  }
 }
 
 .gameBox {
@@ -43,9 +53,9 @@
 
 .btn-red:hover {
   -webkit-transform: translateY(-4px);
-  -ms-transform: translateY(-4px);
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px @opacity_4_FD5F7E;
+  -webkit-box-shadow: 0 4px 12px @opacity_4_FD5F7E;
+          box-shadow: 0 4px 12px @opacity_4_FD5F7E;
 }
 
 .btn-background-ghost.btn-red {

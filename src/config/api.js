@@ -14,6 +14,7 @@
    login: '/users/login',
    ready: '/update_logged',
    allUsers: '/users/',
+   addPlayers: '/addPlayers/',
  };
 
  const contestantsApi = (id) => ({

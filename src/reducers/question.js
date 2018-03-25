@@ -19,6 +19,7 @@ const INITIAL_STATE = {
   out: false,
   promote: false,
   next: false,
+  endThisQuestion: false,
 };
 
 // extract options from a whole question
@@ -79,6 +80,7 @@ export default (state = INITIAL_STATE, action) => {
         out: false,
         question: null,
         promote: false,
+        endThisQuestion: false,
         next: true,
       };
 

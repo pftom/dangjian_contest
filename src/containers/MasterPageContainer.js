@@ -11,15 +11,14 @@ import {
   NEXT_CONTEST,
   UPDATE_LOGIN_LIST, 
 } from '../constants/index';
-import { push } from 'react-router-redux'
 
 class MasterPageContainer extends Component {
   socket = io(nodeBase)
 
   componentDidMount() {
-    const { dispatch, isInitialState } = this.props;
+    const { dispatch, isInitialState, allUsers } = this.props;
 
-    if (isInitialState) {
+    if (isInitialState && allUsers.length === 0) {
       // first step
       // add isInitialState for getUsers only first time.
       // in one whole contest, only once, only once! 
@@ -33,21 +32,17 @@ class MasterPageContainer extends Component {
     });
   }
 
-  handleStart = (players) => {
-    // select need start players 
-    const { dispatch } = this.props;
-
-    dispatch({ type: START_GAME, payload: { players }});
-    dispatch(push('/contest'));
-  }
+  
 
   render() {
-    const { allUsers } = this.props;
+    const { allUsers, dispatch } = this.props;
     console.log('allUser', allUsers);
     return(
       <MasterPage 
+        {...this.props}
         allUsers={allUsers}
         handleStart={this.handleStart}
+        dispatch={dispatch}
       />
     );
   }
@@ -55,11 +50,20 @@ class MasterPageContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-  const { allUsers, isInitialState } = state.user;
+  const { 
+    allUsers, 
+    isInitialState,
+    isAddPlayers,
+    addPlayersSuccess,
+    addPlayersError,
+  } = state.user;
   
   return {
     allUsers,
     isInitialState,
+    isAddPlayers,
+    addPlayersSuccess,
+    addPlayersError,
   };
 };
 

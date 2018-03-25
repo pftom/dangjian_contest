@@ -15,7 +15,11 @@ import {
   READY_ERROR,
   GET_ALL_USERS_SUCCESS,
   GET_ALL_USERS_ERROR,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+
+  ADD_PLAYERS,
+  ADD_PLAYERS_SUCCESS,
+  ADD_PLAYERS_ERROR,
 } from '../constants/'; 
 
 import { request, userApi, nodeBase } from '../config/';
@@ -39,6 +43,22 @@ function* watchLogin() {
   }
 }
 
+function* addPlayers(action) {
+  try {
+    const { players } = action.payload;
+    yield call(request.get, nodeBase + userApi.addPlayers, { players });
+    yield put({ type: ADD_PLAYERS_SUCCESS, payload: { players } });
+  } catch (e) {
+    yield put({ type: ADD_PLAYERS_ERROR });
+  }
+}
+
+function* watchAddPlayers() {
+  while (true) {
+    const action = yield take(ADD_PLAYERS);
+    yield call(addPlayers, action);
+  }
+}
 
 function* getToken(action) {
   try {
@@ -106,4 +126,5 @@ export {
   watchLogout,
   watchReady,
   watchGetAllUsers,
+  watchAddPlayers,
 }

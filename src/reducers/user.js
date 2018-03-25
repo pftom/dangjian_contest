@@ -7,6 +7,12 @@ import {
   GET_ALL_USERS_SUCCESS,
   START_GAME,
   UPDATE_LOGIN_LIST,
+
+  CLEAR_ALL_STATE,
+
+  ADD_PLAYERS,
+  ADD_PLAYERS_SUCCESS,
+  ADD_PLAYERS_ERROR,
 } from '../constants/';
 
 
@@ -20,7 +26,10 @@ const INITIAL_STATE = {
   players: [],
 
   isInitialState: true,
-  endThisQuestion: false,
+
+  isAddPlayers: false,
+  addPlayersSuccess: false,
+  addPlayersError: false,
 };
 
 /**
@@ -55,17 +64,43 @@ export default (state = INITIAL_STATE, action) => {
         loginError: true,
       };
 
+    case ADD_PLAYERS: {
+      return {
+        ...state,
+        isAddPlayers: true,
+        addPlayersSuccess: false,
+        addPlayersError: false,
+      };
+    }
+
+    case ADD_PLAYERS_SUCCESS: {
+      return {
+        ...state,
+        isAddPlayers: false,
+        addPlayersSuccess: true,
+        players: action.payload.players,
+      };
+    }
+
+    case ADD_PLAYERS_ERROR: {
+      return {
+        ...state,
+        isAddPlayers: false,
+        addPlayersError: true,
+      };
+    }
+
     case GET_TOKEN_SUCCESS:
       return {
         ...state,
         token: action.payload.token,
-      }
+      };
 
     case GET_ALL_USERS_SUCCESS:
 
       return {
         ...state,
-        allUsers: action.payload.allUsers,
+        allUsers: action.payload.allUsers.slice(1),
       };
 
     case UPDATE_USERS:
@@ -109,6 +144,13 @@ export default (state = INITIAL_STATE, action) => {
         players: action.payload.players,
         isInitialState: false,
       };
+
+    case CLEAR_ALL_STATE: {
+      return {
+        ...state,
+        token: '',
+      };
+    }
     
     default: return state;
   }
