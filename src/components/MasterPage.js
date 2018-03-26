@@ -10,6 +10,29 @@ import {
   CLEAR_ADD_PLAYER_STATE,
 } from '../constants/';
 
+// import image
+import qrCode from './img/qrCode.png';
+
+const hintArray = [
+  {
+    type: '比赛规则',
+    content: `但是解放后获得解放后的好时机啊哈风机打发后；
+    打击阿富汗浪费哈大家发；恢复方式；啊哈风的
+    第卅九分裤离开的风景看撒到家打卡机空间康师
+    啊看风景；将阿飞啊减肥；附近的看返回快结束
+    达卡附近的哈的返回看电视返回山东焕发健康哈
+    发空间活动多久卡号凡傅`,
+  },
+  {
+    type: '奖励机制',
+    content: `但是解放后获得解放后的好时机啊哈风机打发后；
+    打击阿富汗浪费哈大家发；恢复方式；啊哈风的
+    第卅九分裤离开的风景看撒到家打卡机空间康师
+    啊看风景；将阿飞啊减肥；附近的看返回快结束
+    达卡附近的哈的返回傅`,
+  },
+];
+
 export default class extends React.Component {
   constructor(props) {
     super(props);
@@ -100,27 +123,72 @@ export default class extends React.Component {
 
   render() {
     const { allUsers } = this.props;
-    return (
-      <div>
-        <div className="selectBox">
-        {
-          allUsers.map((item, key) => (
-            <p key={key} className="selectItem">
-              <input 
-                type="checkbox" 
-                name={item.username} 
-                id={item.username}
-                checked={this.state[item.username]}
-                onChange={this.handleChange} 
-              />
-              <label htmlFor={item.username} className={classnames({ active: this.state[item.username] })}>{item.name}</label>
-            </p>
-          ))
-        }
-        </div>
+    let selectedNumber = 0;
 
-        <div className="gameBox">
-          <button onClick={this.handleStart} className="btn btn-red">开始比赛</button>
+    Object.entries(this.state).map(item => {
+      if (item[1]) {
+        selectedNumber++;
+      }
+    });
+
+    return (
+      <div id="master">
+        <div className="header">
+          
+        </div>
+        <div className="content">
+          <div className="hint">
+            {
+              hintArray.map(hintItem => (
+                <div className="hintItem">
+                  <h4 className="hintHeader">{hintItem.type}</h4>
+                  <p className="hintContent">{hintItem.content}</p>
+                </div>
+              ))
+            }
+          </div>
+          <div className="start">
+            <div className="imgBox">
+              <img src={qrCode} alt="QRCode"/>
+            </div>
+            <div className="startHeader">
+              请在座参赛选手扫描<br />
+              上图二维码进入比赛
+            </div>
+            <button onClick={this.handleStart} className="startBtn">开始比赛</button>
+          </div>
+          <div className="loginList">
+            <h4 className="loginHeader">登录情况</h4>
+            <div className="selectBox">
+            {
+              allUsers.map((item, key) => (
+                <div key={key} className="selectItem">
+                  <p className="userId">{item.id}</p>
+                  <label htmlFor={item.username} className={classnames({ active: this.state[item.username] }, 'userLabel')}>{item.name}</label>
+                  <p className="loginStatus">
+                    {
+                      item.logged 
+                      ? '已登录'
+                      : '未登录'
+                    }
+                  </p>
+                  <p className="check">
+                    <input 
+                      type="checkbox" 
+                      name={item.username} 
+                      id={item.username}
+                      checked={this.state[item.username]}
+                      onChange={this.handleChange} 
+                    />
+                  </p>
+                </div>
+              ))
+            }
+            </div>
+            <div className="selectedNumber">
+              已选择参赛者 {selectedNumber}, 还差 {3 - selectedNumber} 名
+            </div>
+          </div>
         </div>
       </div>
     );

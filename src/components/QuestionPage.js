@@ -119,7 +119,7 @@ export default class QuestionPage extends Component {
     const options = question.question.slice(1);
 
     return (
-      <div>
+      <div id="question">
         <h2>{question.question[0]}</h2>
         {
           isMultiSelect
