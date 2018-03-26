@@ -24,6 +24,8 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import { history } from '../store/configureStore';
 
+import '../components/css/Root.css';
+
 // Route: /
 // judge whether user have permission
 
@@ -49,7 +51,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ConnectedRouter history={history}>
-          <div>
+          <div style={{ height: '100%' }}>
             <Route exact path="/" component={App} />
             <Route path="/ready" component={ReadyPage} />
             <Route path="/login" component={Login} />
@@ -60,7 +62,7 @@ const Root = ({ store }) => {
         </ConnectedRouter>
       </PersistGate>
     </Provider>
-  )
+  );
 
 }
 

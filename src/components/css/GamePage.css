@@ -1,3 +1,194 @@
+#game {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.leftTabBar {
+  width: 113.75px;
+  /* Rectangle 11: */
+  opacity: 0.99;
+  background: #FFFFFF;
+  border-right: 1px solid #EBEBEB;
+  position: absolute;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.leftTabBar .homeIcon {
+  text-align: center;
+  margin-top: 77.875px;
+  margin-bottom: 60px;
+}
+.leftTabBar .tab {
+  text-align: center;
+  margin-top: 105px;
+  margin-bottom: 105px;
+  margin-right: -6.125px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* 答题: */
+  font-family: PingFangSC-Regular;
+  font-size: 26.25px;
+  color: #CFCFD1;
+  letter-spacing: 0;
+}
+.leftTabBar .tab:hover {
+  cursor: pointer;
+}
+.leftTabBar .tab.active {
+  color: #7B87D0;
+  border-right: 6.125px solid #7B87D0;
+}
+.rightBox {
+  padding-left: 175px;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.rightBox .questionBox {
+  /* Rectangle: */
+  opacity: 0.99;
+  background: #FFFFFF;
+  border: 1px solid #EBEBEB;
+  border-radius: 5px;
+  width: 947.625px;
+  padding-bottom: 40px;
+}
+.rightBox .questionBox .questionNumber {
+  margin-left: 20.125px;
+  margin-top: 70px;
+  /* Rectangle 3: */
+  background: #EDC226;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(224, 190, 68, 0.5);
+  box-shadow: 0 2px 4px 0 rgba(224, 190, 68, 0.5);
+  width: 293.125px;
+  height: 63px;
+  line-height: 63px;
+  text-indent: 105px;
+  /* 题目59: */
+  font-family: STSongti-SC-Bold;
+  font-size: 26.25px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(181, 176, 176, 0.5);
+}
+.rightBox .questionBox .question {
+  margin-left: 100.625px;
+  margin-right: 100.625px;
+}
+.rightBox .questionBox .question .topic {
+  /* 听说明天考研复试？而且还没有打印成绩单，: */
+  font-family: STSongti-SC-Regular;
+  font-size: 26.25px;
+  color: #000000;
+  letter-spacing: 0;
+}
+.rightBox .questionBox .question .options {
+  margin-left: 73.5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.rightBox .questionBox .question .options .paragraph {
+  width: 50%;
+  /* A 考研复试. B 都要加油. C Fl: */
+  font-family: STSongti-SC-;
+  font-size: 24.5px;
+  color: #000000;
+  letter-spacing: 0;
+}
+.rightBox .questionBox .questionJump {
+  margin-left: 100.625px;
+  margin-right: 100.625px;
+  margin-top: 99.75px;
+  text-align: right;
+}
+.rightBox .questionBox .questionJump button:hover {
+  cursor: pointer;
+}
+.rightBox .questionBox .questionJump .closeThisQuestion {
+  /* Rectangle 10: */
+  border: 1px solid #7B87D0;
+  -webkit-box-shadow: 0 2px 15px 0 rgba(146, 142, 142, 0.5);
+  box-shadow: 0 2px 15px 0 rgba(146, 142, 142, 0.5);
+  border-radius: 3px;
+  width: 157.5px;
+  height: 56px;
+  /* 结束本题: */
+  font-family: PingFangSC-Regular;
+  font-size: 26.25px;
+  color: #7B87D0;
+  letter-spacing: 0;
+  margin-right: 42.875px;
+}
+.rightBox .questionBox .questionJump .nextQuestion {
+  /* Rectangle 10: */
+  background: #7B87D0;
+  -webkit-box-shadow: 0 2px 15px 0 rgba(123, 135, 208, 0.4);
+  box-shadow: 0 2px 15px 0 rgba(123, 135, 208, 0.4);
+  border-radius: 8px;
+  width: 135.625px;
+  height: 56px;
+  /* 下一题: */
+  font-family: PingFangSC-Regular;
+  font-size: 26.25px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+.rightBox .playerBox {
+  margin-left: 49.875px;
+}
+.rightBox .playerBox .score {
+  /* 25: */
+  font-family: HiraginoSans-W6;
+  font-size: 52.5px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  margin-bottom: -0.3em;
+}
+.rightBox .playerBox .name {
+  /* 张 凡 凡: */
+  font-family: PingFangSC-Regular;
+  font-size: 35px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+.rightBox .playerBox .player {
+  width: 411.25px;
+  height: 213.5px;
+  text-align: center;
+  line-height: 105px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-top: 20px;
+}
+.rightBox .playerBox .player:hover {
+  cursor: pointer;
+}
+.rightBox .playerBox .player0 {
+  background-image: url('../img/bg1.png');
+}
+.rightBox .playerBox .player1 {
+  background-image: url('../img/bg2.png');
+  margin-top: 14.875px;
+}
+.rightBox .playerBox .player2 {
+  background-image: url('../img/bg3.png');
+  margin-top: 14.875px;
+}
 .isOut {
   color: red;
 }
@@ -16,7 +207,11 @@
   height: 60px;
 }
 .person_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .person {
