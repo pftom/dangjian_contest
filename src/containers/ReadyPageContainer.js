@@ -28,7 +28,7 @@ class ReadyPageContainer extends Component {
   }
 
   componentDidMount() {
-    const { dispatch, isReady, out } = this.props;
+    const { dispatch, isReady, out, token, promote } = this.props;
     const that = this;
 
     this.socket.on('push notification', ({ option, id }) => {
@@ -41,6 +41,12 @@ class ReadyPageContainer extends Component {
     this.socket.on('next contest', (msg) => {
       dispatch({ type: CLEAR_ALL_STATE });
     });
+
+    this.socket.on('endOfThisQuestion', () => {
+      if (!promote) {
+        dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: token }});
+      }
+    })
   }
 
   componentDidUpdate() {

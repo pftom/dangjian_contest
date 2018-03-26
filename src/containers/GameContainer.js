@@ -17,6 +17,8 @@ import {
 
   NEXT_CONTEST,
   PUSH_NOTIFICATION,
+
+  END_OF_THIS_QUESTION,
 } from '../constants/index';
 
 class GameContainer extends Component {
@@ -53,11 +55,11 @@ class GameContainer extends Component {
   }
 
   handleRes = (type, username) => {
-    const { dispatch } = this.props;
+    const { dispatch, token, players } = this.props;
     if (type === 'out') {
       dispatch({ type: GET_OUT_OF_CONTEST, payload: { username }});
     } else {
-      dispatch({ type: PROMOTE_CONTEST, payload: { username }});
+      dispatch({ type: PROMOTE_CONTEST, payload: { username, token }});
     }
   }
 
@@ -68,8 +70,24 @@ class GameContainer extends Component {
     dispatch(push('/dashboard'));
   }
 
+  endThisQuestion = () => {
+    const { players, dispatch } = this.props;
+
+    players.map(player => {
+      // 
+      if (player.promote || player.out) {
+        return;
+      }
+
+      console.log('hhh');
+      dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: player.username }});
+    });
+
+    dispatch({ type: END_OF_THIS_QUESTION });
+  }
+
   render() {
-    const { players, allUsers, question, token } = this.props;
+    const { players, allUsers, question, token, dispatch } = this.props;
 
     if (!token) {
       return <Redirect to="/login" />;
@@ -82,10 +100,12 @@ class GameContainer extends Component {
         players={players}
         allUsers={allUsers}
         question={question}
+        dispatch={dispatch}
         isLoading={this.state.isLoading}
         handleSelect={this.handleSelect}
         handleRes={this.handleRes}
         handleNextContest={this.handleNextContest}
+        endThisQuestion={this.endThisQuestion}
       />
     );
   }

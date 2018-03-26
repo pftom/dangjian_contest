@@ -53,7 +53,7 @@ export default class QuestionPage extends Component {
       this.setState({
         ...this.initialState,
         [id]: value,
-      })
+      });
     } else {
       this.setState({
         [id]: value,
@@ -65,8 +65,6 @@ export default class QuestionPage extends Component {
     const { question, token, dispatch } = this.props;
     const isMultiSelect = question.answer.length > 1;
     let isSelectedAnyThing = false;
-
-    console.log('state', this.state);
 
     // || to judge whether is unselect status
     Object.values(this.state).map(item => {

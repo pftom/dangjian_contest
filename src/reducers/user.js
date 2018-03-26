@@ -14,6 +14,8 @@ import {
   ADD_PLAYERS_SUCCESS,
   ADD_PLAYERS_ERROR,
   CLEAR_ADD_PLAYER_STATE,
+
+  PROMOTE_CONTEST,
 } from '../constants/';
 
 
@@ -179,6 +181,26 @@ export default (state = INITIAL_STATE, action) => {
         loginSuccess: false,
         loginError: false,
       };
+    }
+
+    case PROMOTE_CONTEST: {
+      const { username, token } = action.payload;
+
+      if (token && token === 'dhucstmaster') {
+        return {
+          ...state,
+          players: state.players.map(player => {
+            if (player.username === username) {
+              const newPlayer = { ...player, promote: true };
+              return newPlayer;
+            }
+
+            return player;
+          })
+        };
+      } else {
+        return state;
+      }
     }
     
     default: return state;

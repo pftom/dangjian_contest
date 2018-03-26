@@ -8,6 +8,7 @@
  const questionApi = (id) => ({
    getSingleOption: `/questions/single/${id}/`,
    getMultiplyOption: `/questions/multiple/${id}/`,
+   endOfThisQuestion: '/endOfThisQuestion',
  });
 
  const userApi = {

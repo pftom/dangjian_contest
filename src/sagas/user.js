@@ -46,7 +46,7 @@ function* watchLogin() {
 function* addPlayers(action) {
   try {
     const { players } = action.payload;
-    yield call(request.get, nodeBase + userApi.addPlayers, { players });
+    yield call(request.post, nodeBase + userApi.addPlayers, { players });
     yield put({ type: ADD_PLAYERS_SUCCESS, payload: { players } });
   } catch (e) {
     yield put({ type: ADD_PLAYERS_ERROR });

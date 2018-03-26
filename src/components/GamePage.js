@@ -5,10 +5,43 @@ import { fakeQuestion, mapNumberToString } from './ReadyPage';
 import run from './img/run.png';
 
 import './css/GamePage.css';
+import { END_OF_THIS_QUESTION, GET_OUT_OF_CONTEST } from '../constants/';
 
 export default class  extends Component {
   state = {
-    value: 'A',
+    cnt: 0,
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const that = this;
+    if (nextProps.question !== this.props.question) {
+      this.timer = setInterval(() => {
+        that.setState((prevState, props) => {
+          return {
+            cnt: prevState.cnt + 1,
+          };
+        })
+      }, 1000);
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { dispatch, players } = this.props;
+    if (this.state.cnt >= 10) {
+      players.map(player => {
+        // 
+        if (player.promote || player.out) {
+          return;
+        }
+  
+        dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: player.username }});
+      });
+      dispatch({ type: END_OF_THIS_QUESTION });
+      clearInterval(this.timer);
+      this.setState({
+        cnt: 0,
+      });
+    }
   }
 
 
@@ -71,6 +104,8 @@ export default class  extends Component {
         <button onClick={() => { this.props.handleSelect('single') }}>单选题</button>
         <button onClick={() => { this.props.handleSelect('multiply') }}>多选题</button>
         <button onClick={this.props.handleNextContest}>开始下一轮</button>
+        <button onClick={() => { this.props.endThisQuestion() }}>结束本题</button>
+        <p>{this.state.cnt}</p>
       </div>
     );
   }

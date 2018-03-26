@@ -6,8 +6,7 @@ import {
   GET_OUT_OF_CONTEST_SUCCESS, 
   CLEAR_ALL_STATE,
 
-  PROMOTE_CONTEST_SUCCESS,
-  PROMOTE_CONTEST_ERROR,
+  PROMOTE_CONTEST,
 } from '../constants/index';
 
 const INITIAL_STATE = {
@@ -84,17 +83,11 @@ export default (state = INITIAL_STATE, action) => {
         next: true,
       };
 
-    case PROMOTE_CONTEST_SUCCESS: {
+    case PROMOTE_CONTEST: {
+
       return {
         ...state,
         promote: true,
-      };
-    }
-    
-    case PROMOTE_CONTEST_ERROR: {
-      return {
-        ...state,
-        promote: false,
       };
     }
 

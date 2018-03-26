@@ -1,6 +1,6 @@
 // Here saga effect function
 import { PUSH_NOTIFICATION_ERROR } from '../constants/browserConstants';
-import { call, put, take, fork, cancel } from 'redux-saga/effects';
+import { call, put, take, fork, cancel, takeEvery } from 'redux-saga/effects';
 
 import {
   GET_QUESTION_SUCCESS,
@@ -11,10 +11,6 @@ import {
   GET_OUT_OF_CONTEST_SUCCESS,
   GET_OUT_OF_CONTEST_ERROR,
 
-  PROMOTE_CONTEST,
-  PROMOTE_CONTEST_SUCCESS,
-  PROMOTE_CONTEST_ERROR,
-
   CLEAR_ALL_STATE,
   PUSH_NOTIFICATION_SUCCESS,
   PUSH_NOTIFICATION,
@@ -22,7 +18,9 @@ import {
   NEXT_CONTEST_SUCCESS,
   NEXT_CONTEST_ERROR,
 
-  
+  END_OF_THIS_QUESTION,
+  END_OF_THIS_QUESTION_SUCCESS,
+  END_OF_THIS_QUESTION_ERROR,
 } from '../constants/'; 
 
 import { getStatusApi, nodeBase, noticeApi, questionApi, request } from '../config/';
@@ -65,30 +63,25 @@ function* getOut(action) {
 }
 
 function* watchGetOut() {
-  while (true) {
-    const action = yield take(GET_OUT_OF_CONTEST);
-    yield call(getOut, action);
-  }
+  yield takeEvery(GET_OUT_OF_CONTEST, getOut);
 }
 
-// promote saga
-function* getPromote(action) {
+function* endOfThisQuestion(action) {
   try {
     // dispatch http for notify server this person is out
-    const { username } = action.payload;
-    yield call(request.get, nodeBase + getStatusApi.getPromote, { username });
+    yield call(request.get, nodeBase + questionApi().endOfThisQuestion);
     // save the out info to the localStorage, ban to do things.
 
-    yield put({ type: PROMOTE_CONTEST_SUCCESS });
+    yield put({ type: END_OF_THIS_QUESTION_SUCCESS });
   } catch (e) {
-    yield put({ type: PROMOTE_CONTEST_ERROR });
+    yield put({ type: END_OF_THIS_QUESTION_ERROR });
   }
 }
 
-function* watchGetPromote() {
+function* watchEndOfThisQuestion() {
   while (true) {
-    const action = yield take(PROMOTE_CONTEST);
-    yield call(getPromote, action);
+    const action = yield take(END_OF_THIS_QUESTION);
+    yield call(endOfThisQuestion, action);
   }
 }
 
@@ -155,5 +148,5 @@ export {
   watchClearAllState,
   watchPushNotification,
   watchNextContest,
-  watchGetPromote,
+  watchEndOfThisQuestion,
 }
