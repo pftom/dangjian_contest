@@ -23,3 +23,5 @@ yarn-error.log*
 # secret files
 ACCESS_KEY
 pf.pem
+
+*.pyc

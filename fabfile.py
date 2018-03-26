@@ -24,12 +24,6 @@ def collect_static_files():
     """Capture names of static files needed to be uploaded."""
     static_files = []
 
-    for filename in local("ls build/css/", capture=True).split():
-        static_files.append('/css/' + filename)
-
-    for filename in local("ls build/js/", capture=True).split():
-        static_files.append('/js/' + filename)
-
     for filename in local("ls build/static/css", capture=True).split():
         static_files.append('/static/css/' + filename)
 
@@ -46,7 +40,7 @@ def upload_to_oss(static_files):
     auth = read_api_auth()
     print "Done."
 
-    bucket = oss2.Bucket(auth, oss_vendor, 'yunyanjin')
+    bucket = oss2.Bucket(auth, oss_vendor, 'dangjian-contest')
 
     # Delete existing outdated static assets
     print "Deleting existing outdated static assets in OSS ...",
@@ -87,7 +81,9 @@ def pull_image_and_redeploy():
     """Pull the newest image from Docker Hub and redeploy the container."""
     # Pull the newest image
     run("docker pull %s" % image_repo)
-    run("docker rm -f %s" % image_repo)
+
+    with settings(warn_only=True):
+        run("docker rm -f %s" % container_name)
 
     # Run a container with the updated image
     run("docker run -p 4000:80 -d --name %s --restart=always %s"
