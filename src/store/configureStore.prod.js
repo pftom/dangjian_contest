@@ -2,9 +2,11 @@ import { createStore, applyMiddleware } from 'redux';
 // import the saga middleware
 import createSagaMiddleware from 'redux-saga';
 
-// import react-router-redux middleware 
+// import react-router-redux middleware
 import { routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 // import rootSaga for run in this place
 import rootSaga from '../sagas/';
@@ -35,7 +37,7 @@ export default function configureStore(initialState) {
 
   const persistor = persistStore(store);
 
-  // run this saga middleware 
+  // run this saga middleware
   sagaMiddleware.run(rootSaga);
 
   return { store, persistor };
