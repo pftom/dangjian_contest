@@ -39,6 +39,7 @@ class GameContainer extends Component {
 
     // start next question
     this.socket.on('push notification', ({ option, id }) => {
+      console.log('option', option, id);
         dispatch({ type: GET_QUESTION, payload: { option, id } });
     });
 
@@ -71,6 +72,7 @@ class GameContainer extends Component {
   }
 
   endThisQuestion = () => {
+    console.log('end');
     const { players, dispatch } = this.props;
 
     players.map(player => {

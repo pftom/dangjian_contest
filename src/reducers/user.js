@@ -16,6 +16,7 @@ import {
   CLEAR_ADD_PLAYER_STATE,
 
   PROMOTE_CONTEST,
+  END_OF_THIS_QUESTION_SUCCESS,
 } from '../constants/';
 
 
@@ -180,6 +181,15 @@ export default (state = INITIAL_STATE, action) => {
         isLogin: false,
         loginSuccess: false,
         loginError: false,
+      };
+    }
+
+    case END_OF_THIS_QUESTION_SUCCESS: {
+      return {
+        ...state,
+        players: state.players.map(player => (
+          { ...player, promote: false }
+        ))
       };
     }
 

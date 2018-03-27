@@ -18625,6 +18625,9 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   -ms-flex: 3;
   flex: 3;
 }
+.content .loginList .selectBox .userLabel:hover {
+  cursor: pointer;
+}
 .content .loginList .selectBox .loginStatus {
   /* 已登陆: */
   font-family: PingFangSC-Semibold;
@@ -18639,6 +18642,9 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   -webkit-box-flex: 2;
   -ms-flex: 2;
   flex: 2;
+}
+.content .loginList .selectBox .check input[type="checkbox"]:hover {
+  cursor: pointer;
 }
 .content .loginList .selectedNumber {
   /* Rectangle 6: */

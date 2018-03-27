@@ -9,6 +9,8 @@ import './css/GamePage.css';
 import { END_OF_THIS_QUESTION, GET_OUT_OF_CONTEST } from '../constants/';
 import homeIcon from './img/home.png';
 
+// default question
+
 export default class  extends Component {
   state = {
     cnt: 0,
@@ -82,7 +84,7 @@ export default class  extends Component {
     return (
       <div id="game">
         <div className="leftTabBar">
-          <div className="homeIcon">
+          <div className="homeIcon" onClick={this.props.handleNextContest}>
             <img src={homeIcon} alt="Home" />
           </div>
 
@@ -90,10 +92,15 @@ export default class  extends Component {
           <div className={classnames('tab', { active: !this.state.active })} onClick={this.handleClickTabTwo}>排名</div>
         </div>
 
-        <div className="rightBox">
+        <div 
+          className="rightBox" 
+          style={{ 
+            display: this.state.active ? 'flex': 'none'
+          }}
+        >
           <div className="questionBox">
             <p className="questionNumber">
-              {question.answer.length > 1 ? '多选题' : '单选题'}
+              {question ? (question.answer.length > 1 ? '多选题' : '单选题') : ''}
               {
                 questionNumber 
                 ? questionNumber
@@ -111,8 +118,8 @@ export default class  extends Component {
               <div className="options">
               {
                 question && (
-                  question.question.slice(1).map(item => (
-                    <p className={classnames('paragraph')}>{item}</p>
+                  question.question.slice(1).map((item, key) => (
+                    <p key={key} className={classnames('paragraph')}>{item}</p>
                   ))
                 )
               }
@@ -120,20 +127,55 @@ export default class  extends Component {
             </div>
 
             <div className="questionJump">
-              <button className="closeThisQuestion">结束本题</button>
-              <button className="nextQuestion">下一题</button>
+              <button className="closeThisQuestion" onClick={() => { this.props.endThisQuestion() }}>结束本题</button>
+              <button className="nextQuestion" onClick={() => this.props.handleSelect('single')}>下一题</button>
             </div>
           </div>
 
           <div className="playerBox">
             {
               players.map((player, key) => (
-                <div className={classnames('player', { [ 'player' + key ]: true })}>
+                <div key={key} 
+                  className={
+                    classnames('player', 
+                      { [ 'player' + key ]: true },
+                      { out: player.out },
+                      { promote: player.promote }
+                    )
+                  }
+                  onClick={() => { this.props.handleRes('promote', player.username) } }
+                >
                   <p className="score">{player.score}</p>
                   <p className="name">{player.name}</p>
                 </div>
               ))
             }
+          </div>
+        </div>
+
+        <div className="rankList" style={{ display: !this.state.active ? 'flex' : 'none'}}>
+          <h3 className="rankListHeader">排名列表</h3>
+          <div className="lists">
+            <div className="listHeader">
+              {
+                ['排名', '姓名', '分数'].map((item, key) => (
+                  <p key={key} className={classnames('listHeaderItem', { ['headerItem' + key]: true } )}>
+                    {item}
+                  </p>
+                ))
+              }
+            </div>
+            <div className="listBody">
+            {
+              allUsers.map((user, key) => (
+                <div className="listItem" key={key}>
+                  <p className="listItemContent">1</p>
+                  <p className="listItemContent">{user.name}</p>
+                  <p className="listItemContent">{user.score}</p>
+                </div>
+              ))
+            }
+            </div>
           </div>
         </div>
         

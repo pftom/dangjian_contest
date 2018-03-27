@@ -24,6 +24,9 @@
   margin-top: 77.875px;
   margin-bottom: 60px;
 }
+.leftTabBar .homeIcon:hover {
+  cursor: pointer;
+}
 .leftTabBar .tab {
   text-align: center;
   margin-top: 105px;
@@ -188,6 +191,127 @@
 .rightBox .playerBox .player2 {
   background-image: url('../img/bg3.png');
   margin-top: 14.875px;
+}
+.rightBox .playerBox .player0.out {
+  background-image: url('../img/bg1Error.png');
+}
+.rightBox .playerBox .player1.out {
+  background-image: url('../img/bg2Error.png');
+  margin-top: 14.875px;
+}
+.rightBox .playerBox .player2.out {
+  background-image: url('../img/bg3Error.png');
+  margin-top: 14.875px;
+}
+.rightBox .playerBox .player0.promote {
+  background-image: url('../img/bg1Success.png');
+}
+.rightBox .playerBox .player1.promote {
+  background-image: url('../img/bg2Success.png');
+  margin-top: 14.875px;
+}
+.rightBox .playerBox .player2.promote {
+  background-image: url('../img/bg3Success.png');
+  margin-top: 14.875px;
+}
+.rankList {
+  padding-left: 175px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 89.25px;
+}
+.rankList .rankListHeader {
+  width: 1023.75px;
+  /* 排 名 列 表: */
+  font-family: PingFangSC-Semibold;
+  font-size: 31.5px;
+  color: #605D5D;
+  letter-spacing: 0;
+  text-align: center;
+}
+.rankList .lists {
+  width: 1023.75px;
+}
+.rankList .lists p {
+  margin: 0;
+}
+.rankList .lists .listHeader {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.rankList .lists .listHeader .listHeaderItem {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
+  /* Ranking: */
+  font-family: PingFangSC-Semibold;
+  font-size: 26.25px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  height: 98.875px;
+  line-height: 98.875px;
+  /* Rectangle 9: */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(5%, #7784CD), color-stop(97%, #959FE4));
+  background-image: linear-gradient(90deg, #7784CD 5%, #959FE4 97%);
+}
+.rankList .lists .listHeader .headerItem0 {
+  border-radius: 28.875px 0 0 0;
+}
+.rankList .lists .listHeader .headerItem2 {
+  border-radius: 0 28.875px 0 0;
+}
+.rankList .lists .listItem {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 63px;
+  line-height: 63px;
+}
+.rankList .lists .listItem .listItemContent {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
+  /* 1st 陈 哲 98: */
+  font-family: AndaleMono;
+  font-size: 26.25px;
+  color: #000000;
+  letter-spacing: 0;
+}
+.rankList .lists .listItem:nth-of-type(even) {
+  /* Rectangle: */
+  background: #ECECEC;
+}
+.rankList .lists .listItem:nth-of-type(odd) {
+  /* Rectangle: */
+  background: #FFFFFF;
+}
+.rankList .lists .listItem:first-child {
+  /* Rectangle: */
+  background: #D5EFF9;
+}
+.rankList .lists .listItem:nth-child(2) {
+  /* Rectangle: */
+  background: #BBD5F5;
+}
+.rankList .lists .listItem:nth-child(3) {
+  /* Rectangle: */
+  background: #D5EFF9;
 }
 .isOut {
   color: red;
