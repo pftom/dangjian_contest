@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { message } from 'antd';
 import './css/Login.css';
 import logo from './img/loginLogo.svg';
+import { Helmet } from 'react-helmet';
 
 
 export const error = (msg, duration, closeLogic = () => {}) => {
@@ -54,6 +55,10 @@ export default class  extends Component {
   render() {
     return (
       <div className="loginBox">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>答题登录</title>
+        </Helmet>
         <img src={logo} className="logo"/>
           <input 
             type="username" 
