@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { message } from 'antd';
 import './css/Login.css';
-import logo from './img/logo.png';
+import logo from './img/loginLogo.svg';
 
 
 export const error = (msg, duration, closeLogic = () => {}) => {
@@ -55,15 +55,15 @@ export default class  extends Component {
     return (
       <div className="loginBox">
         <img src={logo} className="logo"/>
-          <label className="label">用户名</label>
           <input 
             type="username" 
             name="username"
             value={this.state.username}
             className="input"
             onChange={this.handleChange}
+            placeholder="请输入您的学号"
           /> <br />
-          <button className="btn btn-red btn-large" onClick={this.handleSubmit}>登  录</button>
+          <button className="loginBtn" onClick={this.handleSubmit}>登  录</button>
       </div>
     );
   }

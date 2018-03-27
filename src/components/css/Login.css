@@ -1,10 +1,59 @@
 .loginBox {
   height: 1vh;
+  margin: 0 auto;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.loginBox ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #B7B7B7;
+}
+.loginBox :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #B7B7B7;
+}
+.loginBox ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #B7B7B7;
+}
+.loginBox :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #B7B7B7;
+}
+.loginBox .input {
+  /* Rectangle 3: */
+  /* Rectangle 3: */
+  background: #FFFFFF;
+  -webkit-box-shadow: 3px 2px 8px 0 #8B8B8B;
+  box-shadow: 3px 2px 8px 0 #8B8B8B;
+  border-radius: 7px;
+  outline: none;
+  display: block;
+  border: none;
+  width: 270.375px;
+  height: 43.75px;
+  margin: 33px auto 26.25px;
+  text-align: center;
+}
+.loginBox .loginBtn {
+  /* Rectangle 3: */
+  background-image: linear-gradient(-206deg, #EEAA7F 13%, #F36629 100%);
+  -webkit-box-shadow: 0 2px 2px 0 #E8CCAE;
+  box-shadow: 0 2px 2px 0 #E8CCAE;
+  border-radius: 7px;
+  width: 270.375px;
+  height: 43.75px;
+  display: block;
+  margin: 33px auto;
 }
 .animation {
   -webkit-transition-property: transform -webkit-transform box-shadow background-color;
   -webkit-transition-duration: .3s;
+  -webkit-transition-property: -webkit-transform -webkit-transform box-shadow background-color;
+  transition-property: -webkit-transform -webkit-transform box-shadow background-color;
   transition-property: transform -webkit-transform box-shadow background-color;
+  transition-property: transform -webkit-transform box-shadow background-color, -webkit-transform -webkit-transform box-shadow background-color;
   transition-duration: .3s;
   cursor: pointer;
   outline: none;
@@ -18,19 +67,6 @@
 .form {
   width: 80%;
   margin: 0 auto;
-}
-.input {
-  outline: none;
-  display: block;
-  width: 100%;
-  border: none;
-  height: 50px;
-  line-height: 1.5;
-  font-size: 20px;
-  font-weight: bolder;
-  padding-left: 10px;
-  background-color: white;
-  box-shadow: 0px 4px 15px -6px #CCC;
 }
 .label {
   font-size: 15px;
@@ -56,21 +92,27 @@
   border-color: #CDD5DD;
   -webkit-transition-property: transform -webkit-transform box-shadow background-color;
   -webkit-transition-duration: .3s;
+  -webkit-transition-property: -webkit-transform -webkit-transform box-shadow background-color;
+  transition-property: -webkit-transform -webkit-transform box-shadow background-color;
   transition-property: transform -webkit-transform box-shadow background-color;
+  transition-property: transform -webkit-transform box-shadow background-color, -webkit-transform -webkit-transform box-shadow background-color;
   transition-duration: .3s;
   cursor: pointer;
   outline: none;
 }
 .btn-gray:hover {
   -webkit-transform: translateY(-4px);
-  -ms-transform: translateY(-4px);
   transform: translateY(-4px);
   -webkit-transition-property: transform -webkit-transform box-shadow background-color;
   -webkit-transition-duration: .3s;
+  -webkit-transition-property: -webkit-transform -webkit-transform box-shadow background-color;
+  transition-property: -webkit-transform -webkit-transform box-shadow background-color;
   transition-property: transform -webkit-transform box-shadow background-color;
+  transition-property: transform -webkit-transform box-shadow background-color, -webkit-transform -webkit-transform box-shadow background-color;
   transition-duration: .3s;
   cursor: pointer;
   outline: none;
+  -webkit-box-shadow: 0 4px 12px #CDD5DD;
   box-shadow: 0 4px 12px #CDD5DD;
 }
 .btn-gray:active {

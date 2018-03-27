@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="54px" viewBox="0 0 88 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="84" height="50" rx="8"></rect>
+        <filter x="-4.8%" y="-4.0%" width="109.5%" height="116.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.911644345   0 0 0 0 0.800687632   0 0 0 0 0.683733259  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="题目new2" transform="translate(-256.000000, -550.000000)">
+            <g id="Group-3" transform="translate(258.000000, 550.000000)">
+                <g id="Rectangle-3">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#F68A5B" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <polyline id="Path-13" stroke="#FFFFFF" stroke-width="2" points="24 25 54 25 45.8783816 34"></polyline>
+                <polyline id="Path-13" stroke="#FFFFFF" stroke-width="2" transform="translate(39.000000, 18.500000) scale(1, -1) translate(-39.000000, -18.500000) " points="24 14 54 14 45.8783816 23"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

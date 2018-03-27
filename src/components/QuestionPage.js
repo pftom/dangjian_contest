@@ -8,6 +8,8 @@ import {
   PROMOTE_CONTEST,
 } from '../constants/';
 
+import nextIcon from './img/next.svg';
+
 export const mapNumberToString = {
   1: 'A',
   2: 'B',
@@ -117,10 +119,17 @@ export default class QuestionPage extends Component {
     const { question } = this.props;
     const isMultiSelect = question.answer.length > 1;
     const options = question.question.slice(1);
+    const questionHeaderArr = question.question[0].split('.');
+    let questionHeader = (
+      <h2 className="questionHeader">
+        <span className="questionNumber">{questionHeaderArr[0]}</span>&nbsp;&nbsp;
+        {questionHeaderArr[1]}
+      </h2>
+    )
 
     return (
       <div id="question">
-        <h2>{question.question[0]}</h2>
+        {questionHeader}
         {
           isMultiSelect
           ? (
@@ -128,7 +137,7 @@ export default class QuestionPage extends Component {
               const key = keyIndex + 1;
               
               return (
-                <p key={key}>
+                <p key={key} className={classnames("questionOption", { active: this.state[mapNumberToString[key]] })}>
                   <input 
                     type="checkbox" 
                     name={mapNumberToString[key]} 
@@ -136,7 +145,7 @@ export default class QuestionPage extends Component {
                     checked={this.state[mapNumberToString[key]]}
                     onChange={this.handleChange} 
                   />
-                  <label htmlFor={mapNumberToString[key]} className={classnames({ active: this.state[mapNumberToString[key]] })}>{item}</label>
+                  <label htmlFor={mapNumberToString[key]}>{item}</label>
                 </p>
               );
             })
@@ -146,7 +155,7 @@ export default class QuestionPage extends Component {
               const key = keyIndex + 1;
 
               return (
-                <p key={key}>
+                <p key={key} className={classnames("questionOption", { active: this.state[mapNumberToString[key]] })}>
                   <input 
                     type="radio"
                     name="option"
@@ -154,13 +163,15 @@ export default class QuestionPage extends Component {
                     checked={this.state[mapNumberToString[key]]}
                     onChange={this.handleChange} 
                   />
-                  <label htmlFor={mapNumberToString[key]} className={classnames({ active: this.state[mapNumberToString[key]] })}>{item}</label>
+                  <label htmlFor={mapNumberToString[key]}>{item}</label>
                 </p>
               );
             })
           )
         }
-        <button onClick={this.handleSubmit}>选择</button>
+        <div className="nextBox">
+          <img src={nextIcon} alt="next" onClick={this.handleSubmit} />
+        </div>
       </div>
     );
   }

@@ -1,10 +1,48 @@
+#question {
+  margin: 0 37.625px;
+}
 #question input[type="checkbox"],
 #question input[type="radio"] {
   visibility: hidden;
 }
-label.active {
-  color: red;
+#question .questionHeader {
+  /* 题目: */
+  /* 题目: */
+  font-family: PingFangSC-Regular;
+  font-size: 19.25px;
+  color: #000000;
+  letter-spacing: 0;
+  margin-bottom: 40px;
+  margin-top: 70px;
 }
-h2 {
-  margin-bottom: 30px;
+#question .questionNumber {
+  font-family: Arial-Black;
+  font-size: 31.5px;
+  color: #FF5F1A;
+  letter-spacing: 0;
+}
+#question .questionOption {
+  border-radius: 7px;
+  border: 1px solid #EF9868;
+  padding: 9.625px 10.5px;
+}
+#question .questionOption label {
+  /* B sdjhjsdks: */
+  font-size: 17.5px;
+  color: #000000;
+  letter-spacing: 0;
+}
+#question .questionOption.active {
+  /* B sdjhjsdks: */
+  background-color: #F68A5B;
+  /* Rectangle 3: */
+  -webkit-box-shadow: 0 2px 2px 0 #E8CCAE;
+  box-shadow: 0 2px 2px 0 #E8CCAE;
+}
+#question .questionOption.active label {
+  color: #ffffff;
+}
+#question .nextBox {
+  text-align: right;
+  margin-top: 28px;
 }

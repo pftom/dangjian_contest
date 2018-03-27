@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="213px" height="199px" viewBox="0 0 213 199" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>LOGO</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="26.1347096%" y1="35.7352872%" x2="85.1913944%" y2="77.43436%" id="linearGradient-1">
+            <stop stop-color="#F5A86D" offset="0%"></stop>
+            <stop stop-color="#E76F3B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="用户扫码登录new2" transform="translate(-80.000000, -129.000000)">
+            <g id="LOGO" transform="translate(78.000000, 44.000000)">
+                <g id="Group-2" transform="translate(10.000000, 0.000000)" fill="url(#linearGradient-1)" font-family="Arial-Black, Arial Black" font-size="230" font-weight="700">
+                    <text id="Q" opacity="0.295233243">
+                        <tspan x="17" y="265">Q</tspan>
+                    </text>
+                    <text id="Q">
+                        <tspan x="0" y="253">Q</tspan>
+                    </text>
+                </g>
+                <g id="Group" transform="translate(0.000000, 206.000000)">
+                    <text id="E" opacity="0.30638587" font-family="Arial-Black, Arial Black" font-size="36" font-weight="700" fill="#EA7B46">
+                        <tspan x="34" y="42">E</tspan>
+                    </text>
+                    <text id="UEDTION" opacity="0.394984149" font-family="Arial-Black, Arial Black" font-size="36" font-weight="700">
+                        <tspan x="4" y="42" fill="#EA7B46">U</tspan>
+                        <tspan x="33.9882812" y="42" fill="#FFFFFF">EDTION</tspan>
+                    </text>
+                    <text id="UESTION" font-family="Arial-Black, Arial Black" font-size="36" font-weight="700">
+                        <tspan x="0" y="40" fill="#EA7B46">U</tspan>
+                        <tspan x="29.9882812" y="40" fill="#FFFFFF">ESTION</tspan>
+                    </text>
+                    <path d="" id="Path-9" stroke="#979797"></path>
+                    <polygon id="Path-11" fill="#EA7B46" points="32.7873711 14.1912575 32.7873711 39.9022146 54.3922888 39.9022146 54.3922888 36.7251073 50.8475581 34.1357775 40.5751072 34.1357775 40.5751072 28.918885 44.971044 28.918885"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
