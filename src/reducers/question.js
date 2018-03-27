@@ -7,6 +7,7 @@ import {
   CLEAR_ALL_STATE,
 
   PROMOTE_CONTEST,
+  INITIAL_GAME,
 } from '../constants/index';
 
 const INITIAL_STATE = {
@@ -89,6 +90,10 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         promote: true,
       };
+    }
+
+    case INITIAL_GAME: {
+      return INITIAL_STATE;
     }
 
     default: return state;

@@ -11,6 +11,8 @@ import {
   CHANGE_QUESTION, 
   NEXT_CONTEST,
   UPDATE_LOGIN_LIST, 
+
+  INITIAL_GAME,
 } from '../constants/index';
 
 class MasterPageContainer extends Component {
@@ -28,6 +30,10 @@ class MasterPageContainer extends Component {
 
     this.socket.on('logged', ({ username }) => {
       dispatch({ type: UPDATE_LOGIN_LIST, payload: { username }});
+    });
+
+    this.socket.on('initGame', () => {
+      dispatch({ type: INITIAL_GAME });
     });
   }
 

@@ -30,7 +30,7 @@
   border-radius: 7px;
   outline: none;
   display: block;
-  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   width: 270.375px;
   height: 43.75px;
   margin: 33px auto 26.25px;

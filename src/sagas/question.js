@@ -1,6 +1,7 @@
 // Here saga effect function
 import { PUSH_NOTIFICATION_ERROR } from '../constants/browserConstants';
 import { call, put, take, fork, cancel, takeEvery } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 
 import {
   GET_QUESTION_SUCCESS,
@@ -52,7 +53,12 @@ function* watchGetQuestion() {
 function* getOut(action) {
   try {
     // dispatch http for notify server this person is out
-    const { username } = action.payload;
+    const { username, type } = action.payload;
+
+    // this action for update players number successfully.
+    if (type === 'endOfThisQuestion') {
+      yield delay(2000);
+    }
     yield call(request.get, nodeBase + getStatusApi.getOut, { username });
     // save the out info to the localStorage, ban to do things.
 

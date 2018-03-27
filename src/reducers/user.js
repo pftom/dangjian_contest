@@ -17,6 +17,8 @@ import {
 
   PROMOTE_CONTEST,
   END_OF_THIS_QUESTION_SUCCESS,
+
+  INITIAL_GAME,
 } from '../constants/';
 
 
@@ -211,6 +213,10 @@ export default (state = INITIAL_STATE, action) => {
       } else {
         return state;
       }
+    }
+
+    case INITIAL_GAME: {
+      return INITIAL_STATE;
     }
     
     default: return state;

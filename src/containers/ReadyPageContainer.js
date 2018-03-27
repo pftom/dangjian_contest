@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
+import { Helmet } from 'react-helmet';
 
 import { Route, Redirect } from 'react-router';
 import { 
@@ -8,6 +9,7 @@ import {
   GET_QUESTION,
   GET_OUT_OF_CONTEST,
   CLEAR_ALL_STATE,
+  INITIAL_GAME,
 } from '../constants/index';
 import { nodeBase } from '../config/index';
 
@@ -44,9 +46,13 @@ class ReadyPageContainer extends Component {
 
     this.socket.on('endOfThisQuestion', () => {
       if (!promote) {
-        dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: token }});
+        dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: token, type: 'endOfThisQuestion' }});
       }
-    })
+    });
+
+    this.socket.on('initGame', () => {
+      dispatch({ type: INITIAL_GAME });
+    });
   }
 
   componentDidUpdate() {
@@ -85,6 +91,9 @@ class ReadyPageContainer extends Component {
       dispatch 
     } = this.props;
 
+    // change html title
+    let htmlTitle = '党建答题比赛';
+
     // the final control flow function
     let returnComponent = null;
 
@@ -95,9 +104,11 @@ class ReadyPageContainer extends Component {
       return <Redirect to="/login" />;
     } else if (token && ((!question && !(out || promote || endThisQuestion)) || next)) {
       // correspond to the loginSuccess state
+      htmlTitle = '登录成功';
       returnComponent = <LoginSuccessPage />;
     } else if (token && question && !(out || promote || endThisQuestion)) {
       // correspond to the answer question state
+      htmlTitle = '答题页面';
       returnComponent = (
         <QuestionPage 
           question={question} 
@@ -108,14 +119,20 @@ class ReadyPageContainer extends Component {
       );
     } else if (token && question && promote) {
       // correspond to the promote Page state
+      htmlTitle = '晋级成功';
       returnComponent = <PromotePage />
     } else {
+      htmlTitle = '晋级失败';
       // correspond to the out Page state
       returnComponent = <OutPage />
     }
 
     return (
       <div style={{ height: '100%' }}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{htmlTitle}</title>
+        </Helmet>
         {returnComponent}
       </div>
     )
