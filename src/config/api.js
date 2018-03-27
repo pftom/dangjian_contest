@@ -3,7 +3,9 @@
  *  
  */ 
 
-const nodeBase = 'http://powerformer.com:3000';
+// const nodeBase = 'http://powerformer.com:3000';
+const nodeBase = 'http://localhost:4000';
+
 
  const questionApi = (id) => ({
    getSingleOption: `/questions/single/${id}/`,
