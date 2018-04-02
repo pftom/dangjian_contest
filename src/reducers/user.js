@@ -27,6 +27,7 @@ const INITIAL_STATE = {
   isLogin: false,
   loginSuccess: false,
   loginError: false,
+  loginRepeat: false,
 
   allUsers: [],
   players: [],
@@ -51,6 +52,7 @@ export default (state = INITIAL_STATE, action) => {
         isLogin: true,
         loginSuccess: false,
         loginError: false,
+        loginRepeat: false,
       };
 
     case LOGIN_SUCCESS:
@@ -63,11 +65,12 @@ export default (state = INITIAL_STATE, action) => {
       };
     
     case LOGIN_ERROR:
-      
+      const { logged } = action.e;
       return {
         ...state,
         isLogin: false,
         loginError: true,
+        loginRepeat: logged ? true : false,
       };
 
     case ADD_PLAYERS: {

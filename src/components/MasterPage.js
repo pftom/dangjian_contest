@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Button } from 'antd';
 import { message } from 'antd';
 import classnames from 'classnames';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
+import $ from 'jquery';
 
 import './css/MasterPage.css';
 import { 
@@ -16,20 +17,11 @@ import qrCode from './img/qrCode.png';
 const hintArray = [
   {
     type: '比赛规则',
-    content: `但是解放后获得解放后的好时机啊哈风机打发后；
-    打击阿富汗浪费哈大家发；恢复方式；啊哈风的
-    第卅九分裤离开的风景看撒到家打卡机空间康师
-    啊看风景；将阿飞啊减肥；附近的看返回快结束
-    达卡附近的哈的返回看电视返回山东焕发健康哈
-    发空间活动多久卡号凡傅`,
+    content: `console.log('Happy Hacking!');`,
   },
   {
     type: '奖励机制',
-    content: `但是解放后获得解放后的好时机啊哈风机打发后；
-    打击阿富汗浪费哈大家发；恢复方式；啊哈风的
-    第卅九分裤离开的风景看撒到家打卡机空间康师
-    啊看风景；将阿飞啊减肥；附近的看返回快结束
-    达卡附近的哈的返回傅`,
+    content: `console.log('那必须滴！');`,
   },
 ];
 
@@ -55,15 +47,33 @@ export default class extends React.Component {
     const value = target.checked;
     const id = target.id;
 
-    this.setState({
-      [id]: value,
-    });
+    // how many checked, if checked > 3, stop it
+    const howManyChecked = Object.values(this.state).filter(value => value);
+    if (value && howManyChecked.length >= 3) {
+      message.success('Sorry， 只能选择三名选手哦 ~');
+    } else {
+      this.setState({
+        [id]: value,
+      });
+    }
   }
 
   error = (msg, duration, afterClose = () => {}) => {
     message.error(msg, duration, () => {
       afterClose();
     });
+  }
+
+  handleClick = (event) => {
+    const target = event.target;
+    console.log('target', target.tagName);
+    const needCancelBubbles = ['LABEL', 'INPUT'];
+    if (needCancelBubbles.includes(target.tagName)) {
+      return;
+    }
+    
+    const parent = $(target).parent();
+    $(parent).find('input').click();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -139,8 +149,8 @@ export default class extends React.Component {
         <div className="content">
           <div className="hint">
             {
-              hintArray.map(hintItem => (
-                <div className="hintItem">
+              hintArray.map((hintItem, key) => (
+                <div className="hintItem" key={key}>
                   <h4 className="hintHeader">{hintItem.type}</h4>
                   <p className="hintContent">{hintItem.content}</p>
                 </div>
@@ -162,7 +172,7 @@ export default class extends React.Component {
             <div className="selectBox">
             {
               allUsers.map((item, key) => (
-                <div key={key} className="selectItem">
+                <div key={key} className="selectItem" onClick={this.handleClick}>
                   <p className="userId">{item.id}</p>
                   <label htmlFor={item.username} className={classnames({ active: this.state[item.username] }, 'userLabel')}>{item.name}</label>
                   <p className="loginStatus">

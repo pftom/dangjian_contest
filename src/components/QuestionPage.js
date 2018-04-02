@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { message } from 'antd';
 import classnames from 'classnames';
+import $ from 'jquery';
 
 import './css/QuestionPage.css';
 import {
@@ -63,6 +64,11 @@ export default class QuestionPage extends Component {
     }
   }
 
+  handleClick = (event) => {
+    const target = event.target;
+    $(target).find('input').click();
+  }
+
   handleSubmit = () => {
     const { question, token, dispatch } = this.props;
     const isMultiSelect = question.answer.length > 1;
@@ -123,7 +129,7 @@ export default class QuestionPage extends Component {
     let questionHeader = (
       <h2 className="questionHeader">
         <span className="questionNumber">{questionHeaderArr[0]}</span>&nbsp;&nbsp;
-        {questionHeaderArr[1]}
+        <span className="optionFlag">{ isMultiSelect ? '[多选题]' : '[单选题]'}</span>{questionHeaderArr[1]}
       </h2>
     )
 
@@ -137,7 +143,7 @@ export default class QuestionPage extends Component {
               const key = keyIndex + 1;
               
               return (
-                <p key={key} className={classnames("questionOption", { active: this.state[mapNumberToString[key]] })}>
+                <p key={key} onClick={this.handleClick} className={classnames("questionOption", { active: this.state[mapNumberToString[key]] })}>
                   <input 
                     type="checkbox" 
                     name={mapNumberToString[key]} 
@@ -155,7 +161,7 @@ export default class QuestionPage extends Component {
               const key = keyIndex + 1;
 
               return (
-                <p key={key} className={classnames("questionOption", { active: this.state[mapNumberToString[key]] })}>
+                <p key={key} onClick={this.handleClick} className={classnames("questionOption", { active: this.state[mapNumberToString[key]] })}>
                   <input 
                     type="radio"
                     name="option"

@@ -31,8 +31,8 @@ function* login(action) {
     yield localStorage.setItem('token', res.username);
     yield put({ type: LOGIN_SUCCESS, payload: { token: res.username } });
   } catch (e) {
-    console.log('e', e);
-    yield put({ type: LOGIN_ERROR });
+    const errMsg = yield e;
+    yield put({ type: LOGIN_ERROR, e: errMsg });
   }
 }
 

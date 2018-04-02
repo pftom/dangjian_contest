@@ -26,7 +26,7 @@ class LoginContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { loginSuccess, loginError, dispatch, token } = nextProps;
+    const { loginSuccess, loginError, dispatch, token, loginRepeat } = nextProps;
 
     if (loginSuccess) {
       success('登录成功！');
@@ -40,7 +40,11 @@ class LoginContainer extends Component {
     }
 
     if (loginError) {
-      error('登录失败！您的用户名不对哦 ~');
+      if (loginRepeat) {
+        error('Sorry，此用户已经登录了哦 ~');
+      } else {
+        error('登录失败！您的用户名不对哦 ~');
+      }
     }
   }
 
@@ -49,6 +53,7 @@ class LoginContainer extends Component {
       loginSuccess,
       loginError,
       dispatch,
+      loginRepeat,
     } = this.props;
 
     return(
@@ -58,6 +63,7 @@ class LoginContainer extends Component {
         loginSuccess={loginSuccess}
         loginError={loginError}
         dispatch={dispatch}
+        loginRepeat={loginRepeat}
       />
     );
   }
@@ -67,6 +73,7 @@ const mapStateToProps = (state) => ({
   loginSuccess: state.user.loginSuccess,
   loginError: state.user.loginError,
   token: state.user.token,
+  loginRepeat: state.user.loginRepeat,
  });
 
 export default connect(mapStateToProps, null)(LoginContainer);

@@ -18538,6 +18538,7 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   margin-left: 39px;
   margin-right: 39px;
   margin-top: -94px;
+  padding-bottom: 40px;
 }
 .content .start .imgBox {
   margin-top: 79px;
@@ -18604,6 +18605,9 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   line-height: 70px;
   border-bottom: 1px solid #C4BABA;
   text-indent: 30px;
+}
+.content .loginList .selectBox .selectItem:hover {
+  cursor: pointer;
 }
 .content .loginList .selectBox .userId {
   /* 08: */
