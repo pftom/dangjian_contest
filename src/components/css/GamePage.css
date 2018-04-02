@@ -67,6 +67,24 @@
   width: 947.625px;
   padding-bottom: 40px;
 }
+.rightBox .questionBox .questionBoxHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.rightBox .questionBox .questionBoxHeader .countDown {
+  /* 10: */
+  font-family: PingFangSC-Regular;
+  font-size: 87.5px;
+  color: #000000;
+  letter-spacing: 0;
+  vertical-align: middle;
+  margin-top: 36px;
+  margin-right: 100px;
+}
 .rightBox .questionBox .questionNumber {
   margin-left: 20.125px;
   margin-top: 70px;
@@ -115,7 +133,6 @@
 }
 .rightBox .questionBox .questionJump {
   margin-left: 100.625px;
-  margin-right: 100.625px;
   margin-top: 99.75px;
   text-align: right;
 }
@@ -150,6 +167,7 @@
   font-size: 26.25px;
   color: #FFFFFF;
   letter-spacing: 0;
+  margin-right: 42.875px;
 }
 .rightBox .playerBox {
   margin-left: 49.875px;

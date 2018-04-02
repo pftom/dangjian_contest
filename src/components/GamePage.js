@@ -13,26 +13,13 @@ import homeIcon from './img/home.png';
 
 export default class  extends Component {
   state = {
-    cnt: 0,
-    active: false,
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const that = this;
-    if (nextProps.question !== this.props.question) {
-      this.timer = setInterval(() => {
-        that.setState((prevState, props) => {
-          return {
-            cnt: prevState.cnt + 1,
-          };
-        })
-      }, 1000);
-    }
+    cnt: 5,
+    active: true,
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { dispatch, players } = this.props;
-    if (this.state.cnt >= 10) {
+    if (this.state.cnt <= 0) {
       players.map(player => {
         // 
         if (player.promote || player.out) {
@@ -44,9 +31,20 @@ export default class  extends Component {
       dispatch({ type: END_OF_THIS_QUESTION });
       clearInterval(this.timer);
       this.setState({
-        cnt: 0,
+        cnt: 5,
       });
     }
+  }
+
+  handleCount = () => {
+    const that = this;
+    this.timer = setInterval(() => {
+      that.setState((prevState, props) => {
+        return {
+          cnt: prevState.cnt - 1,
+        };
+      })
+    }, 1000);
   }
 
   handleClickTabOne = () => {
@@ -103,14 +101,19 @@ export default class  extends Component {
           }}
         >
           <div className="questionBox">
-            <p className="questionNumber">
-              {question ? (question.answer.length > 1 ? '多选题' : '单选题') : ''}
-              {
-                questionNumber 
-                ? questionNumber
-                : '暂无'
-              }
-            </p>
+            <div className="questionBoxHeader">
+              <p className="questionNumber">
+                {question ? (question.answer.length > 1 ? '多选题' : '单选题') : ''}
+                {
+                  questionNumber 
+                  ? questionNumber
+                  : '暂无'
+                }
+              </p>
+              <p className="countDown">
+                {this.state.cnt}
+              </p>
+            </div>
 
             <div className="question">
               {
@@ -132,7 +135,9 @@ export default class  extends Component {
 
             <div className="questionJump">
               <button className="closeThisQuestion" onClick={() => { this.props.endThisQuestion() }}>结束本题</button>
-              <button className="nextQuestion" onClick={() => this.props.handleSelect('single')}>下一题</button>
+              <button className="closeThisQuestion" onClick={this.handleCount}>开始计时</button>
+              <button className="nextQuestion" onClick={() => this.props.handleSelect('single')}>单选题</button>
+              <button className="nextQuestion" onClick={() => this.props.handleSelect('multiple')}>多选题</button>
             </div>
           </div>
 

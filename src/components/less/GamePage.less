@@ -80,6 +80,26 @@
     width: 1083px * @px2dp;
     padding-bottom: 40px;
 
+    .questionBoxHeader {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      
+      .countDown {
+        /* 10: */
+        font-family: PingFangSC-Regular;
+        font-size: 100px * @px2dp;
+        color: #000000;
+        letter-spacing: 0;
+        vertical-align: middle;
+        margin-top: 36px;
+        margin-right: 100px;
+      }
+    }
+
     .questionNumber {
       margin-left: 23px * @px2dp;
       margin-top: 80px * @px2dp;
@@ -135,7 +155,6 @@
 
     .questionJump {
       margin-left: 115px * @px2dp;
-      margin-right: 115px * @px2dp;
       margin-top: 114px * @px2dp;
 
       text-align: right;
@@ -174,6 +193,7 @@
         font-size: 30px * @px2dp;
         color: #FFFFFF;
         letter-spacing: 0;
+        margin-right: 49px * @px2dp;
       }
     }
   }
