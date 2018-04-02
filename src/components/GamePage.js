@@ -14,7 +14,7 @@ import homeIcon from './img/home.png';
 export default class  extends Component {
   state = {
     cnt: 0,
-    active: true,
+    active: false,
   }
 
   componentWillReceiveProps(nextProps) {
@@ -80,6 +80,10 @@ export default class  extends Component {
 
       // }
     }
+
+    // players lists
+    const rankPlayers = allUsers.filter(user => user.isPlayer).sort((user1, user2) => user1.score < user2.score);
+    const rankAudience = allUsers.filter(user => !user.isPlayer).sort((user1, user2) => user1.score < user2.score);
 
     return (
       <div id="game">
@@ -154,27 +158,54 @@ export default class  extends Component {
         </div>
 
         <div className="rankList" style={{ display: !this.state.active ? 'flex' : 'none'}}>
-          <h3 className="rankListHeader">排名列表</h3>
-          <div className="lists">
-            <div className="listHeader">
+          <div className="rankListLeft">
+            <h3 className="rankListHeader">选手列表</h3>
+            <div className="lists">
+              <div className="listHeader">
+                {
+                  ['排名', '姓名', '分数'].map((item, key) => (
+                    <p key={key} className={classnames('listHeaderItem', { ['headerItem' + key]: true } )}>
+                      {item}
+                    </p>
+                  ))
+                }
+              </div>
+              <div className="listBody">
               {
-                ['排名', '姓名', '分数'].map((item, key) => (
-                  <p key={key} className={classnames('listHeaderItem', { ['headerItem' + key]: true } )}>
-                    {item}
-                  </p>
+                rankPlayers.map((user, key) => (
+                  <div className="listItem" key={key}>
+                    <p className="listItemContent">{key + 1}</p>
+                    <p className="listItemContent">{user.name}</p>
+                    <p className="listItemContent">{user.score}</p>
+                  </div>
                 ))
               }
+              </div>
             </div>
-            <div className="listBody">
-            {
-              allUsers.map((user, key) => (
-                <div className="listItem" key={key}>
-                  <p className="listItemContent">1</p>
-                  <p className="listItemContent">{user.name}</p>
-                  <p className="listItemContent">{user.score}</p>
-                </div>
-              ))
-            }
+          </div>
+          <div className="rankListRight">
+            <h3 className="rankListHeader">观众</h3>
+            <div className="lists">
+              <div className="listHeader">
+                {
+                  ['排名', '姓名', '分数'].map((item, key) => (
+                    <p key={key} className={classnames('listHeaderItem', { ['headerItem' + key]: true } )}>
+                      {item}
+                    </p>
+                  ))
+                }
+              </div>
+              <div className="listBody">
+              {
+                rankAudience.map((user, key) => (
+                  <div className="listItem" key={key}>
+                    <p className="listItemContent">{key + 1}</p>
+                    <p className="listItemContent">{user.name}</p>
+                    <p className="listItemContent">{user.score}</p>
+                  </div>
+                ))
+              }
+              </div>
             </div>
           </div>
         </div>

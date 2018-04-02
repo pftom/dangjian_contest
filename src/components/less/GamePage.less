@@ -265,17 +265,17 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   padding-top: 102px * @px2dp;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+  .rankListLeft {
+    margin-right: 140px;
+  }
   
   .rankListHeader {
-    width: 1170px * @px2dp;
+    width: 1170px / 2 * @px2dp;
     /* 排 名 列 表: */
     font-family: PingFangSC-Semibold;
     font-size: 36px * @px2dp;
@@ -285,7 +285,7 @@
   }
 
   .lists {
-    width: 1170px * @px2dp;
+    width: 1170px / 2 * @px2dp;
 
     p {
       margin: 0;

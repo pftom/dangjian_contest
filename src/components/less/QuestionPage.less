@@ -1,6 +1,7 @@
 @px2dp: 0.875;
 
-#question { 
+#question {
+  overflow: scroll;
   input[type="checkbox"], input[type="radio"] {
     visibility: hidden;
   }
@@ -55,7 +56,8 @@
   } 
 
   .nextBox {
-    text-align: right;
-    margin-top: 32px * @px2dp;
+    position: fixed;
+    right: 43px * @px2dp;
+    bottom: 70px;
   }
 }
