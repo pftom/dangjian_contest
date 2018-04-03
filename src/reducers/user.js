@@ -18,6 +18,8 @@ import {
   PROMOTE_CONTEST,
   END_OF_THIS_QUESTION_SUCCESS,
 
+  UPDATE_PLAYERS,
+
   INITIAL_GAME,
 } from '../constants/';
 
@@ -128,7 +130,7 @@ export default (state = INITIAL_STATE, action) => {
       players = players.map((player) => {
         let nowPlayer = player;
         if (nowUser.username === player.username) {
-          nowPlayer = nowUser;
+          nowPlayer = { ...nowPlayer, out: nowUser.out };
         }
         return nowPlayer;
       });
@@ -138,6 +140,42 @@ export default (state = INITIAL_STATE, action) => {
         if (nowUser.username === user.username) {
           newUser = nowUser;
         }
+        return newUser;
+      })
+
+      return {
+        ...state,
+        allUsers,
+        players,
+      };
+    }
+
+    case UPDATE_PLAYERS: {
+      // need update user
+      const { newPlayers } = action.payload;
+      let { players, allUsers } = state;
+
+      players = players.map(player => {
+        let newPlayer = player;
+
+        newPlayers.map(user => {
+          if (user.username === player.username) {
+            newPlayer = { ...player, score: user.score };
+          }
+        });
+
+        return newPlayer;
+      });
+
+      allUsers = allUsers.map(user => {
+        let newUser = user;
+
+        newPlayers.map(player => {
+          if (player.username === user.username) {
+            newUser = { ...user, score: player.score };
+          }
+        });
+
         return newUser;
       })
 

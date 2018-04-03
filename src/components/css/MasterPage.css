@@ -18534,6 +18534,7 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   background: #FFFFFF;
   -webkit-box-shadow: 0 5px 27px 0 rgba(128, 123, 123, 0.5);
   box-shadow: 0 5px 27px 0 rgba(128, 123, 123, 0.5);
+  border-top: 10px solid #1056B6;
   text-align: center;
   margin-left: 39px;
   margin-right: 39px;

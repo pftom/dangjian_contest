@@ -164,7 +164,7 @@ export default class  extends Component {
 
         <div className="rankList" style={{ display: !this.state.active ? 'flex' : 'none'}}>
           <div className="rankListLeft">
-            <h3 className="rankListHeader">选手列表</h3>
+            <h3 className="rankListHeader">选手排名</h3>
             <div className="lists">
               <div className="listHeader">
                 {
@@ -189,7 +189,7 @@ export default class  extends Component {
             </div>
           </div>
           <div className="rankListRight">
-            <h3 className="rankListHeader">观众</h3>
+            <h3 className="rankListHeader">观众排名</h3>
             <div className="lists">
               <div className="listHeader">
                 {

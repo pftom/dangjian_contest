@@ -19,6 +19,8 @@ import {
   PUSH_NOTIFICATION,
 
   END_OF_THIS_QUESTION,
+  UPDATE_PLAYERS,
+  INITIAL_GAME,
 } from '../constants/index';
 
 class GameContainer extends Component {
@@ -36,6 +38,10 @@ class GameContainer extends Component {
       dispatch({ type: UPDATE_USERS, payload: { nowUser }});
     });
 
+    this.socket.on('players', (players) => {
+      dispatch({ type: UPDATE_PLAYERS, payload: { newPlayers: players }});
+    });
+
 
     // start next question
     this.socket.on('push notification', ({ option, id }) => {
@@ -46,6 +52,10 @@ class GameContainer extends Component {
     //  start next game
     this.socket.on('next contest', (msg) => {
       dispatch({ type: CLEAR_ALL_STATE });
+    });
+
+    this.socket.on('initGame', () => {
+      dispatch({ type: INITIAL_GAME });
     });
   }
 

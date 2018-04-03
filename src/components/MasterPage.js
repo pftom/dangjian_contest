@@ -21,7 +21,7 @@ const hintArray = [
   },
   {
     type: '奖励机制',
-    content: `console.log('那必须滴！');`,
+    content: `console.log('那必须滴!');`,
   },
 ];
 

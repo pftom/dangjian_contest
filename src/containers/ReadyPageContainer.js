@@ -27,6 +27,10 @@ class ReadyPageContainer extends Component {
     super(props);
 
     this.socket = io(nodeBase);
+
+    this.state = {
+      promote: false,
+    };
   }
 
   componentDidMount() {
@@ -44,15 +48,23 @@ class ReadyPageContainer extends Component {
       dispatch({ type: CLEAR_ALL_STATE });
     });
 
-    this.socket.on('endOfThisQuestion', () => {
-      if (!promote) {
-        dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: token, type: 'endOfThisQuestion' }});
-      }
-    });
 
     this.socket.on('initGame', () => {
       dispatch({ type: INITIAL_GAME });
     });
+
+    this.socket.on('endOfThisQuestion', () => {
+      if (!this.state.promote) {
+        dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: token, type: 'endOfThisQuestion' }});
+      }
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      promote: nextProps.promote,
+    });
+    
   }
 
   componentDidUpdate() {

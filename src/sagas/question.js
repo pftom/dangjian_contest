@@ -22,6 +22,10 @@ import {
   END_OF_THIS_QUESTION,
   END_OF_THIS_QUESTION_SUCCESS,
   END_OF_THIS_QUESTION_ERROR,
+
+  PROMOTE_CONTEST,
+  PROMOTE_CONTEST_SUCCESS,
+  PROMOTE_CONTEST_ERROR,
 } from '../constants/'; 
 
 import { getStatusApi, nodeBase, noticeApi, questionApi, request } from '../config/';
@@ -70,6 +74,25 @@ function* getOut(action) {
 
 function* watchGetOut() {
   yield takeEvery(GET_OUT_OF_CONTEST, getOut);
+}
+
+
+function* getPromote(action) {
+  try {
+    // dispatch http for notify server this person is out
+    const { username } = action.payload;
+
+    yield call(request.get, nodeBase + getStatusApi.getPromote, { username });
+    // save the out info to the localStorage, ban to do things.
+
+    yield put({ type: PROMOTE_CONTEST_SUCCESS });
+  } catch (e) {
+    yield put({ type: PROMOTE_CONTEST_ERROR });
+  }
+}
+
+function* watchGetPromote() {
+  yield takeEvery(PROMOTE_CONTEST, getPromote);
 }
 
 function* endOfThisQuestion(action) {
@@ -151,6 +174,7 @@ function* watchNextContest() {
 export {
   watchGetQuestion,
   watchGetOut,
+  watchGetPromote,
   watchClearAllState,
   watchPushNotification,
   watchNextContest,
