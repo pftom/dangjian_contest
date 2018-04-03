@@ -2744,11 +2744,11 @@ mark {
   user-select: none;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   position: relative;
-  min-width: 110px;
-  height: 40px;
-  border-radius: 20px;
-  font-size: 16px;
-  margin: 20px;
+  min-width: 58.663px;
+  height: 21.332px;
+  border-radius: 10.666px;
+  font-size: 8.5328px;
+  margin: 10.666px;
   -webkit-transition-property: transform -webkit-transform box-shadow background-color;
   -webkit-transition-duration: .3s;
   -webkit-transition-property: -webkit-transform -webkit-transform box-shadow background-color;
@@ -5359,11 +5359,11 @@ a.ant-btn-sm {
   user-select: none;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   position: relative;
-  min-width: 110px;
-  height: 40px;
-  border-radius: 20px;
-  font-size: 16px;
-  margin: 20px;
+  min-width: 58.663px;
+  height: 21.332px;
+  border-radius: 10.666px;
+  font-size: 8.5328px;
+  margin: 10.666px;
   -webkit-transition-property: transform -webkit-transform box-shadow background-color;
   -webkit-transition-duration: .3s;
   -webkit-transition-property: -webkit-transform -webkit-transform box-shadow background-color;
@@ -18468,7 +18468,7 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
 }
 .header {
   width: 100%;
-  height: 166px;
+  height: 88.5278px;
   line-height: 166px;
   background: -webkit-gradient(linear, left top, right top, from(#6132A2), color-stop(rgba(97, 50, 162, 0.53)), to(#6538A5));
   background: linear-gradient(to right, #6132A2, rgba(97, 50, 162, 0.53), #6538A5);
@@ -18495,11 +18495,11 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  margin-left: 46px;
+  margin-left: 24.5318px;
 }
 .content .hint .hintItem {
-  border-top: 10px solid #1056B6;
-  margin-top: 38px;
+  border-top: 5.333px solid #1056B6;
+  margin-top: 20.2654px;
   /* Rectangle 3: */
   opacity: 0.99;
   background: #FFFFFF;
@@ -18509,22 +18509,22 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
 .content .hint .hintItem .hintHeader {
   /* 比赛规则: */
   font-family: PingFangSC-Semibold;
-  font-size: 36px;
+  font-size: 19.1988px;
   color: #000000;
   letter-spacing: 0;
   text-align: left;
-  margin-left: 35px;
-  margin-top: 16px;
+  margin-left: 18.6655px;
+  margin-top: 8.5328px;
 }
 .content .hint .hintItem .hintContent {
   /* 但是解放后获得解放后的好时机啊哈风机打发: */
   font-family: PingFangSC-Regular;
-  font-size: 20px;
+  font-size: 10.666px;
   color: #000000;
   letter-spacing: 0;
-  padding-left: 37px;
-  padding-right: 37px;
-  padding-bottom: 15px;
+  padding-left: 19.7321px;
+  padding-right: 19.7321px;
+  padding-bottom: 7.9995px;
 }
 .content .start {
   -webkit-box-flex: 1;
@@ -18536,22 +18536,22 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   box-shadow: 0 5px 27px 0 rgba(128, 123, 123, 0.5);
   border-top: 10px solid #1056B6;
   text-align: center;
-  margin-left: 39px;
-  margin-right: 39px;
-  margin-top: -94px;
-  padding-bottom: 40px;
+  margin-left: 20.7987px;
+  margin-right: 20.7987px;
+  margin-top: -50.1302px;
+  padding-bottom: 21.332px;
 }
 .content .start .imgBox {
-  margin-top: 79px;
+  margin-top: 42.1307px;
 }
 .content .start .startHeader {
   /* 请在座参赛选手扫描 上图二维码进入比赛: */
   font-family: PingFangSC-Regular;
-  font-size: 48px;
+  font-size: 25.5984px;
   color: #0E0E0E;
   letter-spacing: 0;
-  margin-top: 54px;
-  margin-bottom: 50px;
+  margin-top: 28.7982px;
+  margin-bottom: 26.665px;
 }
 .content .start .startBtn {
   /* Rectangle: */
@@ -18559,11 +18559,11 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   -webkit-box-shadow: 0 9px 17px 0 rgba(16, 34, 185, 0.5);
   box-shadow: 0 9px 17px 0 rgba(16, 34, 185, 0.5);
   border-radius: 8px;
-  padding: 15px 111px;
+  padding: 7.9995px 59.1963px;
   background-color: white;
   /* 开始比赛: */
   font-family: PingFangSC-Semibold;
-  font-size: 40px;
+  font-size: 21.332px;
   color: #0E10B5;
   letter-spacing: 0;
 }
@@ -18579,33 +18579,33 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   background: #FFFFFF;
   -webkit-box-shadow: 0 7px 30px 0 rgba(128, 123, 123, 0.5);
   box-shadow: 0 7px 30px 0 rgba(128, 123, 123, 0.5);
-  margin-right: 35px;
-  margin-top: 38px;
+  margin-right: 18.6655px;
+  margin-top: 20.2654px;
   border-left: 10px solid #1056B6;
 }
 .content .loginList .loginHeader {
   /* 登陆情况: */
   font-family: PingFangSC-Semibold;
-  font-size: 36px;
+  font-size: 19.1988px;
   color: #000000;
   letter-spacing: 0;
   border-bottom: 1px solid #C4BABA;
-  margin: 38px 35px;
+  margin: 20.2654px 18.6655px;
 }
 .content .loginList .selectBox {
-  height: 400px;
+  height: 213.32px;
   overflow: scroll;
 }
 .content .loginList .selectBox .selectItem {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 35px;
-  margin-right: 35px;
-  height: 70px;
-  line-height: 70px;
+  margin-left: 18.6655px;
+  margin-right: 18.6655px;
+  height: 37.331px;
+  line-height: 37.331px;
   border-bottom: 1px solid #C4BABA;
-  text-indent: 30px;
+  text-indent: 15.999px;
 }
 .content .loginList .selectBox .selectItem:hover {
   cursor: pointer;
@@ -18613,7 +18613,7 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
 .content .loginList .selectBox .userId {
   /* 08: */
   font-family: PingFangSC-Semibold;
-  font-size: 36px;
+  font-size: 19.1988px;
   color: #C00000;
   letter-spacing: 0;
   -webkit-box-flex: 2,;
@@ -18623,7 +18623,7 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
 .content .loginList .selectBox .userLabel {
   /* 张艺凡: */
   font-family: PingFangSC-Semibold;
-  font-size: 18px;
+  font-size: 9.5994px;
   color: #31A4FE;
   letter-spacing: 0;
   -webkit-box-flex: 3;
@@ -18636,7 +18636,7 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
 .content .loginList .selectBox .loginStatus {
   /* 已登陆: */
   font-family: PingFangSC-Semibold;
-  font-size: 18px;
+  font-size: 9.5994px;
   color: #BDBDBF;
   letter-spacing: 0;
   -webkit-box-flex: 3;
@@ -18660,22 +18660,22 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   margin-left: 15%;
   margin-right: 15%;
   width: 70%;
-  height: 85px;
-  line-height: 85px;
+  height: 45.3305px;
+  line-height: 45.3305px;
   position: absolute;
   bottom: 0px;
   /* 已选参赛者两名，还差一名: */
   font-family: PingFangSC-Semibold;
-  font-size: 18px;
+  font-size: 9.5994px;
   color: #0E10B5;
   letter-spacing: 0;
 }
 .btn {
-  min-width: 110px;
-  height: 40px;
-  border-radius: 20px;
-  font-size: 16px;
-  margin: 20px;
+  min-width: 58.663px;
+  height: 21.332px;
+  border-radius: 10.666px;
+  font-size: 8.5328px;
+  margin: 10.666px;
   -webkit-transition-property: transform -webkit-transform box-shadow background-color;
   -webkit-transition-duration: .3s;
   -webkit-transition-property: -webkit-transform -webkit-transform box-shadow background-color;

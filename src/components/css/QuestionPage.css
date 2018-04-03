@@ -1,6 +1,6 @@
 #question {
   overflow: scroll;
-  margin: 0 37.625px;
+  margin: 0 22.9319px;
 }
 #question input[type="checkbox"],
 #question input[type="radio"] {
@@ -10,7 +10,7 @@
   /* 题目: */
   /* 题目: */
   font-family: PingFangSC-Regular;
-  font-size: 19.25px;
+  font-size: 11.7326px;
   color: #000000;
   letter-spacing: 0;
   margin-bottom: 40px;
@@ -21,18 +21,18 @@
 }
 #question .questionNumber {
   font-family: Arial-Black;
-  font-size: 31.5px;
+  font-size: 19.1988px;
   color: #FF5F1A;
   letter-spacing: 0;
 }
 #question .questionOption {
-  border-radius: 7px;
+  border-radius: 4.2664px;
   border: 1px solid #EF9868;
-  padding: 9.625px 10.5px;
+  padding: 5.8663px 6.3996px;
 }
 #question .questionOption label {
   /* B sdjhjsdks: */
-  font-size: 17.5px;
+  font-size: 10.666px;
   color: #000000;
   letter-spacing: 0;
 }
@@ -48,6 +48,6 @@
 }
 #question .nextBox {
   position: fixed;
-  right: 37.625px;
+  right: 22.9319px;
   bottom: 50px;
 }

@@ -13,14 +13,14 @@
   background-image: linear-gradient(-206deg, #EEAA7F 13%, #F36629 100%);
   -webkit-box-shadow: 0 2px 2px 0 #E8CCAE;
   box-shadow: 0 2px 2px 0 #E8CCAE;
-  border-radius: 7px;
-  width: 270.375px;
-  height: 43.75px;
+  border-radius: 4.2664px;
+  width: 164.7897px;
+  height: 26.665px;
   display: block;
   margin: 33px auto;
   /* 登 陆: */
   font-family: PingFangSC-Semibold;
-  font-size: 21px;
+  font-size: 12.7992px;
   color: #FFFFFF;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   border: none;
@@ -32,21 +32,21 @@
 .loginBox .loginSuccess {
   /* 登陆成功！: */
   font-family: PingFangSC-Semibold;
-  font-size: 31.5px;
+  font-size: 19.1988px;
   color: #FF5F1A;
   text-indent: 24px;
 }
 .loginBox .ready {
   /* 等待比赛开始: */
   font-family: Arial-BoldMT;
-  font-size: 21px;
+  font-size: 12.7992px;
   color: #F5B78F;
-  margin-bottom: 53.375px;
+  margin-bottom: 32.5313px;
 }
 .loginBox .nextQuestion {
   /* 请耐心等待下一题…: */
   font-family: PingFangSC-Semibold;
-  font-size: 17.5px;
+  font-size: 10.666px;
   color: #EA5E21;
   margin-top: 109px;
 }

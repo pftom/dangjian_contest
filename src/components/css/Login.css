@@ -27,13 +27,13 @@
   background: #FFFFFF;
   -webkit-box-shadow: 3px 2px 8px 0 #8B8B8B;
   box-shadow: 3px 2px 8px 0 #8B8B8B;
-  border-radius: 7px;
+  border-radius: 4.2664px;
   outline: none;
   display: block;
   border: 1px solid rgba(0, 0, 0, 0.5);
-  width: 270.375px;
-  height: 43.75px;
-  margin: 33px auto 26.25px;
+  width: 164.7897px;
+  height: 26.665px;
+  margin: 33px auto 15.999px;
   text-align: center;
 }
 .loginBox .loginBtn {
@@ -41,9 +41,9 @@
   background-image: linear-gradient(-206deg, #EEAA7F 13%, #F36629 100%);
   -webkit-box-shadow: 0 2px 2px 0 #E8CCAE;
   box-shadow: 0 2px 2px 0 #E8CCAE;
-  border-radius: 7px;
-  width: 270.375px;
-  height: 43.75px;
+  border-radius: 4.2664px;
+  width: 164.7897px;
+  height: 26.665px;
   display: block;
   margin: 33px auto;
 }

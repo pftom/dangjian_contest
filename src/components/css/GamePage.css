@@ -4,7 +4,7 @@
   width: 100%;
 }
 .leftTabBar {
-  width: 113.75px;
+  width: 69.329px;
   /* Rectangle 11: */
   opacity: 0.99;
   background: #FFFFFF;
@@ -21,7 +21,7 @@
 }
 .leftTabBar .homeIcon {
   text-align: center;
-  margin-top: 77.875px;
+  margin-top: 47.4637px;
   margin-bottom: 60px;
 }
 .leftTabBar .homeIcon:hover {
@@ -29,14 +29,14 @@
 }
 .leftTabBar .tab {
   text-align: center;
-  margin-top: 105px;
-  margin-bottom: 105px;
-  margin-right: -6.125px;
+  margin-top: 63.996px;
+  margin-bottom: 63.996px;
+  margin-right: -3.7331px;
   padding-top: 20px;
   padding-bottom: 20px;
   /* 答题: */
   font-family: PingFangSC-Regular;
-  font-size: 26.25px;
+  font-size: 15.999px;
   color: #CFCFD1;
   letter-spacing: 0;
 }
@@ -45,10 +45,10 @@
 }
 .leftTabBar .tab.active {
   color: #7B87D0;
-  border-right: 6.125px solid #7B87D0;
+  border-right: 3.7331px solid #7B87D0;
 }
 .rightBox {
-  padding-left: 175px;
+  padding-left: 106.66px;
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -64,7 +64,7 @@
   background: #FFFFFF;
   border: 1px solid #EBEBEB;
   border-radius: 5px;
-  width: 947.625px;
+  width: 577.5639px;
   padding-bottom: 40px;
 }
 .rightBox .questionBox .questionBoxHeader {
@@ -78,7 +78,7 @@
 .rightBox .questionBox .questionBoxHeader .countDown {
   /* 10: */
   font-family: PingFangSC-Regular;
-  font-size: 87.5px;
+  font-size: 53.33px;
   color: #000000;
   letter-spacing: 0;
   vertical-align: middle;
@@ -86,37 +86,37 @@
   margin-right: 100px;
 }
 .rightBox .questionBox .questionNumber {
-  margin-left: 20.125px;
-  margin-top: 70px;
+  margin-left: 12.2659px;
+  margin-top: 42.664px;
   /* Rectangle 3: */
   background: #EDC226;
   -webkit-box-shadow: 0 2px 4px 0 rgba(224, 190, 68, 0.5);
   box-shadow: 0 2px 4px 0 rgba(224, 190, 68, 0.5);
-  width: 293.125px;
-  height: 63px;
-  line-height: 63px;
-  text-indent: 105px;
+  width: 178.6555px;
+  height: 38.3976px;
+  line-height: 38.3976px;
+  text-indent: 63.996px;
   /* 题目59: */
   font-family: STSongti-SC-Bold;
-  font-size: 26.25px;
+  font-size: 15.999px;
   color: #FFFFFF;
   letter-spacing: 0;
   text-align: center;
   text-shadow: 0 2px 4px rgba(181, 176, 176, 0.5);
 }
 .rightBox .questionBox .question {
-  margin-left: 100.625px;
-  margin-right: 100.625px;
+  margin-left: 61.3295px;
+  margin-right: 61.3295px;
 }
 .rightBox .questionBox .question .topic {
   /* 听说明天考研复试？而且还没有打印成绩单，: */
   font-family: STSongti-SC-Regular;
-  font-size: 26.25px;
+  font-size: 15.999px;
   color: #000000;
   letter-spacing: 0;
 }
 .rightBox .questionBox .question .options {
-  margin-left: 73.5px;
+  margin-left: 44.7972px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -127,13 +127,13 @@
   width: 50%;
   /* A 考研复试. B 都要加油. C Fl: */
   font-family: STSongti-SC-;
-  font-size: 24.5px;
+  font-size: 14.9324px;
   color: #000000;
   letter-spacing: 0;
 }
 .rightBox .questionBox .questionJump {
-  margin-left: 100.625px;
-  margin-top: 99.75px;
+  margin-left: 61.3295px;
+  margin-top: 60.7962px;
   text-align: right;
 }
 .rightBox .questionBox .questionJump button:hover {
@@ -145,14 +145,14 @@
   -webkit-box-shadow: 0 2px 15px 0 rgba(146, 142, 142, 0.5);
   box-shadow: 0 2px 15px 0 rgba(146, 142, 142, 0.5);
   border-radius: 3px;
-  width: 157.5px;
-  height: 56px;
+  width: 95.994px;
+  height: 34.1312px;
   /* 结束本题: */
   font-family: PingFangSC-Regular;
-  font-size: 26.25px;
+  font-size: 15.999px;
   color: #7B87D0;
   letter-spacing: 0;
-  margin-right: 42.875px;
+  margin-right: 26.1317px;
 }
 .rightBox .questionBox .questionJump .nextQuestion {
   /* Rectangle 10: */
@@ -160,22 +160,22 @@
   -webkit-box-shadow: 0 2px 15px 0 rgba(123, 135, 208, 0.4);
   box-shadow: 0 2px 15px 0 rgba(123, 135, 208, 0.4);
   border-radius: 8px;
-  width: 135.625px;
-  height: 56px;
+  width: 82.6615px;
+  height: 34.1312px;
   /* 下一题: */
   font-family: PingFangSC-Regular;
-  font-size: 26.25px;
+  font-size: 15.999px;
   color: #FFFFFF;
   letter-spacing: 0;
-  margin-right: 42.875px;
+  margin-right: 26.1317px;
 }
 .rightBox .playerBox {
-  margin-left: 49.875px;
+  margin-left: 30.3981px;
 }
 .rightBox .playerBox .score {
   /* 25: */
   font-family: HiraginoSans-W6;
-  font-size: 52.5px;
+  font-size: 31.998px;
   color: #FFFFFF;
   letter-spacing: 0;
   margin-bottom: -0.3em;
@@ -183,15 +183,15 @@
 .rightBox .playerBox .name {
   /* 张 凡 凡: */
   font-family: PingFangSC-Regular;
-  font-size: 35px;
+  font-size: 21.332px;
   color: #FFFFFF;
   letter-spacing: 0;
 }
 .rightBox .playerBox .player {
-  width: 411.25px;
-  height: 213.5px;
+  width: 250.651px;
+  height: 130.1252px;
   text-align: center;
-  line-height: 105px;
+  line-height: 63.996px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-top: 20px;
@@ -204,43 +204,43 @@
 }
 .rightBox .playerBox .player1 {
   background-image: url('../img/bg2.png');
-  margin-top: 14.875px;
+  margin-top: 9.0661px;
 }
 .rightBox .playerBox .player2 {
   background-image: url('../img/bg3.png');
-  margin-top: 14.875px;
+  margin-top: 9.0661px;
 }
 .rightBox .playerBox .player0.out {
   background-image: url('../img/bgError.png');
 }
 .rightBox .playerBox .player1.out {
   background-image: url('../img/bgError.png');
-  margin-top: 14.875px;
+  margin-top: 9.0661px;
 }
 .rightBox .playerBox .player2.out {
   background-image: url('../img/bgError.png');
-  margin-top: 14.875px;
+  margin-top: 9.0661px;
 }
 .rightBox .playerBox .player0.promote {
   background-image: url('../img/bg1Success.png');
 }
 .rightBox .playerBox .player1.promote {
   background-image: url('../img/bg2Success.png');
-  margin-top: 14.875px;
+  margin-top: 9.0661px;
 }
 .rightBox .playerBox .player2.promote {
   background-image: url('../img/bg3Success.png');
-  margin-top: 14.875px;
+  margin-top: 9.0661px;
 }
 .rankList {
-  padding-left: 175px;
+  padding-left: 106.66px;
   width: 100%;
   height: 100%;
   overflow: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 89.25px;
+  padding-top: 54.3966px;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -249,16 +249,16 @@
   margin-right: 140px;
 }
 .rankList .rankListHeader {
-  width: 511.875px;
+  width: 311.9805px;
   /* 排 名 列 表: */
   font-family: PingFangSC-Semibold;
-  font-size: 31.5px;
+  font-size: 19.1988px;
   color: #605D5D;
   letter-spacing: 0;
   text-align: center;
 }
 .rankList .lists {
-  width: 511.875px;
+  width: 311.9805px;
 }
 .rankList .lists p {
   margin: 0;
@@ -276,28 +276,28 @@
   text-align: center;
   /* Ranking: */
   font-family: PingFangSC-Semibold;
-  font-size: 26.25px;
+  font-size: 15.999px;
   color: #FFFFFF;
   letter-spacing: 0;
-  height: 98.875px;
-  line-height: 98.875px;
+  height: 60.2629px;
+  line-height: 60.2629px;
   /* Rectangle 9: */
   background-image: -webkit-gradient(linear, left top, right top, color-stop(5%, #7784CD), color-stop(97%, #959FE4));
   background-image: linear-gradient(90deg, #7784CD 5%, #959FE4 97%);
 }
 .rankList .lists .listHeader .headerItem0 {
-  border-radius: 28.875px 0 0 0;
+  border-radius: 17.5989px 0 0 0;
 }
 .rankList .lists .listHeader .headerItem2 {
-  border-radius: 0 28.875px 0 0;
+  border-radius: 0 17.5989px 0 0;
 }
 .rankList .lists .listItem {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 63px;
-  line-height: 63px;
+  height: 38.3976px;
+  line-height: 38.3976px;
 }
 .rankList .lists .listItem .listItemContent {
   -webkit-box-flex: 1;
@@ -306,7 +306,7 @@
   text-align: center;
   /* 1st 陈 哲 98: */
   font-family: AndaleMono;
-  font-size: 26.25px;
+  font-size: 15.999px;
   color: #000000;
   letter-spacing: 0;
 }
