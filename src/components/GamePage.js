@@ -95,7 +95,7 @@ export default class  extends Component {
           <div className="questionBox">
             <div className="questionBoxHeader">
               <p className="questionNumber">
-                {question ? (question.answer.length > 1 ? '多选题' : '单选题') : ''}
+                {question ? (question.answer.length > 1 ? '多选题  ' : '单选题  ') : ''}
                 {
                   questionNumber 
                   ? questionNumber
@@ -128,8 +128,7 @@ export default class  extends Component {
             <div className="questionJump">
               <button className="closeThisQuestion" onClick={() => { this.props.endThisQuestion() }}>结束本题</button>
               <button className="closeThisQuestion" onClick={this.handleCount}>开始计时</button>
-              <button className="nextQuestion" onClick={() => this.props.handleSelect('single')}>单选题</button>
-              <button className="nextQuestion" onClick={() => this.props.handleSelect('multiple')}>多选题</button>
+              <button className="nextQuestion" onClick={() => this.props.handleSelect()}>下一题</button>
             </div>
           </div>
 
