@@ -8,6 +8,8 @@ import {
 
   PROMOTE_CONTEST,
   INITIAL_GAME,
+
+  PUSH_NOTIFICATION_SUCCESS,
 } from '../constants/index';
 
 const INITIAL_STATE = {
@@ -20,6 +22,19 @@ const INITIAL_STATE = {
   promote: false,
   next: false,
   endThisQuestion: false,
+
+  pushNotificationArray: [
+    {
+      option: 'single',
+      id: 0,
+    },
+    {
+      option: 'multiple',
+      id: 0,
+    },
+  ],
+  pushNotificationIndex: 0,
+  hasMoreQuestion: true,
 };
 
 // extract options from a whole question
@@ -75,6 +90,8 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case CLEAR_ALL_STATE: 
+    // do not clear pushNotificationIndex and pushNotificationArray
+    // because, question need going on. Do not repeat
       return {
         ...state,
         out: false,
@@ -94,6 +111,21 @@ export default (state = INITIAL_STATE, action) => {
 
     case INITIAL_GAME: {
       return INITIAL_STATE;
+    }
+
+    case PUSH_NOTIFICATION_SUCCESS: {
+      // every question, add pushNotificationIndex 
+      const { pushNotificationIndex, pushNotificationArray } = state;
+      let nowOptionCnt = pushNotificationIndex + 1;
+
+      // when there is no other question, hint master 
+      const hasMoreQuestion = pushNotificationArray.length - 1 >= nowOptionCnt;
+
+      return {
+        ...state,
+        pushNotificationIndex: nowOptionCnt,
+        hasMoreQuestion,
+      }
     }
 
     default: return state;

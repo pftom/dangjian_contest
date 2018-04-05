@@ -1,9 +1,6 @@
-import { } from 'antd/es/spin';
 import React, { Component } from 'react';
-import { Spin } from 'antd';
 import classnames from 'classnames';
 import { fakeQuestion, mapNumberToString } from './ReadyPage';
-import run from './img/run.png';
 
 import './css/GamePage.css';
 import { END_OF_THIS_QUESTION, GET_OUT_OF_CONTEST } from '../constants/';
@@ -72,11 +69,6 @@ export default class  extends Component {
     if (question) {
       questionNumber = question.question[0].match(/[0-9]+/g);
       questionNumber = Number(questionNumber);
-
-      // adaptedQuestion = { 
-      //   ...question,
-
-      // }
     }
 
     // players lists
@@ -219,41 +211,3 @@ export default class  extends Component {
     );
   }
 }
-
-// <div className="person_group">
-// {
-//   players.map((item, key) => (
-//     <div key={key} className="person">
-//     <img src={run} className="icon"/>
-//      <p className="name">{item.name}</p>
-//      <p><span className="score">{ item.score || 0 }</span> 分</p>
-//      {
-//        item.out
-//        ? (
-//          <div>已出局</div>
-//        )
-//        : (
-//          <div>
-//           <button onClick={() => { this.props.handleRes('out', item.username) }}>出局</button>
-//           <button onClick={() => { this.props.handleRes('promote', item.username) } }>晋级</button>
-//          </div>
-//        )
-//      }
-//     </div>
-//   ))
-// }
-// </div>
-// {
-//   isLoading
-//   ? (
-//     <Spin />
-//   )
-//   : (
-//     <p>剩余观众： {remainAudience || 0}</p>
-//   )
-// }
-// <button onClick={() => { this.props.handleSelect('single') }}>单选题</button>
-// <button onClick={() => { this.props.handleSelect('multiply') }}>多选题</button>
-// <button onClick={this.props.handleNextContest}>开始下一轮</button>
-// <button onClick={() => { this.props.endThisQuestion() }}>结束本题</button>
-// <p>{this.state.cnt}</p>

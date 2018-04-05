@@ -136,8 +136,8 @@ function* watchClearAllState() {
 function* pushNotification(action) {
   try {
     // dispatch http for notify server this person is out
-    const { option } = action.payload;
-    yield call(request.get, nodeBase + noticeApi.push_notification, { option });
+    const { option, id } = action.payload;
+    yield call(request.get, nodeBase + noticeApi.push_notification, { option, id });
     yield put({ type: PUSH_NOTIFICATION_SUCCESS });
   } catch (e) {
     console.log('e', e);

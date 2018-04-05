@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import { push } from 'react-router-redux';
 import { Redirect } from 'react-router';
+import { message } from 'antd';
 
 import { nodeBase } from '../config';
 import { GamePage } from '../components/';
@@ -45,8 +46,7 @@ class GameContainer extends Component {
 
     // start next question
     this.socket.on('push notification', ({ option, id }) => {
-      console.log('option', option, id);
-        dispatch({ type: GET_QUESTION, payload: { option, id } });
+      dispatch({ type: GET_QUESTION, payload: { option, id } });
     });
 
     //  start next game
@@ -59,10 +59,29 @@ class GameContainer extends Component {
     });
   }
 
-  handleSelect = (option) => {
-    const { dispatch } = this.props;
+  error = (msg, duration, callback = () => {}) => {
+    message.error(msg, duration, () => {
+      callback();
+    });
+  }
 
-    dispatch({ type: PUSH_NOTIFICATION, payload: { option }});
+  handleSelect = (option) => {
+    const { 
+      dispatch,
+      nextQuestionOption,
+      hasMoreQuestion,
+    } = this.props;
+
+    if (hasMoreQuestion) {
+      dispatch({ 
+        type: PUSH_NOTIFICATION, 
+        payload: { 
+          ...nextQuestionOption,
+        },
+      });
+    } else {
+      this.error('Sorry，没有更多的题目了哦 ~');
+    }
   }
 
   handleRes = (type, username) => {
@@ -82,7 +101,6 @@ class GameContainer extends Component {
   }
 
   endThisQuestion = () => {
-    console.log('end');
     const { players, dispatch } = this.props;
 
     players.map(player => {
@@ -91,7 +109,6 @@ class GameContainer extends Component {
         return;
       }
 
-      console.log('hhh');
       dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: player.username }});
     });
 
@@ -105,7 +122,6 @@ class GameContainer extends Component {
       return <Redirect to="/login" />;
     }
 
-    console.log('allUsers', allUsers);
 
     return(
       <GamePage
@@ -125,13 +141,23 @@ class GameContainer extends Component {
 
 const mapStateToProps = (state) => {
   const { players, allUsers, token } = state.user;
-  const { question } = state.question;
+  const { 
+    question,
+    pushNotificationIndex,
+    pushNotificationArray,
+    hasMoreQuestion,
+  } = state.question;
+
+  console.log('pushNotificationIndex', pushNotificationIndex);
+  console.log('pushNotificationArray', pushNotificationArray);
 
   return {
     token,
     players,
     allUsers,
-    question
+    question,
+    nextQuestionOption: pushNotificationArray[pushNotificationIndex],
+    hasMoreQuestion,
   };
 };
 
