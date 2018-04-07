@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="17px" viewBox="0 0 19 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>ico_true</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="屏幕方答题界面2.2" transform="translate(-1728.000000, -312.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Group-4" transform="translate(214.000000, 121.000000)">
+                <g id="Group">
+                    <g id="题目" transform="translate(316.000000, 25.000000)">
+                        <g id="Group-5-Copy-7" transform="translate(1152.000000, 0.000000)">
+                            <g id="Group-5-Copy-3" transform="translate(0.000000, 142.000000)">
+                                <g id="ico_true" transform="translate(46.000000, 24.000000)">
+                                    <path d="M18.4331532,1.37754149 L7.62769348,16.5243624 C7.59207185,16.5922375 7.55755876,16.6612211 7.50191994,16.7191409 C7.19859256,17.0319333 6.70711651,17.0319333 6.40378912,16.7191409 L0.231847517,10.3563219 C-0.071479868,10.0435083 -0.071479868,9.53702464 0.231847517,9.22534078 C0.534641955,8.91252709 1.02665095,8.91252709 1.32944541,9.22534078 L6.86128502,14.9269533 L17.3355767,0.246581659 C17.6383924,-0.066210718 18.1298472,-0.066210718 18.4331532,0.246581659 C18.7365019,0.558265521 18.7365019,1.06585765 18.4331532,1.37754149 Z" id="Shape"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

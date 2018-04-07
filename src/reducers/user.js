@@ -130,7 +130,7 @@ export default (state = INITIAL_STATE, action) => {
       players = players.map((player) => {
         let nowPlayer = player;
         if (nowUser.username === player.username) {
-          nowPlayer = { ...nowPlayer, out: nowUser.out };
+          nowPlayer = { ...nowPlayer, ...nowUser };
         }
         return nowPlayer;
       });
@@ -138,7 +138,7 @@ export default (state = INITIAL_STATE, action) => {
       allUsers = allUsers.map(user => {
         let newUser = user;
         if (nowUser.username === user.username) {
-          newUser = nowUser;
+          newUser = { ...newUser, ...nowUser }
         }
         return newUser;
       })

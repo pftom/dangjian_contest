@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { fakeQuestion, mapNumberToString } from './ReadyPage';
+import { Modal } from 'antd';
+
 
 import './css/GamePage.css';
-import { END_OF_THIS_QUESTION, GET_OUT_OF_CONTEST } from '../constants/';
-import homeIcon from './img/home.png';
+import { 
+  END_OF_THIS_QUESTION, 
+  GET_OUT_OF_CONTEST,
+  PROMOTE_CONTEST,
+} from '../constants/';
+import homeIcon from './img/home.svg';
+import success from './img/success.svg';
+import error from './img/error.svg';
 
 // default question
 
@@ -12,19 +19,16 @@ export default class  extends Component {
   state = {
     cnt: 5,
     active: true,
+
+    status: '',
+    username: '',
+    visible: false,
   }
 
   componentDidUpdate(prevProps, prevState) {
+
     const { dispatch, players } = this.props;
     if (this.state.cnt <= 0) {
-      players.map(player => {
-        // 
-        if (player.promote || player.out) {
-          return;
-        }
-  
-        dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: player.username }});
-      });
       dispatch({ type: END_OF_THIS_QUESTION });
       clearInterval(this.timer);
       this.setState({
@@ -52,6 +56,51 @@ export default class  extends Component {
     this.setState({ active: false });
   }
 
+  handleOut = ({ username }) => {
+    this.setState({
+      username,
+      status: 'out',
+      visible: true,
+    });
+  }
+
+  handlePromote = ({ username }) => {
+    this.setState({
+      username,
+      status: 'promote',
+      visible: true,
+    });
+  }
+
+  handleOk = (e) => {
+    e.preventDefault();
+    this.setState({
+      visible: false,
+    });
+
+    const { username, status } = this.state;
+    const { dispatch } = this.props;
+
+    // if username of status not exist, then just return, not handle anything
+    if (!username || !status) {
+      return;
+    }
+
+    if (status === 'out') {
+      this.props.handleRes('out', username);
+    } else {
+      this.props.handleRes('promote', username);
+    }
+  }
+
+  handleCancel = (e) => {
+    e.preventDefault();
+    this.setState({
+      username: '',
+      status: '',
+      visible: false,
+    });
+  }
 
   render() {
     const { players, allUsers, isLoading, question } = this.props;
@@ -77,6 +126,16 @@ export default class  extends Component {
 
     return (
       <div id="game">
+        <Modal
+          title="三思框"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          okText="我确定"
+          cancelText="我不确定"
+          onCancel={this.handleCancel}
+        >
+          <p>你确定真的！要做这样的选择嘛？🤔</p>
+        </Modal>
         <div className="leftTabBar">
           <div className="homeIcon" onClick={this.props.handleNextContest}>
             <img src={homeIcon} alt="Home" />
@@ -143,10 +202,23 @@ export default class  extends Component {
                       { promote: player.promote }
                     )
                   }
-                  onClick={() => { this.props.handleRes('promote', player.username) } }
                 >
-                  <p className="score">{player.score}</p>
-                  <p className="name">{player.name}</p>
+                  <div className="playerSide">
+                    <p className="score">{player.score}</p>
+                    <p className="name">{player.name}</p>
+                  </div>
+                  <div className="judgeSide">
+                    <button className="btn-default btn-error" onClick={() => { this.handleOut({
+                      username: player.username,
+                    }) }}>
+                      <img src={error} alt="出局"/> <span>出局</span>
+                    </button>
+                    <button className="btn-default btn-success" onClick={() => this.handlePromote({
+                      username: player.username
+                    })}>
+                      <img src={success} alt="晋级"/> <span>晋级</span>
+                    </button>
+                  </div>
                 </div>
               ))
             }

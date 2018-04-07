@@ -182,9 +182,9 @@
       .nextQuestion {
         /* Rectangle 10: */
         background: #7B87D0;
-        -webkit-box-shadow: 0 2px 15px 0 rgba(123,135,208,0.40);
-                box-shadow: 0 2px 15px 0 rgba(123,135,208,0.40);
-        border-radius: 8px;
+        -webkit-box-shadow: 0 2px * @px2dp 15px * @px2dp 0 rgba(123,135,208,0.40);
+                box-shadow: 0 2px * @px2dp 15px * @px2dp 0 rgba(123,135,208,0.40);
+        border-radius: 8px * @px2dp;
         width: 155px * @px2dp;
         height: 64px * @px2dp;
 
@@ -199,7 +199,14 @@
   }
 
   .playerBox {
-    margin-left: 57px * @px2dp;
+    margin-left: 47px * @px2dp;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     .score {
       /* 25: */
       font-family: HiraginoSans-W6;
@@ -218,58 +225,145 @@
     }
 
     .player {
-      width: 470px * @px2dp;
+      width: 559px * @px2dp;
       height: 244px * @px2dp;
       text-align: center;
       line-height: 120px * @px2dp;
       background-repeat: no-repeat;
       background-size: 100% 100%;
       margin-top: 20px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+
+      .judgeSide {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-top: -15px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+        
+        .btn-default {
+          width: 223px * @px2dp;
+          height: 79px * @px2dp;
+          /* Rectangle 10: */
+          -webkit-box-shadow: 0 2px * @px2dp 15px * @px2dp 0 rgba(146,142,142,0.50);
+                  box-shadow: 0 2px * @px2dp 15px * @px2dp 0 rgba(146,142,142,0.50);
+          border-radius: 8px * @px2dp;
+          text-align: center;
+          line-height: 79px * @px2dp;
+
+          img {
+            margin-top: -8px * @px2dp;
+            margin-right: 15px * @px2dp;
+          }
+        }
+
+        .btn-default:hover {
+          cursor: pointer;
+        }
+
+        .btn-error {
+          border: 1px solid #EF6160;
+          /* 出局: */
+          font-family: PingFangSC-Semibold;
+          font-size: 36px * @px2dp;
+          color: #EF6160;
+          letter-spacing: 0;
+        }
+
+        .btn-success {
+          /* Rectangle 10: */
+          background-color: rgba(14, 196, 105, 0.925);
+          border-radius: 8px * @px2dp;
+          border: none;
+          /* 晋级: */
+          font-family: PingFangSC-Semibold;
+          font-size: 36px * @px2dp;
+          color: #FFFFFF;
+          letter-spacing: 0;
+        }
+      }
     }
 
     .player:hover {
       cursor: pointer;
     }
 
+    .playerSideCommon {
+      background-position: 0 0;
+      background-size: 100% 100%;
+      width: 313px * @px2dp;
+      height: 244px * @px2dp;
+    }
+
+
     .player0 {
-      background-image: url('../img/bg1.png');
+
+      .playerSide {
+        background: url('../img/bg1.svg') no-repeat;
+        .playerSideCommon;
+      }
     }
 
     .player1 {
-      background-image: url('../img/bg2.png');
+      .playerSide {
+        background: url('../img/bg2.svg') no-repeat;
+        .playerSideCommon;
+      }
       margin-top: 17px * @px2dp;
     }
 
     .player2 {
-      background-image: url('../img/bg3.png');
-      margin-top: 17px * @px2dp;
-    }
-
-    .player0.out {
-      background-image: url('../img/bgError.png');
-    }
-
-    .player1.out {
-      background-image: url('../img/bgError.png');
-      margin-top: 17px * @px2dp;
-    }
-
-    .player2.out {
-      background-image: url('../img/bgError.png');
+      .playerSide {
+        background: url('../img/bg3.svg') no-repeat;
+        .playerSideCommon;
+      }
       margin-top: 17px * @px2dp;
     }
 
     .player0.promote {
-      background-image: url('../img/bg1Success.png');
+      .playerSide {
+        background-image: url('../img/bg1Success.svg');
+      }
     }
 
     .player1.promote {
-      background-image: url('../img/bg2Success.png');
+      .playerSide {
+        background-image: url('../img/bg2Success.svg');
+      }
       margin-top: 17px * @px2dp;
     }
 
     .player2.promote {
-      background-image: url('../img/bg3Success.png');
+      .playerSide {
+        background-image: url('../img/bg3Success.svg');
+      }
+      margin-top: 17px * @px2dp;
+    }
+
+    .player0.out {
+      .playerSide {
+        background-image: url('../img/bgError.svg');
+      }
+    }
+
+    .player1.out {
+      .playerSide {
+        background-image: url('../img/bgError.svg');
+      }
+      margin-top: 17px * @px2dp;
+    }
+
+    .player2.out {
+      .playerSide {
+        background-image: url('../img/bgError.svg');
+      }
       margin-top: 17px * @px2dp;
     }
   }

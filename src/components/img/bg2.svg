@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="313px" height="274px" viewBox="0 0 313 274" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>bg</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="96.2741744%" y1="0%" x2="-5.95197366%" y2="109.551301%" id="linearGradient-1">
+            <stop stop-color="#FFCEAB" offset="0%"></stop>
+            <stop stop-color="#FF7A72" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-20.8%" y="-24.1%" width="141.6%" height="148.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="12" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="313" height="244" rx="8"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="屏幕方答题界面" transform="translate(-1405.000000, -496.000000)">
+            <g id="Group-9" transform="translate(1405.000000, 206.000000)">
+                <g id="users-online" transform="translate(0.000000, 290.000000)">
+                    <g id="bg">
+                        <rect id="Rectangle" fill="url(#linearGradient-1)" opacity="0.75" filter="url(#filter-2)" x="70.9466667" y="94.8888889" width="173.193333" height="149.111111" rx="8"></rect>
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <use id="Rectangle-Copy-2" fill="url(#linearGradient-1)" xlink:href="#path-3"></use>
+                        <ellipse id="Oval-2" fill="#FFFFFF" opacity="0.0799999982" mask="url(#mask-4)" cx="233.706667" cy="195.2" rx="150.24" ry="195.2"></ellipse>
+                        <ellipse id="Oval-2-Copy" fill="#FFFFFF" opacity="0.0799999982" mask="url(#mask-4)" cx="82.4233333" cy="361.933333" rx="151.283333" ry="196.555556"></ellipse>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

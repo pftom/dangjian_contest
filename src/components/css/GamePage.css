@@ -157,9 +157,9 @@
 .rightBox .questionBox .questionJump .nextQuestion {
   /* Rectangle 10: */
   background: #7B87D0;
-  -webkit-box-shadow: 0 2px 15px 0 rgba(123, 135, 208, 0.4);
-  box-shadow: 0 2px 15px 0 rgba(123, 135, 208, 0.4);
-  border-radius: 8px;
+  -webkit-box-shadow: 0 1.0666px 7.9995px 0 rgba(123, 135, 208, 0.4);
+  box-shadow: 0 1.0666px 7.9995px 0 rgba(123, 135, 208, 0.4);
+  border-radius: 4.2664px;
   width: 82.6615px;
   height: 34.1312px;
   /* 下一题: */
@@ -170,7 +170,14 @@
   margin-right: 26.1317px;
 }
 .rightBox .playerBox {
-  margin-left: 30.3981px;
+  margin-left: 25.0651px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 .rightBox .playerBox .score {
   /* 25: */
@@ -188,49 +195,130 @@
   letter-spacing: 0;
 }
 .rightBox .playerBox .player {
-  width: 250.651px;
+  width: 298.1147px;
   height: 130.1252px;
   text-align: center;
   line-height: 63.996px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.rightBox .playerBox .player .judgeSide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: -15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+.rightBox .playerBox .player .judgeSide .btn-default {
+  width: 118.9259px;
+  height: 42.1307px;
+  /* Rectangle 10: */
+  -webkit-box-shadow: 0 1.0666px 7.9995px 0 rgba(146, 142, 142, 0.5);
+  box-shadow: 0 1.0666px 7.9995px 0 rgba(146, 142, 142, 0.5);
+  border-radius: 4.2664px;
+  text-align: center;
+  line-height: 42.1307px;
+}
+.rightBox .playerBox .player .judgeSide .btn-default img {
+  margin-top: -4.2664px;
+  margin-right: 7.9995px;
+}
+.rightBox .playerBox .player .judgeSide .btn-default:hover {
+  cursor: pointer;
+}
+.rightBox .playerBox .player .judgeSide .btn-error {
+  border: 1px solid #EF6160;
+  /* 出局: */
+  font-family: PingFangSC-Semibold;
+  font-size: 19.1988px;
+  color: #EF6160;
+  letter-spacing: 0;
+}
+.rightBox .playerBox .player .judgeSide .btn-success {
+  /* Rectangle 10: */
+  background-color: rgba(14, 196, 105, 0.925);
+  border-radius: 4.2664px;
+  border: none;
+  /* 晋级: */
+  font-family: PingFangSC-Semibold;
+  font-size: 19.1988px;
+  color: #FFFFFF;
+  letter-spacing: 0;
 }
 .rightBox .playerBox .player:hover {
   cursor: pointer;
 }
-.rightBox .playerBox .player0 {
-  background-image: url('../img/bg1.png');
+.rightBox .playerBox .playerSideCommon {
+  background-position: 0 0;
+  background-size: 100% 100%;
+  width: 166.9229px;
+  height: 130.1252px;
+}
+.rightBox .playerBox .player0 .playerSide {
+  background: url('../img/bg1.svg') no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  width: 166.9229px;
+  height: 130.1252px;
 }
 .rightBox .playerBox .player1 {
-  background-image: url('../img/bg2.png');
   margin-top: 9.0661px;
+}
+.rightBox .playerBox .player1 .playerSide {
+  background: url('../img/bg2.svg') no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  width: 166.9229px;
+  height: 130.1252px;
 }
 .rightBox .playerBox .player2 {
-  background-image: url('../img/bg3.png');
   margin-top: 9.0661px;
 }
-.rightBox .playerBox .player0.out {
-  background-image: url('../img/bgError.png');
+.rightBox .playerBox .player2 .playerSide {
+  background: url('../img/bg3.svg') no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  width: 166.9229px;
+  height: 130.1252px;
 }
-.rightBox .playerBox .player1.out {
-  background-image: url('../img/bgError.png');
-  margin-top: 9.0661px;
-}
-.rightBox .playerBox .player2.out {
-  background-image: url('../img/bgError.png');
-  margin-top: 9.0661px;
-}
-.rightBox .playerBox .player0.promote {
-  background-image: url('../img/bg1Success.png');
+.rightBox .playerBox .player0.promote .playerSide {
+  background-image: url('../img/bg1Success.svg');
 }
 .rightBox .playerBox .player1.promote {
-  background-image: url('../img/bg2Success.png');
   margin-top: 9.0661px;
 }
+.rightBox .playerBox .player1.promote .playerSide {
+  background-image: url('../img/bg2Success.svg');
+}
 .rightBox .playerBox .player2.promote {
-  background-image: url('../img/bg3Success.png');
   margin-top: 9.0661px;
+}
+.rightBox .playerBox .player2.promote .playerSide {
+  background-image: url('../img/bg3Success.svg');
+}
+.rightBox .playerBox .player0.out .playerSide {
+  background-image: url('../img/bgError.svg');
+}
+.rightBox .playerBox .player1.out {
+  margin-top: 9.0661px;
+}
+.rightBox .playerBox .player1.out .playerSide {
+  background-image: url('../img/bgError.svg');
+}
+.rightBox .playerBox .player2.out {
+  margin-top: 9.0661px;
+}
+.rightBox .playerBox .player2.out .playerSide {
+  background-image: url('../img/bgError.svg');
 }
 .rankList {
   padding-left: 106.66px;

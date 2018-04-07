@@ -85,7 +85,8 @@ class GameContainer extends Component {
   }
 
   handleRes = (type, username) => {
-    const { dispatch, token, players } = this.props;
+    console.log('username', username);
+    const { dispatch, token } = this.props;
     if (type === 'out') {
       dispatch({ type: GET_OUT_OF_CONTEST, payload: { username }});
     } else {
@@ -102,15 +103,6 @@ class GameContainer extends Component {
 
   endThisQuestion = () => {
     const { players, dispatch } = this.props;
-
-    players.map(player => {
-      // 
-      if (player.promote || player.out) {
-        return;
-      }
-
-      dispatch({ type: GET_OUT_OF_CONTEST, payload: { username: player.username }});
-    });
 
     dispatch({ type: END_OF_THIS_QUESTION });
   }
