@@ -30,6 +30,9 @@ def collect_static_files():
     for filename in local("ls build/static/js", capture=True).split():
         static_files.append('/static/js/' + filename)
 
+    for filename in local("ls build/static/media", capture=True).split():
+        static_files.append('/static/media/' + filename)
+
     return static_files
 
 
@@ -45,7 +48,7 @@ def upload_to_oss(static_files):
     # Delete existing outdated static assets
     print "Deleting existing outdated static assets in OSS ...",
     for file in oss2.ObjectIterator(bucket):
-        if file.key in ['css', 'js', 'static']:
+        if file.key in ['css', 'js', 'media', 'static']:
             bucket.delete_object(file.key)
     print "Done."
 
