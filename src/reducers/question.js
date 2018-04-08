@@ -32,6 +32,54 @@ const INITIAL_STATE = {
       option: 'multiple',
       id: 0,
     },
+    {
+      option: 'single',
+      id: 1,
+    },
+    {
+      option: 'multiple',
+      id: 1,
+    },
+    {
+      option: 'single',
+      id: 2,
+    },
+    {
+      option: 'multiple',
+      id: 2,
+    },
+    {
+      option: 'single',
+      id: 3,
+    },
+    {
+      option: 'multiple',
+      id: 3,
+    },
+    {
+      option: 'single',
+      id: 4,
+    },
+    {
+      option: 'multiple',
+      id: 4,
+    },
+    {
+      option: 'single',
+      id: 5,
+    },
+    {
+      option: 'multiple',
+      id: 5,
+    },
+    {
+      option: 'single',
+      id: 6,
+    },
+    {
+      option: 'multiple',
+      id: 6,
+    },
   ],
   pushNotificationIndex: 0,
   hasMoreQuestion: true,
