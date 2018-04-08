@@ -18592,6 +18592,13 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   border-bottom: 1px solid #C4BABA;
   margin: 20.2654px 18.6655px;
 }
+.content .loginList .loginHeader .record {
+  /* ( 14 / 63 ): */
+  font-family: PingFangSC-Semibold;
+  font-size: 12.7992px;
+  color: #31A4FE;
+  letter-spacing: 0;
+}
 .content .loginList .selectBox {
   height: 213.32px;
   overflow: scroll;

@@ -141,6 +141,13 @@ export default class extends React.Component {
       }
     });
 
+    let totalNumber = null;
+    let alreadyLogined = null;
+    if (allUsers) {
+      totalNumber = allUsers.length;
+      alreadyLogined = allUsers.filter(user => user.logged).length;
+    }
+
     return (
       <div id="master">
         <div className="header">
@@ -168,7 +175,9 @@ export default class extends React.Component {
             <button onClick={this.handleStart} className="startBtn">开始比赛</button>
           </div>
           <div className="loginList">
-            <h4 className="loginHeader">登录情况</h4>
+            <h4 className="loginHeader">
+              登录情况  { totalNumber && <span className="record">( {alreadyLogined} / {totalNumber} )</span>}
+            </h4>
             <div className="selectBox">
             {
               allUsers.map((item, key) => (

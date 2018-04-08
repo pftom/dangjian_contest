@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="379px" height="226px" viewBox="0 0 379 226" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>幕布</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="屏幕方答题界面2.2" transform="translate(-839.000000, -121.000000)" fill-rule="nonzero">
+            <g id="Group-4" transform="translate(214.000000, 121.000000)">
+                <g id="Group">
+                    <g id="Group-5" transform="translate(625.000000, 0.000000)">
+                        <g id="幕布">
+                            <path d="M328.535208,226 L51.4647921,226 C42.3756309,226 35,218.627282 35,209.541711 L35,18 L345,18 L345,209.541711 C345,218.627282 337.624369,226 328.535208,226 Z" id="Shape" fill="#F44336"></path>
+                            <path d="M362.531325,18 L16.468535,18 C7.37730754,18 0,13.9728814 0,9.01016949 L0,8.98983051 C0,4.02711864 7.37730754,0 16.468535,0 L362.531325,0 C371.622553,0 378.99986,4.02711864 378.99986,8.98983051 L378.99986,9.01016949 C379.037119,13.9728814 371.622553,18 362.531325,18 Z" id="Shape" fill="#FFC107"></path>
+                            <path d="M327.399651,225.993318 L195.751018,225.993318 L144,156.828399 L235.141361,89 L336,223.765784 C336,223.765784 332.314136,226.14182 327.399651,225.993318 Z" id="Shape" fill="#E53935"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -89,14 +89,59 @@
               justify-content: space-between;
       
       .countDown {
-        /* 10: */
-        font-family: PingFangSC-Regular;
-        font-size: 100px * @px2dp;
-        color: #000000;
-        letter-spacing: 0;
-        vertical-align: middle;
-        margin-top: 36px;
-        margin-right: 100px;
+        width: 379px * @px2dp;
+        height: 226px * @px2dp;
+        background: url('../img/curtain.svg') no-repeat;
+        background-position: 0 0;
+        background-size: 100% 100%;
+        position: relative;
+        top: -20px * @px2dp;
+        left: -79px * @px2dp;
+
+        display: -webkit-box;
+
+        display: -ms-flexbox;
+
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        text-align: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+
+        .countDownTextBox {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          -webkit-box-pack: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+          margin-bottom: 20px * @px2dp;
+        }
+
+        .countDownText {
+          /* 10: */
+          font-family: PingFangSC-Semibold;
+          font-size: 70px * @px2dp;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          margin-left: 50px * @px2dp;
+        }
+        
+        .remainAudience {
+          /* 剩余观众： 66 人: */
+          font-family: PingFangSC-Semibold;
+          font-size: 30px * @px2dp;
+          color: #FFFFFF;
+          letter-spacing: 0;
+        }
+
       }
     }
 
@@ -124,11 +169,12 @@
     .question {
       margin-left: 115px * @px2dp;
       margin-right: 115px * @px2dp;
+      margin-top: 10px * @px2dp;
 
       .topic {
         /* 听说明天考研复试？而且还没有打印成绩单，: */
         font-family: STSongti-SC-Regular;
-        font-size: 30px * @px2dp;
+        font-size: 40px * @px2dp;
         color: #000000;
         letter-spacing: 0;
       }
@@ -142,13 +188,17 @@
             flex-wrap: wrap;
 
         .paragraph {
-          width: 50%;
+          width: 45%;
 
           /* A 考研复试. B 都要加油. C Fl: */
           font-family: STSongti-SC-;
-          font-size: 28px * @px2dp;
+          font-size: 34px * @px2dp;
           color: #000000;
           letter-spacing: 0;
+        }
+
+        .paragraph:nth-child(even) {
+          margin-left: 5%;
         }
       }
     }

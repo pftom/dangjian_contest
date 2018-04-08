@@ -125,7 +125,13 @@ export default class QuestionPage extends Component {
     const { question } = this.props;
     const isMultiSelect = question.answer.length > 1;
     const options = question.question.slice(1);
-    const questionHeaderArr = question.question[0].split('.');
+    let questionHeaderArr = question.question[0].split('.');
+
+    if (questionHeaderArr.length === 1) {
+      questionHeaderArr = question.question[0].split('．');
+    }
+
+    console.log('questionHeaderArr', questionHeaderArr);
     let questionHeader = (
       <h2 className="questionHeader">
         <span className="questionNumber">{questionHeaderArr[0]}</span>&nbsp;&nbsp;

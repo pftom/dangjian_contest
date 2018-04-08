@@ -12,6 +12,7 @@ import {
 import homeIcon from './img/home.svg';
 import success from './img/success.svg';
 import error from './img/error.svg';
+import clock from './img/clock.svg';
 
 // default question
 
@@ -107,10 +108,17 @@ export default class  extends Component {
     const playerKeys = players.map(item => (
       item.username
     ));
-    const remainAudience = allUsers
-                            .filter(user => !playerKeys.includes(user.username))
-                            .filter(user => !user.out)
-                            .length;
+    let totalAudience = null;
+    let remainAudience = null;
+
+    if (allUsers) {
+      totalAudience = allUsers
+      .filter(user => user.logged)
+      .filter(user => !playerKeys.includes(user.username))
+
+      remainAudience = totalAudience
+            .filter(user => !user.out)
+    }
 
     // question number
     let questionNumber = null;
@@ -161,9 +169,17 @@ export default class  extends Component {
                   : '暂无'
                 }
               </p>
-              <p className="countDown">
-                {this.state.cnt}
-              </p>
+              <div className="countDown">
+                <div className="countDownTextBox">
+                  <img src={clock} alt="闹钟"/>
+                  <span className="countDownText">
+                    {this.state.cnt}
+                  </span>
+                </div>
+                <div className="remainAudience">
+                  剩余观众：{remainAudience ? remainAudience.length : 0} / {totalAudience ? totalAudience.length : 0} 人
+                </div>
+              </div>
             </div>
 
             <div className="question">
