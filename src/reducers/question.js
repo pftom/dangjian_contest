@@ -10,6 +10,7 @@ import {
   INITIAL_GAME,
 
   PUSH_NOTIFICATION_SUCCESS,
+  NEXT_CONTEST_SUCCESS,
 } from '../constants/index';
 
 const INITIAL_STATE = {
@@ -103,6 +104,17 @@ export default (state = INITIAL_STATE, action) => {
 
     case INITIAL_GAME: {
       return INITIAL_STATE;
+    }
+
+    case NEXT_CONTEST_SUCCESS: {
+      const nowTerm = state.term + 1;
+
+      return {
+        ...state,
+        term: nowTerm > 3 ? 0 : nowTerm,
+        id: 0,
+        hasMoreQuestion: true,
+      };
     }
 
     case PUSH_NOTIFICATION_SUCCESS: {

@@ -9,7 +9,6 @@ import { MasterPage } from '../components/';
 import { 
   GET_ALL_USERS, 
   CHANGE_QUESTION, 
-  NEXT_CONTEST,
   UPDATE_LOGIN_LIST, 
 
   INITIAL_GAME,
