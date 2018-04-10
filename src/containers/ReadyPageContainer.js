@@ -37,10 +37,10 @@ class ReadyPageContainer extends Component {
     const { dispatch, isReady, out, token, promote } = this.props;
     const that = this;
 
-    this.socket.on('push notification', ({ option, id }) => {
+    this.socket.on('push notification', ({ term, id }) => {
       if (!that.props.out) {
-        // option define whether single or multiply
-        dispatch({ type: GET_QUESTION, payload: { option, id } });
+        // term define whether single or multiply
+        dispatch({ type: GET_QUESTION, payload: { term, id } });
       }
     });
 

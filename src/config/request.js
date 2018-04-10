@@ -46,6 +46,7 @@ const header = ( METHOD, token, multiform ) => {
 
 // add HTTP GET method for this object
 request.get = ( url, params, token ) => {
+
   // !! transform params's type to boolean for condition judge
   if ( !!params ) {
     url += '?' + queryString.stringify( params );

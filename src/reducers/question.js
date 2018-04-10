@@ -23,65 +23,9 @@ const INITIAL_STATE = {
   next: false,
   endThisQuestion: false,
 
-  pushNotificationArray: [
-    {
-      option: 'single',
-      id: 0,
-    },
-    {
-      option: 'multiple',
-      id: 0,
-    },
-    {
-      option: 'single',
-      id: 1,
-    },
-    {
-      option: 'multiple',
-      id: 1,
-    },
-    {
-      option: 'single',
-      id: 2,
-    },
-    {
-      option: 'multiple',
-      id: 2,
-    },
-    {
-      option: 'single',
-      id: 3,
-    },
-    {
-      option: 'multiple',
-      id: 3,
-    },
-    {
-      option: 'single',
-      id: 4,
-    },
-    {
-      option: 'multiple',
-      id: 4,
-    },
-    {
-      option: 'single',
-      id: 5,
-    },
-    {
-      option: 'multiple',
-      id: 5,
-    },
-    {
-      option: 'single',
-      id: 6,
-    },
-    {
-      option: 'multiple',
-      id: 6,
-    },
-  ],
-  pushNotificationIndex: 0,
+  // the question term and id for use
+  term: 0,
+  id: 0,
   hasMoreQuestion: true,
 };
 
@@ -163,15 +107,15 @@ export default (state = INITIAL_STATE, action) => {
 
     case PUSH_NOTIFICATION_SUCCESS: {
       // every question, add pushNotificationIndex 
-      const { pushNotificationIndex, pushNotificationArray } = state;
-      let nowOptionCnt = pushNotificationIndex + 1;
+      const { id } = state;
+      let nowOptionCnt = id + 1;
 
       // when there is no other question, hint master 
-      const hasMoreQuestion = pushNotificationArray.length - 1 >= nowOptionCnt;
+      const hasMoreQuestion = nowOptionCnt < 8;
 
       return {
         ...state,
-        pushNotificationIndex: nowOptionCnt,
+        id: nowOptionCnt,
         hasMoreQuestion,
       }
     }

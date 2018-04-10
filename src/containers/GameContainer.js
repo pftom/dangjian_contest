@@ -45,8 +45,8 @@ class GameContainer extends Component {
 
 
     // start next question
-    this.socket.on('push notification', ({ option, id }) => {
-      dispatch({ type: GET_QUESTION, payload: { option, id } });
+    this.socket.on('push notification', ({ term, id }) => {
+      dispatch({ type: GET_QUESTION, payload: { term, id } });
     });
 
     //  start next game
@@ -68,15 +68,20 @@ class GameContainer extends Component {
   handleSelect = (option) => {
     const { 
       dispatch,
-      nextQuestionOption,
+      id,
+      term,
       hasMoreQuestion,
     } = this.props;
+
+    console.log('term', term);
+    console.log('id', id);
 
     if (hasMoreQuestion) {
       dispatch({ 
         type: PUSH_NOTIFICATION, 
         payload: { 
-          ...nextQuestionOption,
+          id,
+          term,
         },
       });
     } else {
@@ -135,20 +140,18 @@ const mapStateToProps = (state) => {
   const { players, allUsers, token } = state.user;
   const { 
     question,
-    pushNotificationIndex,
-    pushNotificationArray,
+    term,
+    id,
     hasMoreQuestion,
   } = state.question;
-
-  console.log('pushNotificationIndex', pushNotificationIndex);
-  console.log('pushNotificationArray', pushNotificationArray);
 
   return {
     token,
     players,
     allUsers,
     question,
-    nextQuestionOption: pushNotificationArray[pushNotificationIndex],
+    id,
+    term,
     hasMoreQuestion,
   };
 };

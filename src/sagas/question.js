@@ -32,12 +32,16 @@ import { getStatusApi, nodeBase, noticeApi, questionApi, request } from '../conf
 
 function* getQuestion(action) {
   try {
-    const { option, id } = action.payload;
-    const { getSingleOption, getMultiplyOption } = questionApi(id);
+    const { term, id } = action.payload;
+    const { getQuestions } = questionApi(id);
 
     const question = yield call(
       request.get, 
-      nodeBase + (option === 'single' ? getSingleOption : getMultiplyOption)
+      nodeBase + getQuestions,
+      {
+        term,
+        id,
+      }
     );
     
     yield put({ type: GET_QUESTION_SUCCESS, payload: { question } });
@@ -136,8 +140,8 @@ function* watchClearAllState() {
 function* pushNotification(action) {
   try {
     // dispatch http for notify server this person is out
-    const { option, id } = action.payload;
-    yield call(request.get, nodeBase + noticeApi.push_notification, { option, id });
+    const { term, id } = action.payload;
+    yield call(request.get, nodeBase + noticeApi.push_notification, { term, id });
     yield put({ type: PUSH_NOTIFICATION_SUCCESS });
   } catch (e) {
     console.log('e', e);

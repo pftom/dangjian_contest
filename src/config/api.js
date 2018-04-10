@@ -8,8 +8,7 @@ const nodeBase = 'http://localhost:4000';
 
 
  const questionApi = (id) => ({
-   getSingleOption: `/questions/single/${id}/`,
-   getMultiplyOption: `/questions/multiple/${id}/`,
+   getQuestions: `/questions/`,
    endOfThisQuestion: '/endOfThisQuestion',
  });
 
