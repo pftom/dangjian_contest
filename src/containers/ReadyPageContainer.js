@@ -70,9 +70,7 @@ class ReadyPageContainer extends Component {
   componentDidUpdate() {
     const { dispatch, id, isReady, out } = this.props;
     const that = this;
-    console.log('isReady', isReady)
     
-    console.log('socket', this.socket.on);
     this.socket.on('push notification', ({ option, id }) => {
       if (!that.props.out) {
         // option define whether single or multiply

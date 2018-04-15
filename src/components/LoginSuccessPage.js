@@ -10,7 +10,6 @@ export default class LoginSuccessPage extends Component {
     
     if (question) {
       intactQuestion = question.question.split('\n');
-      console.log('intactQuestion', intactQuestion);
     }
 
     return (

@@ -45,8 +45,6 @@ class MasterPageContainer extends Component {
       return <Redirect to="/login" />;
     }
 
-    console.log('allUsers', allUsers);
-
     return(
       <MasterPage 
         {...this.props}

@@ -131,7 +131,6 @@ export default class QuestionPage extends Component {
       questionHeaderArr = question.question[0].split('．');
     }
 
-    console.log('questionHeaderArr', questionHeaderArr);
     let questionHeader = (
       <h2 className="questionHeader">
         <span className="questionNumber">{questionHeaderArr[0]}</span>&nbsp;&nbsp;

@@ -30,7 +30,6 @@ export default class  extends Component {
   handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    console.log('name', name);
     this.setState({
       [name]: value,
     });
@@ -47,7 +46,6 @@ export default class  extends Component {
         username,
       };
 
-      console.log('body', body);
       this.props.handleSubmit(body);
     }
   }

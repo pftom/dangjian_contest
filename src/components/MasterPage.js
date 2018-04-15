@@ -66,7 +66,6 @@ export default class extends React.Component {
 
   handleClick = (event) => {
     const target = event.target;
-    console.log('target', target.tagName);
     const needCancelBubbles = ['LABEL', 'INPUT'];
     if (needCancelBubbles.includes(target.tagName)) {
       return;
@@ -101,7 +100,6 @@ export default class extends React.Component {
     let isSelectedAnyThing = false;
     let selectedNumber = 0;
 
-    console.log('this.state', this.state);
     // || to judge whether is unselect status
     Object.entries(this.state).map(item => {
       if (item[1]) {
@@ -144,8 +142,12 @@ export default class extends React.Component {
     let totalNumber = null;
     let alreadyLogined = null;
     if (allUsers) {
+
+      // TODO: totalNumber need remove master and only signed people length.
       totalNumber = allUsers.length;
-      alreadyLogined = allUsers.filter(user => user.logged).length;
+      alreadyLogined = allUsers
+                        .filter(user => user.username !== 'dhucstmaster')
+                        .filter(user => user.logged).length;
     }
 
     return (

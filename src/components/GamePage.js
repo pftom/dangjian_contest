@@ -112,10 +112,13 @@ export default class  extends Component {
     let remainAudience = null;
 
     if (allUsers) {
+      // filter master, player, and isLogged are audience
       totalAudience = allUsers
+      .filter(user => user.username !== 'dhucstmaster')
+      .filter(user => !user.isPlayer)
       .filter(user => user.logged)
-      .filter(user => !playerKeys.includes(user.username))
 
+      // out is false stand remainAudience
       remainAudience = totalAudience
             .filter(user => !user.out)
     }
@@ -128,9 +131,12 @@ export default class  extends Component {
       questionNumber = Number(questionNumber);
     }
 
+    let rankPlayers = [];
+    let rankAudience = [];
+
     // players lists
-    const rankPlayers = allUsers.filter(user => user.isPlayer).sort((user1, user2) => user1.score < user2.score);
-    const rankAudience = allUsers.filter(user => !user.isPlayer).sort((user1, user2) => user1.score < user2.score);
+    rankPlayers = allUsers.filter(user => user.isPlayer).sort((user1, user2) => (user2.score - user1.score));
+    rankAudience = allUsers.filter(user => !user.isPlayer).sort((user1, user2) => (user2.score - user1.score));
 
     return (
       <div id="game">

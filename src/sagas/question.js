@@ -46,7 +46,6 @@ function* getQuestion(action) {
     
     yield put({ type: GET_QUESTION_SUCCESS, payload: { question } });
   } catch (e) {
-    console.log('e', e);
     yield put({ type: GET_QUESTION_ERROR });
   }
 }

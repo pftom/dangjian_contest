@@ -73,9 +73,6 @@ class GameContainer extends Component {
       hasMoreQuestion,
     } = this.props;
 
-    console.log('term', term);
-    console.log('id', id);
-
     if (hasMoreQuestion) {
       dispatch({ 
         type: PUSH_NOTIFICATION, 
@@ -90,7 +87,6 @@ class GameContainer extends Component {
   }
 
   handleRes = (type, username) => {
-    console.log('username', username);
     const { dispatch, token } = this.props;
     if (type === 'out') {
       dispatch({ type: GET_OUT_OF_CONTEST, payload: { username }});

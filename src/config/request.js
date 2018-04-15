@@ -55,13 +55,11 @@ request.get = ( url, params, token ) => {
   // compute all need options for fetch method
   const options = header( 'GET', token );
 
-  console.log('options', options, url);
 
   // return GET Http request result
   return (
     fetch( url, options )
     .then( response => {
-      console.log('response', response);
       // judge whether this reponse is good or bad.
       if ( response.status >= 400 || !response.ok )  {
         throw response.json();
@@ -74,7 +72,6 @@ request.get = ( url, params, token ) => {
 
 // add HTTP post for this request
 request.post = (url, body) => {
-  console.log('url', url);
   const options = {
     method: 'POST',
     body: JSON.stringify(body),
@@ -83,7 +80,6 @@ request.post = (url, body) => {
     }
   };
 
-  console.log('options', options);
 
   return fetch(url, options)
   .then(res => {
