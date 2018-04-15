@@ -83,7 +83,6 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case CLEAR_ALL_STATE: 
-    // do not clear pushNotificationIndex and pushNotificationArray
     // because, question need going on. Do not repeat
       return {
         ...state,

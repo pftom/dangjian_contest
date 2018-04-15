@@ -144,9 +144,12 @@ export default class extends React.Component {
     if (allUsers) {
 
       // TODO: totalNumber need remove master and only signed people length.
-      totalNumber = allUsers.length;
+      totalNumber = allUsers
+                      .filter(user => user.username !== 'dhucstmaster')
+                      .filter(user => !user.isPlayer).length;
       alreadyLogined = allUsers
                         .filter(user => user.username !== 'dhucstmaster')
+                        .filter(user => !user.isPlayer)
                         .filter(user => user.logged).length;
     }
 

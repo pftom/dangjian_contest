@@ -116,7 +116,7 @@ export default class  extends Component {
       totalAudience = allUsers
       .filter(user => user.username !== 'dhucstmaster')
       .filter(user => !user.isPlayer)
-      .filter(user => user.logged)
+      .filter(user => user.logged);
 
       // out is false stand remainAudience
       remainAudience = totalAudience
