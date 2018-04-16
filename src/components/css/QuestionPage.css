@@ -1,6 +1,10 @@
 #question {
+  height: 100%;
   overflow: scroll;
-  margin: 0 22.9319px;
+  background: url('../img/bgAudience.png') no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 0;
+  padding: 0 22.9319px;
 }
 #question input[type="checkbox"],
 #question input[type="radio"] {

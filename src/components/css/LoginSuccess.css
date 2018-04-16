@@ -1,5 +1,12 @@
 .loginBox {
   height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin: 0 auto;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -7,23 +14,9 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-.loginBox .loginBtn {
-  /* Rectangle 3: */
-  background-image: linear-gradient(-206deg, #EEAA7F 13%, #F36629 100%);
-  -webkit-box-shadow: 0 2px 2px 0 #E8CCAE;
-  box-shadow: 0 2px 2px 0 #E8CCAE;
-  border-radius: 4.2664px;
-  width: 164.7897px;
-  height: 26.665px;
-  display: block;
-  margin: 33px auto;
-  /* 登 陆: */
-  font-family: PingFangSC-Semibold;
-  font-size: 12.7992px;
-  color: #FFFFFF;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  border: none;
+  background: url('../img/bgAudience.png') no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 0;
 }
 .loginBox p {
   margin: 0;
@@ -32,14 +25,15 @@
 .loginBox .loginSuccess {
   /* 登陆成功！: */
   font-family: PingFangSC-Semibold;
-  font-size: 19.1988px;
+  font-size: 29.8648px;
   color: #FF5F1A;
   text-indent: 24px;
+  margin-bottom: 50px;
 }
 .loginBox .ready {
   /* 等待比赛开始: */
   font-family: Arial-BoldMT;
-  font-size: 12.7992px;
+  font-size: 26.665px;
   color: #F5B78F;
   margin-bottom: 32.5313px;
 }

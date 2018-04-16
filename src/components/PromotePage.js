@@ -7,7 +7,6 @@ export default class PromotePage extends Component {
   render() {
     return (
       <div className="loginBox">
-        <img src={loginSuccess} className="logo"/>
         <p className="loginSuccess">回答正确！</p>
         <p className="loginSuccess answerError">成功晋级！</p>
         <p className="nextQuestion">请耐心等待下一题...</p>

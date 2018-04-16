@@ -7,44 +7,41 @@
 }
 .loginBox ::-webkit-input-placeholder {
   /* WebKit browsers */
-  color: #B7B7B7;
+  color: #B7322B;
 }
 .loginBox :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: #B7B7B7;
+  color: #B7322B;
 }
 .loginBox ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: #B7B7B7;
+  color: #B7322B;
 }
 .loginBox :-ms-input-placeholder {
   /* Internet Explorer 10+ */
-  color: #B7B7B7;
+  color: #B7322B;
 }
 .loginBox .input {
   /* Rectangle 3: */
   /* Rectangle 3: */
-  background: #FFFFFF;
-  -webkit-box-shadow: 3px 2px 8px 0 #8B8B8B;
-  box-shadow: 3px 2px 8px 0 #8B8B8B;
+  background: transparent;
   border-radius: 4.2664px;
   outline: none;
   display: block;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid #B7322B;
+  color: #B7322B;
   width: 164.7897px;
-  height: 26.665px;
+  height: 31.998px;
   margin: 33px auto 15.999px;
   text-align: center;
 }
 .loginBox .loginBtn {
-  /* Rectangle 3: */
-  background-image: linear-gradient(-206deg, #EEAA7F 13%, #F36629 100%);
-  -webkit-box-shadow: 0 2px 2px 0 #E8CCAE;
-  box-shadow: 0 2px 2px 0 #E8CCAE;
+  background: transparent;
+  border: 1px solid #B7322B;
+  color: #B7322B;
   border-radius: 4.2664px;
   width: 164.7897px;
-  height: 26.665px;
-  display: block;
+  height: 31.998px;
   margin: 33px auto;
 }
 .animation {

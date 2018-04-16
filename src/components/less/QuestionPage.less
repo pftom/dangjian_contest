@@ -1,12 +1,17 @@
 @px2dp: 0.5333;
 
 #question {
+  height: 100%;
   overflow: scroll;
   input[type="checkbox"], input[type="radio"] {
     visibility: hidden;
   }
 
-  margin: 0 43px * @px2dp;
+  background: url('../img/bgAudience.png') no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 0;
+
+  padding: 0 43px * @px2dp;
 
   .questionHeader {
     /* 题目: */

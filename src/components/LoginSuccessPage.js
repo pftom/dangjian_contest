@@ -14,7 +14,6 @@ export default class LoginSuccessPage extends Component {
 
     return (
       <div className="loginBox">
-        <img src={loginSuccess} className="logo"/>
         <p className="loginSuccess">登录成功！</p>
         <p className="ready">等待比赛开始</p>
       </div>

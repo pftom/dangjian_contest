@@ -57,7 +57,6 @@ export default class  extends Component {
           <meta charSet="utf-8" />
           <title>答题登录</title>
         </Helmet>
-        <img src={logo} className="logo"/>
           <input 
             type="username" 
             name="username"

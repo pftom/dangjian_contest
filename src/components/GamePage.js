@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { Modal } from 'antd';
+import { Modal, message } from 'antd';
 
 
 import './css/GamePage.css';
@@ -101,6 +101,18 @@ export default class  extends Component {
       status: '',
       visible: false,
     });
+  }
+
+  hintAnswer = () => {
+    const { question } = this.props;
+
+    if (question) {
+      let cancatAnswer = question.answer[0];
+      question.answer.slice(1).map(ans => cancatAnswer += `、${ans}`)
+      message.success(`正确答案是 ${cancatAnswer}`, 3);
+    } else {
+      message.error('Sorry, 还木有答案哦 ~', 1);
+    }
   }
 
   render() {
@@ -207,7 +219,7 @@ export default class  extends Component {
             </div>
 
             <div className="questionJump">
-              <button className="closeThisQuestion" onClick={() => { this.props.endThisQuestion() }}>结束本题</button>
+              <button className="closeThisQuestion" onClick={this.hintAnswer}>显示答案</button>
               <button className="closeThisQuestion" onClick={this.handleCount}>开始计时</button>
               <button className="nextQuestion" onClick={() => this.props.handleSelect()}>下一题</button>
             </div>
