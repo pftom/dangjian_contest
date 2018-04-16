@@ -4,8 +4,8 @@ import { Modal, message } from 'antd';
 
 
 import './css/GamePage.css';
-import { 
-  END_OF_THIS_QUESTION, 
+import {
+  END_OF_THIS_QUESTION,
   GET_OUT_OF_CONTEST,
   PROMOTE_CONTEST,
 } from '../constants/';
@@ -193,9 +193,13 @@ export default class  extends Component {
           okText="我确定"
           cancelText="我不确定"
           onCancel={this.handleCancel}
-          width="200px"
+          width="300px"
+          height="80px"
+          mask={false}
+          bodyStyle={{height: "35px"}}
+          style={{left: "25%", top: "75%"}}
         >
-          <p>你确定真的！要做这样的选择嘛？🤔</p>
+          <p>你确定此人{this.state.status === 'promote' ? "晋级" : "出局"}吗？🤔</p>
         </Modal>
         <div className="leftTabBar">
           <div className="homeIcon" onClick={this.props.handleNextContest}>
@@ -206,9 +210,9 @@ export default class  extends Component {
           <div className={classnames('tab', { active: !this.state.active })} onClick={this.handleClickTabTwo}>排名</div>
         </div>
 
-        <div 
-          className="rightBox" 
-          style={{ 
+        <div
+          className="rightBox"
+          style={{
             display: this.state.active ? 'flex': 'none'
           }}
         >
@@ -217,7 +221,7 @@ export default class  extends Component {
               <p className="questionNumber">
                 {question ? (question.answer.length > 1 ? '多选题  ' : '单选题  ') : ''}
                 {
-                  questionNumber 
+                  questionNumber
                   ? questionNumber
                   : '暂无'
                 }
@@ -246,8 +250,8 @@ export default class  extends Component {
               {
                 question && (
                   question.question.slice(1).map((item, key) => (
-                    <p 
-                      key={key} 
+                    <p
+                      key={key}
                       className={
                         classnames('paragraph', { highlight: hightLightArr.includes(key) ? this.state.highlight : false })
                       }>
@@ -268,9 +272,9 @@ export default class  extends Component {
           <div className="playerBox">
             {
               players.map((player, key) => (
-                <div key={key} 
+                <div key={key}
                   className={
-                    classnames('player', 
+                    classnames('player',
                       { [ 'player' + key ]: true },
                       { out: player.out },
                       { promote: player.promote }
@@ -351,7 +355,7 @@ export default class  extends Component {
             </div>
           </div>
         </div>
-        
+
       </div>
     );
   }
