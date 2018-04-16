@@ -159,6 +159,7 @@ export default class  extends Component {
           okText="我确定"
           cancelText="我不确定"
           onCancel={this.handleCancel}
+          width="200px"
         >
           <p>你确定真的！要做这样的选择嘛？🤔</p>
         </Modal>
