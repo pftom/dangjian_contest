@@ -15,6 +15,18 @@ import error from './img/error.svg';
 import clock from './img/clock.svg';
 
 // default question
+const mapOptionToNumber = {
+  'A': 0,
+  'B': 1,
+  'C': 2,
+  'D': 3,
+  'E': 5,
+  'F': 6,
+  'G': 7,
+  'H': 8,
+  'I': 9,
+  'J': 10,
+};
 
 export default class  extends Component {
   state = {
@@ -24,12 +36,17 @@ export default class  extends Component {
     status: '',
     username: '',
     visible: false,
+    highlight: false,
   }
 
   componentDidUpdate(prevProps, prevState) {
 
     const { dispatch, players } = this.props;
     if (this.state.cnt <= 0) {
+      // add highlight
+      this.setState({
+        highlight: true,
+      });
       dispatch({ type: END_OF_THIS_QUESTION });
       clearInterval(this.timer);
       this.setState({
@@ -109,10 +126,17 @@ export default class  extends Component {
     if (question) {
       let cancatAnswer = question.answer[0];
       question.answer.slice(1).map(ans => cancatAnswer += `、${ans}`)
-      message.success(`正确答案是 ${cancatAnswer}`, 3);
+      message.success(<span>正确答案是：<span className="modal-hightlight">{cancatAnswer}</span></span>, 3);
     } else {
       message.error('Sorry, 还木有答案哦 ~', 1);
     }
+  }
+
+  handleNext = () => {
+    this.setState({
+      highlight: false,
+    });
+    this.props.handleSelect()
   }
 
   render() {
@@ -145,6 +169,16 @@ export default class  extends Component {
 
     let rankPlayers = [];
     let rankAudience = [];
+
+    // add question.answer map array for hightlight
+    let hightLightArr = [];
+    if (question) {
+      question.answer.map(ans => {
+        hightLightArr.push(mapOptionToNumber[ans]);
+      });
+
+      console.log('hightLightArr', hightLightArr);
+    }
 
     // players lists
     rankPlayers = allUsers.filter(user => user.isPlayer).sort((user1, user2) => (user2.score - user1.score));
@@ -212,7 +246,13 @@ export default class  extends Component {
               {
                 question && (
                   question.question.slice(1).map((item, key) => (
-                    <p key={key} className={classnames('paragraph')}>{item}</p>
+                    <p 
+                      key={key} 
+                      className={
+                        classnames('paragraph', { highlight: hightLightArr.includes(key) ? this.state.highlight : false })
+                      }>
+                      {item}
+                    </p>
                   ))
                 )
               }
@@ -220,9 +260,8 @@ export default class  extends Component {
             </div>
 
             <div className="questionJump">
-              <button className="closeThisQuestion" onClick={this.hintAnswer}>显示答案</button>
               <button className="closeThisQuestion" onClick={this.handleCount}>开始计时</button>
-              <button className="nextQuestion" onClick={() => this.props.handleSelect()}>下一题</button>
+              <button className="nextQuestion" onClick={this.handleNext}>下一题</button>
             </div>
           </div>
 

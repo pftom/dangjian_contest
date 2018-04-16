@@ -181,7 +181,7 @@ export default class extends React.Component {
           </div>
           <div className="loginList">
             <h4 className="loginHeader">
-              登录情况  { totalNumber && <span className="record">( {alreadyLogined} / {totalNumber} )</span>}
+              登录情况  { totalNumber && <span className="record">( 已登录：{alreadyLogined} )</span>}
             </h4>
             <div className="selectBox">
             {

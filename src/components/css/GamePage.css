@@ -170,6 +170,9 @@
   color: #000000;
   letter-spacing: 0;
 }
+.rightBox .questionBox .question .options .highlight {
+  color: red;
+}
 .rightBox .questionBox .question .options .paragraph:nth-child(even) {
   margin-left: 5%;
 }
@@ -487,4 +490,7 @@
 }
 .person {
   margin: 0 50px;
+}
+.modal-hightlight {
+  color: red;
 }
