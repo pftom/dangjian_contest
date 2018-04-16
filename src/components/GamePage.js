@@ -164,7 +164,7 @@ export default class  extends Component {
     let adaptedQuestion = null;
     if (question) {
       questionNumber = question.question[0].match(/[0-9]+/g);
-      questionNumber = Number(questionNumber);
+      questionNumber = Number(questionNumber[0]);
     }
 
     let rankPlayers = [];
@@ -197,9 +197,9 @@ export default class  extends Component {
           height="80px"
           mask={false}
           bodyStyle={{height: "35px"}}
-          style={{left: "25%", top: "75%"}}
+          style={{left: "1.5%", top: "78%"}}
         >
-          <p>你确定此人{this.state.status === 'promote' ? "晋级" : "出局"}吗？🤔</p>
+          <p className="ensureFrame">你确定此人{this.state.status === 'promote' ? "晋级" : "出局"}吗？🤔</p>
         </Modal>
         <div className="leftTabBar">
           <div className="homeIcon" onClick={this.props.handleNextContest}>
